@@ -10,14 +10,13 @@ namespace MCLaborAdmin
     {
         public static SqlConnection getConnection()
         {
-            SqlConnectionStringBuilder connStringBuilder = new SqlConnectionStringBuilder();
-            connStringBuilder.InitialCatalog = ConfigurationSettings.AppSettings["dbCatalog"];
-            connStringBuilder.DataSource = ConfigurationSettings.AppSettings["dbServer"] + "\\" + ConfigurationSettings.AppSettings["dbInstanceName"];
-            connStringBuilder.UserID = ConfigurationSettings.AppSettings["dbUser"];
-            connStringBuilder.Password = ConfigurationSettings.AppSettings["dbPassword"];
-            connStringBuilder.IntegratedSecurity = false;
+            return getConnection("default");
+        }
 
-            return new SqlConnection(connStringBuilder.ToString());
+        public static SqlConnection getConnection(string connStringName)
+        {            
+            ConnectionStringSettings connString = ConfigurationManager.ConnectionStrings[connStringName];
+            return new SqlConnection(connString.ToString());
         }
     }
 }

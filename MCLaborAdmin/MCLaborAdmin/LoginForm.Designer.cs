@@ -41,7 +41,7 @@
             this.loginBtn.AccessibleRole = System.Windows.Forms.AccessibleRole.Border;
             this.loginBtn.Location = new System.Drawing.Point(97, 112);
             this.loginBtn.Name = "loginBtn";
-            this.loginBtn.Size = new System.Drawing.Size(75, 23);
+            this.loginBtn.Size = new System.Drawing.Size(85, 23);
             this.loginBtn.TabIndex = 2;
             this.loginBtn.Text = "Login";
             this.loginBtn.UseVisualStyleBackColor = true;
@@ -51,11 +51,11 @@
             // 
             this.loginMsgTxt.BackColor = System.Drawing.SystemColors.Control;
             this.loginMsgTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.loginMsgTxt.Location = new System.Drawing.Point(97, 148);
+            this.loginMsgTxt.Location = new System.Drawing.Point(45, 148);
             this.loginMsgTxt.Multiline = true;
             this.loginMsgTxt.Name = "loginMsgTxt";
             this.loginMsgTxt.ReadOnly = true;
-            this.loginMsgTxt.Size = new System.Drawing.Size(169, 50);
+            this.loginMsgTxt.Size = new System.Drawing.Size(221, 50);
             this.loginMsgTxt.TabIndex = 9;
             this.loginMsgTxt.TabStop = false;
             // 
@@ -105,6 +105,7 @@
             this.Controls.Add(this.loginBtn);
             this.Name = "LoginForm";
             this.Text = "MCLabor Administration";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

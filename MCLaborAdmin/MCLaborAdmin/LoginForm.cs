@@ -16,31 +16,32 @@ namespace MCLaborAdmin
     {
         public LoginForm()
         {
+            this.StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
+            this.loginMsgTxt.Text = "";
             if (validateLogin(this.loginUserNameTxt.Text, this.loginPasswordTxt.Text))
             {
-                //loadMainMenu();
-                this.loginMsgTxt.Text = "Login Successful";
+                loadMainMenu();                
             }
             else
             {
-                this.loginMsgTxt.Text = "Invalid Credentials: Check your User Name and Password";
+                this.loginMsgTxt.Text = "Invalid Credentials: " + Environment.NewLine + "Check your User Name and Password";
             }
         }
 
         private bool validateLogin(string username, string password)
         {
-            string sqlString = "SELECT userName, password FROM admin_user WHERE lower(userName) = @userName";
+            string sqlString = "SELECT userName, password FROM admin_user WHERE userName = @userName";
 
-            using (SqlConnection conn = DBUtils.getConnection())
+            using (SqlConnection conn = DBUtils.getConnection("MCLabor"))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(sqlString, conn);
-                cmd.Parameters.Add(new SqlParameter("@userName", username));
+                cmd.Parameters.Add(new SqlParameter("@userName", username.ToLower()));
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -53,5 +54,20 @@ namespace MCLaborAdmin
             return false;
             
         }
+
+
+        private void loadMainMenu()
+        {
+            this.loginPasswordTxt.Text = "";
+            this.Hide();
+            MainMenuForm mainMenu = new MainMenuForm(this);
+            mainMenu.Show(this);
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            this.TopMost = true;
+        }
+
     }
 }
