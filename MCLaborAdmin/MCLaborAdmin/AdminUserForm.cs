@@ -14,19 +14,20 @@ namespace MCLaborAdmin
     public partial class AdminUserForm : Form
     {
         private MainMenuForm mainMenuForm;
-        private List<AdminUser> adminUserList;
+        private Dictionary<String, AdminUser> adminUserMap;
         private string errorMessage;
 
         public AdminUserForm(MainMenuForm mainMenuForm)
         {
-            this.mainMenuForm = mainMenuForm;
-            this.adminUserList = new List<AdminUser>();
+            this.adminUserMap = new Dictionary<String, AdminUser>();
+            this.mainMenuForm = mainMenuForm;            
             this.StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
         }
 
-        private void populateAdminUserList()
+        private void populateAdminUserMap()
         {
+            this.adminUserMap = new Dictionary<String, AdminUser>();
             string sqlString = "select adminUserId, userName, password FROM admin_user";
             using (SqlConnection conn = DBUtils.getConnection("MCLabor"))
             {
@@ -35,14 +36,14 @@ namespace MCLaborAdmin
                 IDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.adminUserList.Add(new AdminUser(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)));                    
+                    this.adminUserMap.Add(reader.GetString(1), new AdminUser(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)));                    
                 }
             }
         }
 
         private void populateDataGridView()
-        {
-            foreach (AdminUser currAdminUser in this.adminUserList)
+        {            
+            foreach(AdminUser currAdminUser in this.adminUserMap.Values)
             {
                 object[] rowValues = { currAdminUser.AdminUserId, currAdminUser.UserName, currAdminUser.Password };
                 this.adminUserDataGridView.Rows.Add(rowValues);
@@ -52,9 +53,8 @@ namespace MCLaborAdmin
         private bool validateGridData()
         {            
             foreach (DataGridViewRow row in this.adminUserDataGridView.Rows)
-            {
-                //MessageBox.Show(row.Cells[0].Value.ToString() + "," + row.Cells[1].Value.ToString() + "," + row.Cells[2].Value.ToString());
-                if (row.Cells[1].Value == null || row.Cells[1].Value.ToString() == "")
+            {                
+                if (row.Cells[1].Value == null || row.Cells[1].Value.ToString().Trim() == "")
                 {
                     this.errorMessage = "User Name cannot be empty or null!";
                     unselectAll();
@@ -62,7 +62,7 @@ namespace MCLaborAdmin
                     return false;
                 }
 
-                if (row.Cells[2].Value == null || row.Cells[2].Value.ToString() == "")
+                if (row.Cells[2].Value == null || row.Cells[2].Value.ToString().Trim() == "")
                 {
                     this.errorMessage = "Password cannot be empty or null!";
                     unselectAll();
@@ -80,6 +80,22 @@ namespace MCLaborAdmin
 
         private void updateAdminUserListFromGrid()
         {
+            if (validateGridData())
+            {
+                foreach (DataGridViewRow row in this.adminUserDataGridView.Rows)
+                {
+                    if (this.adminUserMap.ContainsKey(row.Cells[1].Value.ToString()))
+                    {
+                        this.adminUserMap[row.Cells[1].Value.ToString()].AdminUserId = Int32.Parse(row.Cells[0].Value.ToString());
+                        this.adminUserMap[row.Cells[1].Value.ToString()].UserName = row.Cells[1].Value.ToString();
+                        this.adminUserMap[row.Cells[1].Value.ToString()].Password = row.Cells[2].Value.ToString();
+                    }
+                    else
+                    {
+                        this.adminUserMap.Add(row.Cells[1].Value.ToString(), new AdminUser(Int32.Parse(row.Cells[0].Value.ToString()),row.Cells[1].Value.ToString(),row.Cells[2].Value.ToString()));
+                    }
+                }
+            }
 
         }
 
@@ -115,7 +131,7 @@ namespace MCLaborAdmin
         private void AdminUserForm_Load(object sender, EventArgs e)
         {            
             this.TopMost = true;
-            populateAdminUserList();
+            populateAdminUserMap();
             populateDataGridView();
         }
 
