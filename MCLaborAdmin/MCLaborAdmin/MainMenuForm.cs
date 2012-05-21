@@ -29,7 +29,7 @@ namespace MCLaborAdmin
 
         private void loadEmployeeForm()
         {
-            EmployeeForm empForm = new EmployeeForm(this);
+            EmployeeMainForm empForm = new EmployeeMainForm(this);
             this.Hide();
             empForm.Show(this);
         }
@@ -132,6 +132,7 @@ namespace MCLaborAdmin
         private void MainMenuForm_Load(object sender, EventArgs e)
         {
             this.TopMost = true;
+            this.TopMost = false;
         }
 
     }

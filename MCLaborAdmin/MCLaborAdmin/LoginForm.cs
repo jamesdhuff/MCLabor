@@ -59,14 +59,17 @@ namespace MCLaborAdmin
         private void loadMainMenu()
         {
             this.loginPasswordTxt.Text = "";
+            this.loginPasswordTxt.Focus();
             this.Hide();
             MainMenuForm mainMenu = new MainMenuForm(this);
             mainMenu.Show(this);
         }
 
+
         private void LoginForm_Load(object sender, EventArgs e)
         {
             this.TopMost = true;
+            this.TopMost = false;
         }
 
     }

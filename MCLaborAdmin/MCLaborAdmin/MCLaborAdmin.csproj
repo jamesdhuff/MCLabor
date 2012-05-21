@@ -75,11 +75,18 @@
     <Compile Include="AdminUserForm.Designer.cs">
       <DependentUpon>AdminUserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeForm.cs">
+    <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeAddEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmployeeForm.Designer.cs">
-      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    <Compile Include="EmployeeAddEditForm.Designer.cs">
+      <DependentUpon>EmployeeAddEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeMainForm.Designer.cs">
+      <DependentUpon>EmployeeMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ExportForm.cs">
       <SubType>Form</SubType>
@@ -87,6 +94,7 @@
     <Compile Include="ExportForm.Designer.cs">
       <DependentUpon>ExportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Job.cs" />
     <Compile Include="JobForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,13 +113,17 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PayRate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AdminUserForm.resx">
       <DependentUpon>AdminUserForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeForm.resx">
-      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    <EmbeddedResource Include="EmployeeAddEditForm.resx">
+      <DependentUpon>EmployeeAddEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeMainForm.resx">
+      <DependentUpon>EmployeeMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportForm.resx">
       <DependentUpon>ExportForm.cs</DependentUpon>
@@ -142,6 +154,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -203,6 +216,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Banner.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

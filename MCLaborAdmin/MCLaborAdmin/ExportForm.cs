@@ -28,6 +28,7 @@ namespace MCLaborAdmin
         private void ExportForm_Load(object sender, EventArgs e)
         {
             this.TopMost = true;
+            this.TopMost = false;
         }
     }
 }

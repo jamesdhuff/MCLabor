@@ -168,6 +168,50 @@ GO
 CREATE INDEX IX_LABORDTL1 ON LABOR_DETAIL (employeeId, workSiteId, jobId, laborCalendarDate DESC)
 GO
 
+PRINT 'Creating HIRE_STATUS_ENUM table'
+USE MCLAbor
+GO
+CREATE TABLE dbo.HIRE_STATUS_ENUM
+(
+	status int NOT NULL,
+	description nvarchar(200),
+	CONSTRAINT PK_HIRESTATUSENUM PRIMARY KEY (status)
+)
+GO
 
+
+PRINT 'Inserting Seed Data into HIRE_STATUS_ENUM'
+USE MCLabor
+GO
+INSERT INTO HIRE_STATUS_ENUM VALUES(0,'Full Time');
+INSERT INTO HIRE_STATUS_ENUM VALUES(1,'Part Time');
+INSERT INTO HIRE_STATUS_ENUM VALUES(2,'Laid Off / Unemployment');
+INSERT INTO HIRE_STATUS_ENUM VALUES(3,'Terminated - Rehirable');
+INSERT INTO HIRE_STATUS_ENUM VALUES(4,'Terminated - Non-Rehirable');
+GO
+
+
+PRINT 'Creating EMP_HIRE_STATUS table'
+USE MCLabor
+GO
+CREATE TABLE dbo.EMP_HIRE_STATUS
+(
+	empHireStatusId int IDENTITY(1,1) NOT NULL,
+	employeeId int NOT NULL,
+	status int NOT NULL,
+	statusStartDate DATE NOT NULL default(getDate()),
+	statusEndDate DATE,
+	terminationReason nvarchar(1000),
+	CONSTRAINT PK_EMPHIRESTATUS PRIMARY KEY (empHireStatusId),
+	CONSTRAINT FK_HIRESTATUS_EMP FOREIGN KEY (employeeId) REFERENCES EMPLOYEE (employeeId),
+	CONSTRAINT FK_HIRESTATUS_HSENUM FOREIGN KEY (status) REFERENCES HIRE_STATUS_ENUM (status)
+)
+GO
+
+PRINT 'Creating EMP_HIRE_STATUS index'
+USE MCLabor
+GO
+CREATE INDEX IX_EMPHIRESTATUS1 ON EMP_HIRE_STATUS (employeeId, status)
+GO
 	
 	

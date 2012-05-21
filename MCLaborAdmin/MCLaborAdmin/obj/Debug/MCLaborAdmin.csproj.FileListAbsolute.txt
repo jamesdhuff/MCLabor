@@ -9,9 +9,10 @@ C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.pdb
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\bin\Debug\MCLaborAdmin.exe.config
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.MainMenuForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.AdminUserForm.resources
-C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.EmployeeForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.ExportForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.ReportForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.TimeCardForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.WorkSiteForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.JobForm.resources
+C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.EmployeeAddEditForm.resources
+C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.EmployeeMainForm.resources

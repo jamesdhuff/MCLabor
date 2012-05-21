@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminUserForm));
             this.adminUserSaveBtn = new System.Windows.Forms.Button();
             this.adminUserAddBtn = new System.Windows.Forms.Button();
             this.adminUserDeleteBtn = new System.Windows.Forms.Button();
@@ -107,6 +108,7 @@
             this.Controls.Add(this.adminUserDeleteBtn);
             this.Controls.Add(this.adminUserAddBtn);
             this.Controls.Add(this.adminUserSaveBtn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdminUserForm";
             this.Text = "MCLabor Administration - Admin User Definitions";
             this.Load += new System.EventHandler(this.AdminUserForm_Load);

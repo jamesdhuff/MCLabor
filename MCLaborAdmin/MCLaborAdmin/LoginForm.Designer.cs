@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.loginBtn = new System.Windows.Forms.Button();
             this.loginMsgTxt = new System.Windows.Forms.TextBox();
             this.loginUserNameTxt = new System.Windows.Forms.TextBox();
@@ -94,8 +95,10 @@
             // 
             // LoginForm
             // 
+            this.AcceptButton = this.loginBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(316, 210);
             this.Controls.Add(this.loginPasswordLbl);
             this.Controls.Add(this.loginUserNameLbl);
@@ -103,7 +106,11 @@
             this.Controls.Add(this.loginUserNameTxt);
             this.Controls.Add(this.loginMsgTxt);
             this.Controls.Add(this.loginBtn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(332, 248);
+            this.MinimumSize = new System.Drawing.Size(332, 248);
             this.Name = "LoginForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "MCLabor Administration";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);

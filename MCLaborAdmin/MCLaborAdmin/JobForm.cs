@@ -27,7 +27,8 @@ namespace MCLaborAdmin
 
         private void JobForm_Load(object sender, EventArgs e)
         {
-            this.TopMost = true;            
+            this.TopMost = true;
+            this.TopMost = false;
         }
     }
 }
