@@ -29,297 +29,65 @@ namespace MCLaborAdmin
         private string emergencyContactPhone;
         private int hireStatus;
         private DateTime hireStatusDate;
+        private string termReason;
 
         private List<PayRate> payRateList;
         
 
-        public int EmployeeId
-        {
-            get
-            {
-                return this.employeeId;
-            }
-            set
-            {
-                this.employeeId = value;
-            }
-        }
+        public int EmployeeId { get { return this.employeeId; } set { this.employeeId = value; } }
 
-        public string RefCode
-        {
-            get
-            {
-                return this.refCode;
-            }
-            set
-            {
-                this.refCode = value;
-            }
-        }
+        public string RefCode { get { return this.refCode; } set { this.refCode = value; } }
 
-        public string FirstName
-        {
-            get
-            {
-                return this.firstName;
-            }
-            set
-            {
-                this.firstName = value;
-            }
-        }
+        public string FirstName { get { return this.firstName; } set { this.firstName = value; } }
 
-        public string LastName
-        {
-            get
-            {
-                return this.lastName;
-            }
-            set
-            {
-                this.lastName = value;
-            }
-        }
+        public string LastName { get { return this.lastName; } set { this.lastName = value; } }
 
-        public string MiddleName
-        {
-            get
-            {
-                return this.middleName;
-            }
-            set
-            {
-                this.middleName = value;
-            }
-        }
+        public string MiddleName { get { return this.middleName; } set { this.middleName = value; } }
 
-        public string FullName
-        {
-            get
-            {
-                return this.firstName + " " + this.lastName;
-            }
-        }
+        public string FullName { get { return this.firstName + " " + this.lastName; } }
 
-        public string Address
-        {
-            get
-            {
-                return this.address;
-            }
-            set
-            {
-                this.address = value;
-            }
-        }
+        public string Address { get { return this.address; } set { this.address = value; } }
 
-        public string City
-        {
-            get
-            {
-                return this.city;
-            }
-            set
-            {
-                this.city = value;
-            }
-        }
+        public string City { get { return this.city; } set { this.city = value; } }
 
-        public string State
-        {
-            get
-            {
-                return this.state;
-            }
-            set
-            {
-                this.state = value;
-            }
-        }
+        public string State { get { return this.state; } set { this.state = value; } }
 
-        public int Zip
-        {
-            get
-            {
-                return this.zip;
-            }
-            set
-            {
-                this.zip = value;
-            }
-        }
+        public int Zip { get { return this.zip; } set { this.zip = value; } }
 
-        public int LoginId
-        {
-            get
-            {
-                return this.loginId;
-            }
-            set
-            {
-                this.loginId = value;
-            }
-        }
+        public int LoginId { get { return this.loginId; } set { this.loginId = value; } }
 
-        public string PrimaryPhone
-        {
-            get
-            {
-                return this.primaryPhone;
-            }
-            set
-            {
-                this.primaryPhone = value;
-            }
-        }
+        public string PrimaryPhone { get { return this.primaryPhone; } set { this.primaryPhone = value; } }
 
-        public string AlternatePhone
-        {
-            get
-            {
-                return this.alternatePhone;
-            }
-            set
-            {
-                this.alternatePhone = value;
-            }
-        }
+        public string AlternatePhone { get { return this.alternatePhone; } set { this.alternatePhone = value; } }
 
-        public string Ssn
-        {
-            get
-            {
-                return this.ssn;
-            }
-            set
-            {
-                this.ssn = value;
-            }
-        }
+        public string Ssn { get { return this.ssn; } set { this.ssn = value; } }
 
-        public string EmergencyContactName
-        {
-            get
-            {
-                return this.emergencyContactName;
-            }
-            set
-            {
-                this.emergencyContactName = value;
-            }
-        }
+        public string EmergencyContactName { get { return this.emergencyContactName; } set { this.emergencyContactName = value; } }
 
-        public string EmergencyContactRelationship
-        {
-            get
-            {
-                return this.emergencyContactRelationship;
-            }
-            set
-            {
-                this.emergencyContactRelationship = value;
-            }
-        }
+        public string EmergencyContactRelationship { get { return this.emergencyContactRelationship; } set { this.emergencyContactRelationship = value; } }
 
-        public string EmergencyContactPhone
-        {
-            get
-            {
-                return this.emergencyContactPhone;
-            }
-            set
-            {
-                this.emergencyContactPhone = value;
-            }
-        }
+        public string EmergencyContactPhone { get { return this.emergencyContactPhone; } set { this.emergencyContactPhone = value; } }
 
-        public string EmergencyContactAddress
-        {
-            get
-            {
-                return this.emergencyContactAddress;
-            }
-            set
-            {
-                this.emergencyContactAddress = value;
-            }
-        }
+        public string EmergencyContactAddress { get { return this.emergencyContactAddress; } set { this.emergencyContactAddress = value; } }
 
-        public string EmergencyContactCity
-        {
-            get
-            {
-                return this.emergencyContactCity;
-            }
-            set
-            {
-                this.emergencyContactCity = value;
-            }
-        }
+        public string EmergencyContactCity { get { return this.emergencyContactCity; } set { this.emergencyContactCity = value; } }
 
-        public string EmergencyContactState
-        {
-            get
-            {
-                return this.emergencyContactState;
-            }
-            set
-            {
-                this.emergencyContactState = value;
-            }
-        }
+        public string EmergencyContactState { get { return this.emergencyContactState; } set { this.emergencyContactState = value; } }
 
-        public int EmergencyContactZip
-        {
-            get
-            {
-                return this.emergencyContactZip;
-            }
-            set
-            {
-                this.emergencyContactZip = value;
-            }
-        }
+        public int EmergencyContactZip { get { return this.emergencyContactZip; } set { this.emergencyContactZip = value; } }
 
-        public int HireStatus
-        {
-            get
-            {
-                return this.hireStatus;
-            }
-            set
-            {
-                this.hireStatus = value;
-            }
-        }
+        public int HireStatus { get { return this.hireStatus; } set { this.hireStatus = value; } }
 
-        public DateTime HireStatusDate
-        {
-            get
-            {
-                return this.hireStatusDate;
-            }
-            set
-            {
-                this.hireStatusDate = value;
-            }
-        }
+        public DateTime HireStatusDate { get { return this.hireStatusDate; } set { this.hireStatusDate = value; } }
 
-        public List<PayRate> PayRateList
-        {
-            get
-            {
-                return this.payRateList;
-            }
-            set
-            {
-                this.payRateList = value;
-            }
-        }
+        public List<PayRate> PayRateList { get { return this.payRateList; } set { this.payRateList = value; } }
+
+        public string TermReason { get { return this.termReason; } set { this.termReason = value; } }
 
 
         public Employee()
         {
+            this.employeeId = -1;
             this.payRateList = new List<PayRate>();
         }
 

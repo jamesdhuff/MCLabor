@@ -67,6 +67,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddEditPayRateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEditPayRateForm.Designer.cs">
+      <DependentUpon>AddEditPayRateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminUser.cs" />
     <Compile Include="DBUtils.cs" />
     <Compile Include="AdminUserForm.cs">
@@ -116,6 +122,9 @@
     <Compile Include="PayRate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddEditPayRateForm.resx">
+      <DependentUpon>AddEditPayRateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminUserForm.resx">
       <DependentUpon>AdminUserForm.cs</DependentUpon>
     </EmbeddedResource>

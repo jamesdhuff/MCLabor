@@ -81,7 +81,7 @@ namespace MCLaborAdmin
 
         public override string ToString()
         {
-            return this.jobName;
+            return this.jobName.PadRight(15) + " |  " + this.refCode;
         }
 
     }

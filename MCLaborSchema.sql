@@ -60,7 +60,8 @@ CREATE TABLE dbo.EMPLOYEE
 	emergencyContactState nvarchar(25),
 	emergencyContactZip int,
 	emergencyContactPhone nvarchar(20),
-	CONSTRAINT PK_EMPLOYEE PRIMARY KEY CLUSTERED(employeeId ASC)
+	CONSTRAINT PK_EMPLOYEE PRIMARY KEY CLUSTERED(employeeId ASC),
+	CONSTRAINT UC_EMP_LOGINID UNIQUE (loginId)
 )
 GO
 
@@ -104,7 +105,7 @@ CREATE TABLE dbo.PAY_RATE
 	payRateId int IDENTITY(1,1) NOT NULL,
 	employeeId int NOT NULL,
 	jobId int NOT NULL,
-	hourlyPayRate decimal NOT NULL,
+	hourlyPayRate decimal(10,2)	NOT NULL,
 	CONSTRAINT PK_PAYRATE PRIMARY KEY CLUSTERED(payRateId ASC),
 	CONSTRAINT FK_EMP_PAYRATE FOREIGN KEY (employeeId) REFERENCES EMPLOYEE(employeeId),
 	CONSTRAINT FK_JOB_PAYRATE FOREIGN KEY (jobId) REFERENCES JOB(jobId)

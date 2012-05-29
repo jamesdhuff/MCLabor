@@ -16,3 +16,4 @@ C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.WorkSit
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.JobForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.EmployeeAddEditForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.EmployeeMainForm.resources
+C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.AddEditPayRateForm.resources

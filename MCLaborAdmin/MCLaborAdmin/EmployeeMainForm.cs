@@ -42,25 +42,145 @@ namespace MCLaborAdmin
                         emp.EmployeeId = reader.GetInt32(0);
                         emp.RefCode = reader.GetString(1);
                         emp.FirstName = reader.GetString(2);
-                        emp.MiddleName = reader.GetString(3);
+                        if (reader.IsDBNull(3))
+                        {
+                            emp.MiddleName = string.Empty;
+                        }
+                        else
+                        {
+                            emp.MiddleName = reader.GetString(3);
+                        }
+
                         emp.LastName = reader.GetString(4);
                         emp.LoginId = reader.GetInt32(5);
-                        emp.Address = reader.GetString(6);
-                        emp.City = reader.GetString(7);
-                        emp.State = reader.GetString(8);
-                        emp.Zip = reader.GetInt32(9);
-                        emp.Ssn = reader.GetString(10);
-                        emp.PrimaryPhone = reader.GetString(11);
-                        emp.AlternatePhone = reader.GetString(12);
-                        emp.EmergencyContactName = reader.GetString(13);
-                        emp.EmergencyContactRelationship = reader.GetString(14);
-                        emp.EmergencyContactAddress = reader.GetString(15);
-                        emp.EmergencyContactCity = reader.GetString(16);
-                        emp.EmergencyContactState = reader.GetString(17);
-                        emp.EmergencyContactZip = reader.GetInt32(18);
-                        emp.EmergencyContactPhone = reader.GetString(19);
+                        
+                        if (reader.IsDBNull(6))
+                        {
+                            emp.Address = string.Empty;
+                        }
+                        else
+                        {
+                            emp.Address = reader.GetString(6);
+                        }
 
-                        string hireStatusLookupSql = "SELECT status, statusStartDate FROM emp_hire_status WHERE employeeId = @empId AND statusEndDate IS NULL";
+                        if(reader.IsDBNull(7))
+                        {
+                            emp.City = string.Empty;
+                        }
+                        else
+                        {
+                            emp.City = reader.GetString(7);
+                        }
+
+                        if(reader.IsDBNull(8))
+                        {
+                            emp.State = string.Empty;
+                        }
+                        else
+                        {
+                            emp.State = reader.GetString(8);
+                        }
+
+                        if(reader.IsDBNull(9))
+                        {
+                            emp.Zip = 0;
+                        }
+                        else
+                        {
+                            emp.Zip = reader.GetInt32(9);
+                        }
+
+                        if(reader.IsDBNull(10))
+                        {
+                            emp.Ssn = string.Empty;
+                        }
+                        else
+                        {
+                            emp.Ssn = reader.GetString(10);
+                        }
+
+                        if(reader.IsDBNull(11))
+                        {
+                            emp.PrimaryPhone = string.Empty;
+                        }
+                        else
+                        {
+                            emp.PrimaryPhone = reader.GetString(11);
+                        }
+
+                        if(reader.IsDBNull(12))
+                        {
+                            emp.AlternatePhone = string.Empty;
+                        }
+                        else
+                        {
+                            emp.AlternatePhone = reader.GetString(12);
+                        }
+
+                        if(reader.IsDBNull(13))
+                        {
+                            emp.EmergencyContactName = string.Empty;
+                        }
+                        else
+                        {
+                            emp.EmergencyContactName = reader.GetString(13);
+                        }
+
+                        if(reader.IsDBNull(14))
+                        {
+                            emp.EmergencyContactRelationship = string.Empty;
+                        }
+                        else
+                        {
+                            emp.EmergencyContactRelationship = reader.GetString(14);
+                        }
+
+                        if(reader.IsDBNull(15))
+                        {
+                            emp.EmergencyContactAddress = string.Empty;
+                        }
+                        else
+                        {
+                            emp.EmergencyContactAddress = reader.GetString(15);
+                        }
+
+                        if(reader.IsDBNull(16))
+                        {
+                            emp.EmergencyContactCity = string.Empty;
+                        }
+                        else
+                        {
+                            emp.EmergencyContactCity = reader.GetString(16);
+                        }
+
+                        if(reader.IsDBNull(17))
+                        {
+                            emp.EmergencyContactState = string.Empty;
+                        }
+                        else
+                        {
+                            emp.EmergencyContactState = reader.GetString(17);
+                        }
+
+                        if(reader.IsDBNull(18))
+                        {
+                            emp.EmergencyContactZip = 0;
+                        }
+                        else
+                        {
+                            emp.EmergencyContactZip = reader.GetInt32(18);
+                        }
+                        
+                        if(reader.IsDBNull(19))
+                        {
+                            emp.EmergencyContactPhone = string.Empty;
+                        }
+                        else
+                        {
+                            emp.EmergencyContactPhone = reader.GetString(19);
+                        }
+
+                        string hireStatusLookupSql = "SELECT status, statusStartDate, terminationReason FROM emp_hire_status WHERE employeeId = @empId AND statusEndDate IS NULL";
                         using (SqlConnection conn2 = DBUtils.getConnection("MCLabor"))                       
                         {
                             conn2.Open();
@@ -72,11 +192,19 @@ namespace MCLaborAdmin
                                 {
                                     emp.HireStatus = hireStatusReader.GetInt32(0);
                                     emp.HireStatusDate = hireStatusReader.GetDateTime(1);
+                                    if(hireStatusReader.IsDBNull(2))
+                                    {
+                                        emp.TermReason = string.Empty;
+                                    }
+                                    else
+                                    {
+                                        emp.TermReason = hireStatusReader.GetString(2);
+                                    }
                                 }
                                 hireStatusReader.Close();
                             }                            
 
-                            string payRateLookupSql = "SELECT p.payRateId, j.jobId, j.refCode, j.jobName, p.hourlyPayRate " +
+                            string payRateLookupSql = "SELECT p.payRateId, j.jobId, j.refCode, j.jobName, p.hourlyPayRate, p.active " +
                                                       "FROM pay_rate p, job j " +
                                                       "WHERE p.jobId = j.jobId AND p.employeeId = @empId";
 
@@ -88,7 +216,7 @@ namespace MCLaborAdmin
 
                                 while (payRateReader.Read())
                                 {
-                                    payRateList.Add(new PayRate(payRateReader.GetInt32(0), payRateReader.GetInt32(1), payRateReader.GetString(2), payRateReader.GetString(3), payRateReader.GetDecimal(4)));
+                                    payRateList.Add(new PayRate(payRateReader.GetInt32(0), payRateReader.GetInt32(1), payRateReader.GetString(2), payRateReader.GetString(3), payRateReader.GetDecimal(4), payRateReader.GetBoolean(5)));
                                 }
 
                                 emp.PayRateList = payRateList;

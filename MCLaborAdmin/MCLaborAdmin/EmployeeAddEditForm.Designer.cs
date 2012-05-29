@@ -57,7 +57,15 @@
             this.empHireStatusPartTimeRadBtn = new System.Windows.Forms.RadioButton();
             this.empHireStatusFullTimeRadBtn = new System.Windows.Forms.RadioButton();
             this.employeeJobTabPage = new System.Windows.Forms.TabPage();
+            this.editPayRateBtn = new System.Windows.Forms.Button();
+            this.addPayRateBtn = new System.Windows.Forms.Button();
             this.empJobDataGridView = new System.Windows.Forms.DataGridView();
+            this.payRateId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobRefCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.activeFlag = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.hourlyPayRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.empEmergencyContactTabPage = new System.Windows.Forms.TabPage();
             this.empEcRelationshipTxt = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -86,11 +94,13 @@
             this.empSaveBtn = new System.Windows.Forms.Button();
             this.empCancelBtn = new System.Windows.Forms.Button();
             this.empNewBtn = new System.Windows.Forms.Button();
-            this.jobId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobRefCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.activeFlag = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.hourlyPayRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeTabControl.SuspendLayout();
             this.employeeGeneralTabPage.SuspendLayout();
             this.empHireStatusTabPage.SuspendLayout();
@@ -98,6 +108,7 @@
             this.employeeJobTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empJobDataGridView)).BeginInit();
             this.empEmergencyContactTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // employeeTabControl
@@ -110,7 +121,8 @@
             this.employeeTabControl.Name = "employeeTabControl";
             this.employeeTabControl.SelectedIndex = 0;
             this.employeeTabControl.Size = new System.Drawing.Size(424, 244);
-            this.employeeTabControl.TabIndex = 0;
+            this.employeeTabControl.TabIndex = 5;
+            this.employeeTabControl.TabStop = false;
             // 
             // employeeGeneralTabPage
             // 
@@ -139,9 +151,10 @@
             // empSsnTxt
             // 
             this.empSsnTxt.Location = new System.Drawing.Point(11, 174);
+            this.empSsnTxt.MaxLength = 20;
             this.empSsnTxt.Name = "empSsnTxt";
             this.empSsnTxt.Size = new System.Drawing.Size(120, 20);
-            this.empSsnTxt.TabIndex = 17;
+            this.empSsnTxt.TabIndex = 11;
             // 
             // empSsnLbl
             // 
@@ -155,9 +168,10 @@
             // empAlternatePhoneTxt
             // 
             this.empAlternatePhoneTxt.Location = new System.Drawing.Point(137, 125);
+            this.empAlternatePhoneTxt.MaxLength = 20;
             this.empAlternatePhoneTxt.Name = "empAlternatePhoneTxt";
             this.empAlternatePhoneTxt.Size = new System.Drawing.Size(120, 20);
-            this.empAlternatePhoneTxt.TabIndex = 15;
+            this.empAlternatePhoneTxt.TabIndex = 10;
             // 
             // empAlternatePhoneLbl
             // 
@@ -171,16 +185,18 @@
             // empPrimaryPhoneTxt
             // 
             this.empPrimaryPhoneTxt.Location = new System.Drawing.Point(11, 125);
+            this.empPrimaryPhoneTxt.MaxLength = 20;
             this.empPrimaryPhoneTxt.Name = "empPrimaryPhoneTxt";
             this.empPrimaryPhoneTxt.Size = new System.Drawing.Size(120, 20);
-            this.empPrimaryPhoneTxt.TabIndex = 13;
+            this.empPrimaryPhoneTxt.TabIndex = 9;
             // 
             // empZipTxt
             // 
             this.empZipTxt.Location = new System.Drawing.Point(247, 77);
+            this.empZipTxt.MaxLength = 5;
             this.empZipTxt.Name = "empZipTxt";
             this.empZipTxt.Size = new System.Drawing.Size(77, 20);
-            this.empZipTxt.TabIndex = 12;
+            this.empZipTxt.TabIndex = 8;
             // 
             // empZipLbl
             // 
@@ -194,9 +210,10 @@
             // empStateTxt
             // 
             this.empStateTxt.Location = new System.Drawing.Point(185, 77);
+            this.empStateTxt.MaxLength = 25;
             this.empStateTxt.Name = "empStateTxt";
             this.empStateTxt.Size = new System.Drawing.Size(56, 20);
-            this.empStateTxt.TabIndex = 10;
+            this.empStateTxt.TabIndex = 7;
             // 
             // empStateLbl
             // 
@@ -210,9 +227,10 @@
             // empCityTxt
             // 
             this.empCityTxt.Location = new System.Drawing.Point(11, 77);
+            this.empCityTxt.MaxLength = 50;
             this.empCityTxt.Name = "empCityTxt";
             this.empCityTxt.Size = new System.Drawing.Size(168, 20);
-            this.empCityTxt.TabIndex = 8;
+            this.empCityTxt.TabIndex = 6;
             // 
             // empCityLbl
             // 
@@ -226,9 +244,10 @@
             // empAddressTxt
             // 
             this.empAddressTxt.Location = new System.Drawing.Point(11, 31);
+            this.empAddressTxt.MaxLength = 100;
             this.empAddressTxt.Name = "empAddressTxt";
             this.empAddressTxt.Size = new System.Drawing.Size(313, 20);
-            this.empAddressTxt.TabIndex = 6;
+            this.empAddressTxt.TabIndex = 5;
             // 
             // empAddressLbl
             // 
@@ -265,10 +284,11 @@
             // empTermReasonTxt
             // 
             this.empTermReasonTxt.Location = new System.Drawing.Point(204, 98);
+            this.empTermReasonTxt.MaxLength = 1000;
             this.empTermReasonTxt.Multiline = true;
             this.empTermReasonTxt.Name = "empTermReasonTxt";
             this.empTermReasonTxt.Size = new System.Drawing.Size(200, 64);
-            this.empTermReasonTxt.TabIndex = 4;
+            this.empTermReasonTxt.TabIndex = 18;
             this.empTermReasonTxt.Visible = false;
             // 
             // empHireStatusTermReasonLbl
@@ -287,7 +307,7 @@
             this.empHireStatusStartDatePicker.Location = new System.Drawing.Point(206, 37);
             this.empHireStatusStartDatePicker.Name = "empHireStatusStartDatePicker";
             this.empHireStatusStartDatePicker.Size = new System.Drawing.Size(118, 20);
-            this.empHireStatusStartDatePicker.TabIndex = 2;
+            this.empHireStatusStartDatePicker.TabIndex = 17;
             // 
             // empHireStatusStartDateLbl
             // 
@@ -318,10 +338,10 @@
             this.empHireStatusTermNonRehirableRadBtn.Location = new System.Drawing.Point(14, 111);
             this.empHireStatusTermNonRehirableRadBtn.Name = "empHireStatusTermNonRehirableRadBtn";
             this.empHireStatusTermNonRehirableRadBtn.Size = new System.Drawing.Size(152, 17);
-            this.empHireStatusTermNonRehirableRadBtn.TabIndex = 4;
-            this.empHireStatusTermNonRehirableRadBtn.TabStop = true;
+            this.empHireStatusTermNonRehirableRadBtn.TabIndex = 16;
             this.empHireStatusTermNonRehirableRadBtn.Text = "Terminated - Not Rehirable";
             this.empHireStatusTermNonRehirableRadBtn.UseVisualStyleBackColor = true;
+            this.empHireStatusTermNonRehirableRadBtn.CheckedChanged += new System.EventHandler(this.empHireStatusTermNonRehirableRadBtn_CheckedChanged);
             // 
             // empHireStatusTermRehirableRadBtn
             // 
@@ -329,10 +349,10 @@
             this.empHireStatusTermRehirableRadBtn.Location = new System.Drawing.Point(14, 88);
             this.empHireStatusTermRehirableRadBtn.Name = "empHireStatusTermRehirableRadBtn";
             this.empHireStatusTermRehirableRadBtn.Size = new System.Drawing.Size(132, 17);
-            this.empHireStatusTermRehirableRadBtn.TabIndex = 3;
-            this.empHireStatusTermRehirableRadBtn.TabStop = true;
+            this.empHireStatusTermRehirableRadBtn.TabIndex = 15;
             this.empHireStatusTermRehirableRadBtn.Text = "Terminated - Rehirable";
             this.empHireStatusTermRehirableRadBtn.UseVisualStyleBackColor = true;
+            this.empHireStatusTermRehirableRadBtn.CheckedChanged += new System.EventHandler(this.empHireStatusTermRehirableRadBtn_CheckedChanged);
             // 
             // empHireStatusUnemploymentRadBtn
             // 
@@ -340,10 +360,10 @@
             this.empHireStatusUnemploymentRadBtn.Location = new System.Drawing.Point(15, 65);
             this.empHireStatusUnemploymentRadBtn.Name = "empHireStatusUnemploymentRadBtn";
             this.empHireStatusUnemploymentRadBtn.Size = new System.Drawing.Size(143, 17);
-            this.empHireStatusUnemploymentRadBtn.TabIndex = 2;
-            this.empHireStatusUnemploymentRadBtn.TabStop = true;
+            this.empHireStatusUnemploymentRadBtn.TabIndex = 14;
             this.empHireStatusUnemploymentRadBtn.Text = "Laid Off / Unemployment";
             this.empHireStatusUnemploymentRadBtn.UseVisualStyleBackColor = true;
+            this.empHireStatusUnemploymentRadBtn.CheckedChanged += new System.EventHandler(this.empHireStatusUnemploymentRadBtn_CheckedChanged);
             // 
             // empHireStatusPartTimeRadBtn
             // 
@@ -351,24 +371,28 @@
             this.empHireStatusPartTimeRadBtn.Location = new System.Drawing.Point(15, 42);
             this.empHireStatusPartTimeRadBtn.Name = "empHireStatusPartTimeRadBtn";
             this.empHireStatusPartTimeRadBtn.Size = new System.Drawing.Size(70, 17);
-            this.empHireStatusPartTimeRadBtn.TabIndex = 1;
-            this.empHireStatusPartTimeRadBtn.TabStop = true;
+            this.empHireStatusPartTimeRadBtn.TabIndex = 13;
             this.empHireStatusPartTimeRadBtn.Text = "Part Time";
             this.empHireStatusPartTimeRadBtn.UseVisualStyleBackColor = true;
+            this.empHireStatusPartTimeRadBtn.CheckedChanged += new System.EventHandler(this.empHireStatusPartTimeRadBtn_CheckedChanged);
             // 
             // empHireStatusFullTimeRadBtn
             // 
             this.empHireStatusFullTimeRadBtn.AutoSize = true;
+            this.empHireStatusFullTimeRadBtn.Checked = true;
             this.empHireStatusFullTimeRadBtn.Location = new System.Drawing.Point(15, 19);
             this.empHireStatusFullTimeRadBtn.Name = "empHireStatusFullTimeRadBtn";
             this.empHireStatusFullTimeRadBtn.Size = new System.Drawing.Size(67, 17);
-            this.empHireStatusFullTimeRadBtn.TabIndex = 0;
+            this.empHireStatusFullTimeRadBtn.TabIndex = 12;
             this.empHireStatusFullTimeRadBtn.TabStop = true;
             this.empHireStatusFullTimeRadBtn.Text = "Full Time";
             this.empHireStatusFullTimeRadBtn.UseVisualStyleBackColor = true;
+            this.empHireStatusFullTimeRadBtn.CheckedChanged += new System.EventHandler(this.empHireStatusFullTimeRadBtn_CheckedChanged);
             // 
             // employeeJobTabPage
             // 
+            this.employeeJobTabPage.Controls.Add(this.editPayRateBtn);
+            this.employeeJobTabPage.Controls.Add(this.addPayRateBtn);
             this.employeeJobTabPage.Controls.Add(this.empJobDataGridView);
             this.employeeJobTabPage.Location = new System.Drawing.Point(4, 22);
             this.employeeJobTabPage.Name = "employeeJobTabPage";
@@ -378,12 +402,33 @@
             this.employeeJobTabPage.Text = "Job Assignment";
             this.employeeJobTabPage.UseVisualStyleBackColor = true;
             // 
+            // editPayRateBtn
+            // 
+            this.editPayRateBtn.Location = new System.Drawing.Point(207, 180);
+            this.editPayRateBtn.Name = "editPayRateBtn";
+            this.editPayRateBtn.Size = new System.Drawing.Size(133, 38);
+            this.editPayRateBtn.TabIndex = 2;
+            this.editPayRateBtn.Text = "Edit Job";
+            this.editPayRateBtn.UseVisualStyleBackColor = true;
+            this.editPayRateBtn.Click += new System.EventHandler(this.editPayRateBtn_Click);
+            // 
+            // addPayRateBtn
+            // 
+            this.addPayRateBtn.Location = new System.Drawing.Point(68, 180);
+            this.addPayRateBtn.Name = "addPayRateBtn";
+            this.addPayRateBtn.Size = new System.Drawing.Size(133, 38);
+            this.addPayRateBtn.TabIndex = 1;
+            this.addPayRateBtn.Text = "Add New Job";
+            this.addPayRateBtn.UseVisualStyleBackColor = true;
+            this.addPayRateBtn.Click += new System.EventHandler(this.addPayRateBtn_Click);
+            // 
             // empJobDataGridView
             // 
             this.empJobDataGridView.AllowUserToAddRows = false;
             this.empJobDataGridView.AllowUserToDeleteRows = false;
             this.empJobDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.empJobDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.payRateId,
             this.jobId,
             this.jobName,
             this.jobRefCode,
@@ -391,8 +436,50 @@
             this.hourlyPayRate});
             this.empJobDataGridView.Location = new System.Drawing.Point(-4, 0);
             this.empJobDataGridView.Name = "empJobDataGridView";
-            this.empJobDataGridView.Size = new System.Drawing.Size(424, 222);
+            this.empJobDataGridView.ReadOnly = true;
+            this.empJobDataGridView.Size = new System.Drawing.Size(424, 180);
             this.empJobDataGridView.TabIndex = 0;
+            // 
+            // payRateId
+            // 
+            this.payRateId.HeaderText = "payRateId";
+            this.payRateId.Name = "payRateId";
+            this.payRateId.ReadOnly = true;
+            this.payRateId.Visible = false;
+            // 
+            // jobId
+            // 
+            this.jobId.HeaderText = "jobId";
+            this.jobId.Name = "jobId";
+            this.jobId.ReadOnly = true;
+            this.jobId.Visible = false;
+            // 
+            // jobName
+            // 
+            this.jobName.HeaderText = "Job Name";
+            this.jobName.Name = "jobName";
+            this.jobName.ReadOnly = true;
+            this.jobName.Width = 125;
+            // 
+            // jobRefCode
+            // 
+            this.jobRefCode.HeaderText = "Ref Code";
+            this.jobRefCode.Name = "jobRefCode";
+            this.jobRefCode.ReadOnly = true;
+            this.jobRefCode.Width = 75;
+            // 
+            // activeFlag
+            // 
+            this.activeFlag.HeaderText = "Active";
+            this.activeFlag.Name = "activeFlag";
+            this.activeFlag.ReadOnly = true;
+            this.activeFlag.Width = 75;
+            // 
+            // hourlyPayRate
+            // 
+            this.hourlyPayRate.HeaderText = "Hourly Pay Rate";
+            this.hourlyPayRate.Name = "hourlyPayRate";
+            this.hourlyPayRate.ReadOnly = true;
             // 
             // empEmergencyContactTabPage
             // 
@@ -423,7 +510,7 @@
             this.empEcRelationshipTxt.Location = new System.Drawing.Point(207, 30);
             this.empEcRelationshipTxt.Name = "empEcRelationshipTxt";
             this.empEcRelationshipTxt.Size = new System.Drawing.Size(120, 20);
-            this.empEcRelationshipTxt.TabIndex = 31;
+            this.empEcRelationshipTxt.TabIndex = 20;
             // 
             // label6
             // 
@@ -439,21 +526,21 @@
             this.empEcNameTxt.Location = new System.Drawing.Point(14, 30);
             this.empEcNameTxt.Name = "empEcNameTxt";
             this.empEcNameTxt.Size = new System.Drawing.Size(177, 20);
-            this.empEcNameTxt.TabIndex = 29;
+            this.empEcNameTxt.TabIndex = 19;
             // 
             // empEcPhoneTxt
             // 
             this.empEcPhoneTxt.Location = new System.Drawing.Point(14, 78);
             this.empEcPhoneTxt.Name = "empEcPhoneTxt";
             this.empEcPhoneTxt.Size = new System.Drawing.Size(120, 20);
-            this.empEcPhoneTxt.TabIndex = 27;
+            this.empEcPhoneTxt.TabIndex = 21;
             // 
             // empEcZipTxt
             // 
             this.empEcZipTxt.Location = new System.Drawing.Point(250, 174);
             this.empEcZipTxt.Name = "empEcZipTxt";
             this.empEcZipTxt.Size = new System.Drawing.Size(77, 20);
-            this.empEcZipTxt.TabIndex = 26;
+            this.empEcZipTxt.TabIndex = 25;
             // 
             // label8
             // 
@@ -485,7 +572,7 @@
             this.empEcCityTxt.Location = new System.Drawing.Point(14, 174);
             this.empEcCityTxt.Name = "empEcCityTxt";
             this.empEcCityTxt.Size = new System.Drawing.Size(168, 20);
-            this.empEcCityTxt.TabIndex = 22;
+            this.empEcCityTxt.TabIndex = 23;
             // 
             // label10
             // 
@@ -501,7 +588,7 @@
             this.empEcAddressTxt.Location = new System.Drawing.Point(14, 128);
             this.empEcAddressTxt.Name = "empEcAddressTxt";
             this.empEcAddressTxt.Size = new System.Drawing.Size(313, 20);
-            this.empEcAddressTxt.TabIndex = 20;
+            this.empEcAddressTxt.TabIndex = 22;
             // 
             // label11
             // 
@@ -578,6 +665,7 @@
             // empFirstNameTxt
             // 
             this.empFirstNameTxt.Location = new System.Drawing.Point(15, 77);
+            this.empFirstNameTxt.MaxLength = 50;
             this.empFirstNameTxt.Name = "empFirstNameTxt";
             this.empFirstNameTxt.Size = new System.Drawing.Size(151, 20);
             this.empFirstNameTxt.TabIndex = 0;
@@ -585,6 +673,7 @@
             // empMiddleNameTxt
             // 
             this.empMiddleNameTxt.Location = new System.Drawing.Point(172, 77);
+            this.empMiddleNameTxt.MaxLength = 50;
             this.empMiddleNameTxt.Name = "empMiddleNameTxt";
             this.empMiddleNameTxt.Size = new System.Drawing.Size(106, 20);
             this.empMiddleNameTxt.TabIndex = 1;
@@ -592,6 +681,7 @@
             // empLastNameTxt
             // 
             this.empLastNameTxt.Location = new System.Drawing.Point(284, 77);
+            this.empLastNameTxt.MaxLength = 50;
             this.empLastNameTxt.Name = "empLastNameTxt";
             this.empLastNameTxt.Size = new System.Drawing.Size(151, 20);
             this.empLastNameTxt.TabIndex = 2;
@@ -599,6 +689,7 @@
             // empRefCodeTxt
             // 
             this.empRefCodeTxt.Location = new System.Drawing.Point(15, 123);
+            this.empRefCodeTxt.MaxLength = 50;
             this.empRefCodeTxt.Name = "empRefCodeTxt";
             this.empRefCodeTxt.Size = new System.Drawing.Size(151, 20);
             this.empRefCodeTxt.TabIndex = 3;
@@ -606,6 +697,7 @@
             // empLoginIdTxt
             // 
             this.empLoginIdTxt.Location = new System.Drawing.Point(172, 123);
+            this.empLoginIdTxt.MaxLength = 10;
             this.empLoginIdTxt.Name = "empLoginIdTxt";
             this.empLoginIdTxt.Size = new System.Drawing.Size(106, 20);
             this.empLoginIdTxt.TabIndex = 4;
@@ -615,7 +707,7 @@
             this.empSaveBtn.Location = new System.Drawing.Point(14, 10);
             this.empSaveBtn.Name = "empSaveBtn";
             this.empSaveBtn.Size = new System.Drawing.Size(137, 32);
-            this.empSaveBtn.TabIndex = 6;
+            this.empSaveBtn.TabIndex = 26;
             this.empSaveBtn.Text = "Save";
             this.empSaveBtn.UseVisualStyleBackColor = true;
             this.empSaveBtn.Click += new System.EventHandler(this.empSaveBtn_Click);
@@ -625,7 +717,7 @@
             this.empCancelBtn.Location = new System.Drawing.Point(300, 10);
             this.empCancelBtn.Name = "empCancelBtn";
             this.empCancelBtn.Size = new System.Drawing.Size(137, 32);
-            this.empCancelBtn.TabIndex = 7;
+            this.empCancelBtn.TabIndex = 28;
             this.empCancelBtn.Text = "Cancel";
             this.empCancelBtn.UseVisualStyleBackColor = true;
             this.empCancelBtn.Click += new System.EventHandler(this.empCancelBtn_Click);
@@ -635,43 +727,70 @@
             this.empNewBtn.Location = new System.Drawing.Point(157, 10);
             this.empNewBtn.Name = "empNewBtn";
             this.empNewBtn.Size = new System.Drawing.Size(137, 32);
-            this.empNewBtn.TabIndex = 8;
+            this.empNewBtn.TabIndex = 27;
             this.empNewBtn.Text = "New";
             this.empNewBtn.UseVisualStyleBackColor = true;
             this.empNewBtn.Click += new System.EventHandler(this.empNewBtn_Click);
             // 
-            // jobId
+            // button2
             // 
-            this.jobId.HeaderText = "jobId";
-            this.jobId.Name = "jobId";
-            this.jobId.ReadOnly = true;
-            this.jobId.Visible = false;
+            this.button2.Location = new System.Drawing.Point(68, 180);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(133, 38);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "button1";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // jobName
+            // dataGridView1
             // 
-            this.jobName.HeaderText = "Job Name";
-            this.jobName.Name = "jobName";
-            this.jobName.ReadOnly = true;
-            this.jobName.Width = 125;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewCheckBoxColumn1,
+            this.dataGridViewTextBoxColumn4});
+            this.dataGridView1.Location = new System.Drawing.Point(-4, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(424, 180);
+            this.dataGridView1.TabIndex = 0;
             // 
-            // jobRefCode
+            // dataGridViewTextBoxColumn1
             // 
-            this.jobRefCode.HeaderText = "Ref Code";
-            this.jobRefCode.Name = "jobRefCode";
-            this.jobRefCode.ReadOnly = true;
-            this.jobRefCode.Width = 75;
+            this.dataGridViewTextBoxColumn1.HeaderText = "jobId";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
-            // activeFlag
+            // dataGridViewTextBoxColumn2
             // 
-            this.activeFlag.HeaderText = "Active";
-            this.activeFlag.Name = "activeFlag";
-            this.activeFlag.ReadOnly = true;
-            this.activeFlag.Width = 75;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Job Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 125;
             // 
-            // hourlyPayRate
+            // dataGridViewTextBoxColumn3
             // 
-            this.hourlyPayRate.HeaderText = "Hourly Pay Rate";
-            this.hourlyPayRate.Name = "hourlyPayRate";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Ref Code";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 75;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Active";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Width = 75;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Hourly Pay Rate";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // EmployeeAddEditForm
             // 
@@ -708,6 +827,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.empJobDataGridView)).EndInit();
             this.empEmergencyContactTabPage.ResumeLayout(false);
             this.empEmergencyContactTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -772,6 +892,16 @@
         private System.Windows.Forms.DateTimePicker empHireStatusStartDatePicker;
         private System.Windows.Forms.TextBox empTermReasonTxt;
         private System.Windows.Forms.DataGridView empJobDataGridView;
+        private System.Windows.Forms.Button addPayRateBtn;
+        private System.Windows.Forms.Button editPayRateBtn;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn payRateId;
         private System.Windows.Forms.DataGridViewTextBoxColumn jobId;
         private System.Windows.Forms.DataGridViewTextBoxColumn jobName;
         private System.Windows.Forms.DataGridViewTextBoxColumn jobRefCode;

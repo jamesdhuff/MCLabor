@@ -97,6 +97,7 @@
             this.Controls.Add(this.empMainLookupCmboBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EmployeeMainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MCLabor Admin - Employee Definitions";
             this.Load += new System.EventHandler(this.EmployeeMainForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EmployeeMainForm_FormClosing);
