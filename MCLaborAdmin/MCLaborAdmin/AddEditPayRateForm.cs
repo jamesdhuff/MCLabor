@@ -79,6 +79,9 @@ namespace MCLaborAdmin
         private void AddEditPayRateForm_Load(object sender, EventArgs e)
         {
             this.TopMost = true;
+            this.TopMost = false;
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             if(isEdit)
             {
                 this.addEditPayRateJobCmboBox.Items.Add(this.currPayRate.Job);
@@ -124,6 +127,7 @@ namespace MCLaborAdmin
         {
             this.parentForm.TopMost = true;
             this.parentForm.TopMost = false;
+            this.parentForm.Enabled = true;
         }
 
         private void AddEditPayRateForm_Shown(object sender, EventArgs e)

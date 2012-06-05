@@ -34,7 +34,7 @@ namespace MCLaborAdmin
         public void addPayRate(PayRate p)
         {
             this.currEmp.PayRateList.Add(p);
-            this.empJobDataGridView.Rows.Add(new Object[] { -1, p.Job.JobId, p.Job.JobName, p.Job.RefCode, p.Active, String.Format("{0:C}",p.HourlyPayRate) });
+            this.empJobDataGridView.Rows.Add(new Object[] { -1, p.Job.JobId, p.Job.JobName, p.Job.RefCode, p.Active, String.Format("{0:0.00}",p.HourlyPayRate) });
         }
 
         public bool editPayRate(PayRate p)
@@ -45,7 +45,7 @@ namespace MCLaborAdmin
                     p.Job.RefCode.Equals(this.empJobDataGridView.Rows[i].Cells[3].Value.ToString()))
                 {
                     this.empJobDataGridView.Rows[i].Cells[4].Value = p.Active;
-                    this.empJobDataGridView.Rows[i].Cells[5].Value = String.Format("{0:C}",p.HourlyPayRate);
+                    this.empJobDataGridView.Rows[i].Cells[5].Value = String.Format("{0:0.00}",p.HourlyPayRate);
                 }
             }
 
@@ -210,7 +210,8 @@ namespace MCLaborAdmin
             this.empEcPhoneTxt.Text = string.Empty;
             this.empHireStatusFullTimeRadBtn.Checked = true;
             this.empTermReasonTxt.Text = string.Empty;
-            for (int i = 0; i < this.empJobDataGridView.Rows.Count; i++)
+
+            for (int i = this.empJobDataGridView.Rows.Count - 1; i > -1; i--)
             {
                 this.empJobDataGridView.Rows.RemoveAt(i);
             }
@@ -874,6 +875,8 @@ namespace MCLaborAdmin
         {
             this.TopMost = true;
             this.TopMost = false;
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             if (this.currEmp.FirstName != null)
             {
                 populateForm();
@@ -908,6 +911,8 @@ namespace MCLaborAdmin
                 }
 
                 MessageBox.Show("Save Successful");
+
+                this.empMainForm.updateEmpGrid(this.currEmp);
             }
         }
 
@@ -963,6 +968,7 @@ namespace MCLaborAdmin
                 alreadyAssignedJobList.Add(p.Job);
             }
             AddEditPayRateForm addEditPayRateForm = new AddEditPayRateForm(this, alreadyAssignedJobList, new PayRate(), false);
+            this.Enabled = false;
             addEditPayRateForm.Show();
         }
 
@@ -997,6 +1003,7 @@ namespace MCLaborAdmin
                 currSelectedPayRate.HourlyPayRate = Decimal.Parse(this.empJobDataGridView.SelectedRows[0].Cells[5].Value.ToString());
 
                 AddEditPayRateForm addEditPayRateForm = new AddEditPayRateForm(this, currSelectedPayRate, true);
+                this.Enabled = false;
                 addEditPayRateForm.Show();
             }
         }

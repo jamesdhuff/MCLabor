@@ -12,53 +12,13 @@ namespace MCLaborAdmin
         private string jobName;
         private string description;
 
-        public int JobId
-        {
-            get
-            {
-                return this.jobId;
-            }
-            set
-            {
-                this.jobId = value;
-            }
-        }
+        public int JobId { get { return this.jobId; } set { this.jobId = value; } }
 
-        public string RefCode
-        {
-            get
-            {
-                return this.refCode;
-            }
-            set
-            {
-                this.refCode = value;
-            }
-        }
+        public string RefCode { get { return this.refCode; } set { this.refCode = value; } }
 
-        public string JobName
-        {
-            get
-            {
-                return this.jobName;
-            }
-            set
-            {
-                this.jobName = value;
-            }
-        }
+        public string JobName { get { return this.jobName; } set { this.jobName = value; } }
 
-        public string Description
-        {
-            get
-            {
-                return this.description;
-            }
-            set
-            {
-                this.description = value;
-            }
-        }
+        public string Description { get { return this.description; } set { this.description = value; } }
 
         public Job()
         {
@@ -81,7 +41,7 @@ namespace MCLaborAdmin
 
         public override string ToString()
         {
-            return this.jobName.PadRight(15) + " |  " + this.refCode;
+            return this.jobName + "  (" + this.refCode + ")";
         }
 
     }

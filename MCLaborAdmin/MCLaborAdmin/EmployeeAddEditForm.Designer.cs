@@ -117,10 +117,10 @@
             this.employeeTabControl.Controls.Add(this.empHireStatusTabPage);
             this.employeeTabControl.Controls.Add(this.employeeJobTabPage);
             this.employeeTabControl.Controls.Add(this.empEmergencyContactTabPage);
-            this.employeeTabControl.Location = new System.Drawing.Point(11, 154);
+            this.employeeTabControl.Location = new System.Drawing.Point(15, 156);
             this.employeeTabControl.Name = "employeeTabControl";
             this.employeeTabControl.SelectedIndex = 0;
-            this.employeeTabControl.Size = new System.Drawing.Size(424, 244);
+            this.employeeTabControl.Size = new System.Drawing.Size(422, 244);
             this.employeeTabControl.TabIndex = 5;
             this.employeeTabControl.TabStop = false;
             // 
@@ -143,7 +143,7 @@
             this.employeeGeneralTabPage.Location = new System.Drawing.Point(4, 22);
             this.employeeGeneralTabPage.Name = "employeeGeneralTabPage";
             this.employeeGeneralTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.employeeGeneralTabPage.Size = new System.Drawing.Size(416, 218);
+            this.employeeGeneralTabPage.Size = new System.Drawing.Size(414, 218);
             this.employeeGeneralTabPage.TabIndex = 0;
             this.employeeGeneralTabPage.Text = "General Information";
             this.employeeGeneralTabPage.UseVisualStyleBackColor = true;
@@ -437,6 +437,7 @@
             this.empJobDataGridView.Location = new System.Drawing.Point(-4, 0);
             this.empJobDataGridView.Name = "empJobDataGridView";
             this.empJobDataGridView.ReadOnly = true;
+            this.empJobDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.empJobDataGridView.Size = new System.Drawing.Size(424, 180);
             this.empJobDataGridView.TabIndex = 0;
             // 
@@ -796,7 +797,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 405);
+            this.ClientSize = new System.Drawing.Size(451, 412);
             this.Controls.Add(this.empNewBtn);
             this.Controls.Add(this.empCancelBtn);
             this.Controls.Add(this.empSaveBtn);

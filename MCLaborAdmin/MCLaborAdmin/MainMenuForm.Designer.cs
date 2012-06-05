@@ -34,7 +34,7 @@
             this.menuJobBtn = new System.Windows.Forms.Button();
             this.menuWorkSiteBtn = new System.Windows.Forms.Button();
             this.menuTimeCardBtn = new System.Windows.Forms.Button();
-            this.menuExportBtn = new System.Windows.Forms.Button();
+            this.menuPayRateOverrideBtn = new System.Windows.Forms.Button();
             this.menuLogoutBtn = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.menuReportBtn = new System.Windows.Forms.Button();
@@ -95,16 +95,16 @@
             this.menuTimeCardBtn.UseVisualStyleBackColor = true;
             this.menuTimeCardBtn.Click += new System.EventHandler(this.menuTimeCardBtn_Click);
             // 
-            // menuExportBtn
+            // menuPayRateOverrideBtn
             // 
-            this.menuExportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuExportBtn.Location = new System.Drawing.Point(309, 65);
-            this.menuExportBtn.Name = "menuExportBtn";
-            this.menuExportBtn.Size = new System.Drawing.Size(142, 47);
-            this.menuExportBtn.TabIndex = 5;
-            this.menuExportBtn.Text = "Exports";
-            this.menuExportBtn.UseVisualStyleBackColor = true;
-            this.menuExportBtn.Click += new System.EventHandler(this.menuExportBtn_Click);
+            this.menuPayRateOverrideBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuPayRateOverrideBtn.Location = new System.Drawing.Point(309, 65);
+            this.menuPayRateOverrideBtn.Name = "menuPayRateOverrideBtn";
+            this.menuPayRateOverrideBtn.Size = new System.Drawing.Size(142, 47);
+            this.menuPayRateOverrideBtn.TabIndex = 5;
+            this.menuPayRateOverrideBtn.Text = "Pay Rate Overrides";
+            this.menuPayRateOverrideBtn.UseVisualStyleBackColor = true;
+            this.menuPayRateOverrideBtn.Click += new System.EventHandler(this.menuPayRateOverrideBtn_Click);
             // 
             // menuLogoutBtn
             // 
@@ -148,7 +148,7 @@
             this.Controls.Add(this.menuReportBtn);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.menuLogoutBtn);
-            this.Controls.Add(this.menuExportBtn);
+            this.Controls.Add(this.menuPayRateOverrideBtn);
             this.Controls.Add(this.menuTimeCardBtn);
             this.Controls.Add(this.menuWorkSiteBtn);
             this.Controls.Add(this.menuJobBtn);
@@ -170,7 +170,7 @@
         private System.Windows.Forms.Button menuJobBtn;
         private System.Windows.Forms.Button menuWorkSiteBtn;
         private System.Windows.Forms.Button menuTimeCardBtn;
-        private System.Windows.Forms.Button menuExportBtn;
+        private System.Windows.Forms.Button menuPayRateOverrideBtn;
         private System.Windows.Forms.Button menuLogoutBtn;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button menuReportBtn;

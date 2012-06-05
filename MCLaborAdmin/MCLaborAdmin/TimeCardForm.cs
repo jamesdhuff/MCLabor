@@ -29,6 +29,8 @@ namespace MCLaborAdmin
         {
             this.TopMost = true;
             this.TopMost = false;
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
         }
     }
 }

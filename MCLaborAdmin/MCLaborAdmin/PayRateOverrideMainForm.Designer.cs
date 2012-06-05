@@ -1,6 +1,6 @@
 ﻿namespace MCLaborAdmin
 {
-    partial class WorkSiteForm
+    partial class PayRateOverrideMainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WorkSiteForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PayRateOverrideMainForm));
             this.SuspendLayout();
             // 
-            // WorkSiteForm
+            // PayRateOverrideMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 262);
+            this.ClientSize = new System.Drawing.Size(560, 262);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "WorkSiteForm";
-            this.Text = "MCLabor Administration - Work Site Definitions";
-            this.Load += new System.EventHandler(this.WorkSiteForm_Load);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WorkSiteForm_FormClosing);
+            this.Name = "PayRateOverrideMainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "MCLabor Administration - Pay Rate Overrides";
+            this.Load += new System.EventHandler(this.PayRateOverrideForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PayRateOverrideForm_FormClosing);
             this.ResumeLayout(false);
 
         }

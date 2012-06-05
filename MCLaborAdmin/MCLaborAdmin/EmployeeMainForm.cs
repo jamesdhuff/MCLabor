@@ -13,7 +13,7 @@ namespace MCLaborAdmin
     public partial class EmployeeMainForm : Form
     {
         private Form parentForm;
-        private List<Employee> empList = new List<Employee>();
+        private Dictionary<int, Employee> empList = new Dictionary<int, Employee>();
 
         public EmployeeMainForm(Form parentForm)
         {
@@ -21,9 +21,30 @@ namespace MCLaborAdmin
             InitializeComponent();
         }
 
+        public void updateEmpGrid(Employee emp)
+        {
+            bool newRecord = true;
+
+            for (int i = this.empDataGridView.Rows.Count - 1; i > -1; i--)
+            {
+                if (emp.EmployeeId == (int)this.empDataGridView.Rows[i].Cells[0].Value)
+                {
+                    newRecord = false;
+                    this.empDataGridView.Rows[i].Cells[1].Value = emp.RefCode;
+                    this.empDataGridView.Rows[i].Cells[2].Value = emp.FullName;
+                }
+            }
+
+            if (newRecord)
+            {
+                this.empDataGridView.Rows.Add(new Object[] { emp.EmployeeId, emp.RefCode, emp.FullName });
+                this.empList.Add(emp.EmployeeId, emp);
+            }
+        }
+
         private void populateEmployeeList()
         {
-            this.empList = new List<Employee>();
+            this.empList = new Dictionary<int, Employee>();
             using(SqlConnection conn = DBUtils.getConnection("MCLabor"))
             {
                 string sqlString = "SELECT employeeId, refCode, firstName, middleName, lastName, loginId, " +
@@ -192,7 +213,7 @@ namespace MCLaborAdmin
                                 {
                                     emp.HireStatus = hireStatusReader.GetInt32(0);
                                     emp.HireStatusDate = hireStatusReader.GetDateTime(1);
-                                    if(hireStatusReader.IsDBNull(2))
+                                    if (hireStatusReader.IsDBNull(2))
                                     {
                                         emp.TermReason = string.Empty;
                                     }
@@ -200,6 +221,12 @@ namespace MCLaborAdmin
                                     {
                                         emp.TermReason = hireStatusReader.GetString(2);
                                     }
+                                }
+                                else
+                                {
+                                    emp.HireStatus = 0;
+                                    emp.HireStatusDate = DateTime.Today;
+                                    emp.TermReason = string.Empty;
                                 }
                                 hireStatusReader.Close();
                             }                            
@@ -223,21 +250,9 @@ namespace MCLaborAdmin
                             }
                         }
 
-                        this.empList.Add(emp);
-                    }
-
-                    if (this.empList.Count < 1)
-                    {
-                        this.empMainLookupCmboBox.Items.Add("No Existing Employees Found");
-                        this.empMainLookupCmboBox.SelectedIndex = 0;
-                    }
-
-                    foreach(Employee emp in this.empList)
-                    {
-                        this.empMainLookupCmboBox.Items.Add(emp);
-                    }
-
-                    
+                        this.empList.Add(emp.EmployeeId, emp);
+                        this.empDataGridView.Rows.Add(new Object[] { emp.EmployeeId, emp.RefCode, emp.FullName });
+                    }                    
                 }
             }
         }
@@ -246,6 +261,8 @@ namespace MCLaborAdmin
         {
             this.TopMost = true;
             this.TopMost = false;
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             populateEmployeeList();
         }
 
@@ -263,9 +280,26 @@ namespace MCLaborAdmin
 
         private void empMainEditBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            EmployeeAddEditForm addEditForm = new EmployeeAddEditForm(this, (Employee)this.empMainLookupCmboBox.SelectedItem);
-            addEditForm.Show();
+            if (this.empDataGridView.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Please select a single record to edit.");
+            }
+            else if (this.empDataGridView.SelectedRows.Count < 1)
+            {
+                MessageBox.Show("Select a record to edit.");
+            }
+            else
+            {
+                Employee currEmp = this.empList[(int)this.empDataGridView.SelectedRows[0].Cells[0].Value];
+                this.Hide();
+                EmployeeAddEditForm addEditForm = new EmployeeAddEditForm(this, currEmp);
+                addEditForm.Show();
+            }
+        }
+
+        private void empMainCloseBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 

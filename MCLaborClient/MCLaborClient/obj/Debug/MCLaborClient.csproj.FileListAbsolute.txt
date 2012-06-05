@@ -1,0 +1,9 @@
+C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\bin\Debug\MCLaborClient.exe.config
+C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\bin\Debug\MCLaborClient.exe
+C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\bin\Debug\MCLaborClient.pdb
+C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\obj\Debug\MCLaborClient.Properties.Resources.resources
+C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\obj\Debug\MCLaborClient.csproj.GenerateResource.Cache
+C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\obj\Debug\MCLaborClient.exe
+C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\obj\Debug\MCLaborClient.pdb
+C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\obj\Debug\MCLaborClient.LoginForm.resources

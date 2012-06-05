@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditPayRateForm));
             this.addEditPayRateJobCmboBox = new System.Windows.Forms.ComboBox();
             this.addEditPayRateActiveCheckBox = new System.Windows.Forms.CheckBox();
             this.addEditPayRateHourlyRateTxt = new System.Windows.Forms.TextBox();
@@ -50,6 +51,8 @@
             // addEditPayRateActiveCheckBox
             // 
             this.addEditPayRateActiveCheckBox.AutoSize = true;
+            this.addEditPayRateActiveCheckBox.Checked = true;
+            this.addEditPayRateActiveCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.addEditPayRateActiveCheckBox.Location = new System.Drawing.Point(165, 89);
             this.addEditPayRateActiveCheckBox.Name = "addEditPayRateActiveCheckBox";
             this.addEditPayRateActiveCheckBox.Size = new System.Drawing.Size(15, 14);
@@ -123,6 +126,9 @@
             this.Controls.Add(this.addEditPayRateHourlyRateTxt);
             this.Controls.Add(this.addEditPayRateActiveCheckBox);
             this.Controls.Add(this.addEditPayRateJobCmboBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(251, 210);
+            this.MinimumSize = new System.Drawing.Size(251, 210);
             this.Name = "AddEditPayRateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add/Edit Pay Rate";

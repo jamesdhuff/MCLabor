@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ea73a4e1-a83a-4ccf-a175-33f0d496bea6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/MCLaborServer/LaborService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="LaborService.disco" MetadataType="Disco" ID="6e1e5c8c-4e91-4d88-910c-41b7e2f048bc" SourceId="1" SourceUrl="http://jhuff3-8460p.corp.educate.com/MCLaborServer/LaborService.svc?disco" />
+    <MetadataFile FileName="LaborService.xsd" MetadataType="Schema" ID="f1397e23-8972-4bee-b547-71fd7fcc95c7" SourceId="1" SourceUrl="http://jhuff3-8460p.corp.educate.com/MCLaborServer/LaborService.svc?xsd=xsd1" />
+    <MetadataFile FileName="LaborService.wsdl" MetadataType="Wsdl" ID="90cb2b35-c6a8-4aaa-a1c6-0dce85af65bc" SourceId="1" SourceUrl="http://jhuff3-8460p.corp.educate.com/MCLaborServer/LaborService.svc?wsdl" />
+    <MetadataFile FileName="LaborService1.xsd" MetadataType="Schema" ID="b2fd8d34-a58e-4af2-aeec-ceeeebc7a36e" SourceId="1" SourceUrl="http://jhuff3-8460p.corp.educate.com/MCLaborServer/LaborService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

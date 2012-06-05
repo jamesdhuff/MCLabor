@@ -9,24 +9,26 @@ using System.Windows.Forms;
 
 namespace MCLaborAdmin
 {
-    public partial class JobForm : Form
+    public partial class PayRateOverrideMainForm : Form
     {
         private MainMenuForm mainMenuForm;
 
-        public JobForm(MainMenuForm mainMenuForm)
+        public PayRateOverrideMainForm(MainMenuForm mainMenuForm)
         {
             this.mainMenuForm = mainMenuForm;
             this.StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
         }
 
-        private void JobForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void PayRateOverrideForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.mainMenuForm.Show();
         }
 
-        private void JobForm_Load(object sender, EventArgs e)
+        private void PayRateOverrideForm_Load(object sender, EventArgs e)
         {
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             this.TopMost = true;
             this.TopMost = false;
         }

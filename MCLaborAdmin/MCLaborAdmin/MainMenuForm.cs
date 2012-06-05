@@ -36,14 +36,14 @@ namespace MCLaborAdmin
 
         private void loadJobForm()
         {
-            JobForm jobForm = new JobForm(this);
+            JobMainForm jobForm = new JobMainForm(this);
             this.Hide();
             jobForm.Show(this);
         }
 
         private void loadWorkSiteForm()
         {
-            WorkSiteForm workSiteForm = new WorkSiteForm(this);
+            WorkSiteMainForm workSiteForm = new WorkSiteMainForm(this);
             this.Hide();
             workSiteForm.Show(this);
         }
@@ -57,16 +57,16 @@ namespace MCLaborAdmin
 
         private void loadReportForm()
         {
-            ReportForm reportForm = new ReportForm(this);
+            ReportMainForm reportForm = new ReportMainForm(this);
             this.Hide();
             reportForm.Show(this);
         }
 
-        private void loadExportForm()
+        private void loadPayRateOverrideForm()
         {
-            ExportForm exportForm = new ExportForm(this);
+            PayRateOverrideMainForm payRateOverrideForm = new PayRateOverrideMainForm(this);
             this.Hide();
-            exportForm.Show(this);
+            payRateOverrideForm.Show(this);
         }
 
         private void loadAdminUserForm()
@@ -119,9 +119,9 @@ namespace MCLaborAdmin
             loadReportForm();
         }
 
-        private void menuExportBtn_Click(object sender, EventArgs e)
+        private void menuPayRateOverrideBtn_Click(object sender, EventArgs e)
         {
-            loadExportForm();
+            loadPayRateForm();
         }
 
         private void menuAdminUserBtn_Click(object sender, EventArgs e)
@@ -133,6 +133,8 @@ namespace MCLaborAdmin
         {
             this.TopMost = true;
             this.TopMost = false;
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
         }
 
     }

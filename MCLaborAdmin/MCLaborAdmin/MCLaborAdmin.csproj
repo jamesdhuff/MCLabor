@@ -46,14 +46,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -74,6 +78,25 @@
       <DependentUpon>AddEditPayRateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminUser.cs" />
+    <Compile Include="EmpDirectoryReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpDirectoryReportForm.Designer.cs">
+      <DependentUpon>EmpDirectoryReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimeCardReviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeCardReviewForm.Designer.cs">
+      <DependentUpon>TimeCardReviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkSiteAddEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkSiteAddEditForm.Designer.cs">
+      <DependentUpon>WorkSiteAddEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkSite.cs" />
     <Compile Include="DBUtils.cs" />
     <Compile Include="AdminUserForm.cs">
       <SubType>Form</SubType>
@@ -94,18 +117,24 @@
     <Compile Include="EmployeeMainForm.Designer.cs">
       <DependentUpon>EmployeeMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExportForm.cs">
+    <Compile Include="PayRateOverrideMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExportForm.Designer.cs">
-      <DependentUpon>ExportForm.cs</DependentUpon>
+    <Compile Include="PayRateOverrideMainForm.Designer.cs">
+      <DependentUpon>PayRateOverrideMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Job.cs" />
-    <Compile Include="JobForm.cs">
+    <Compile Include="JobAddEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="JobForm.Designer.cs">
-      <DependentUpon>JobForm.cs</DependentUpon>
+    <Compile Include="JobAddEditForm.Designer.cs">
+      <DependentUpon>JobAddEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JobMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JobMainForm.Designer.cs">
+      <DependentUpon>JobMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainMenuForm.cs">
       <SubType>Form</SubType>
@@ -128,17 +157,30 @@
     <EmbeddedResource Include="AdminUserForm.resx">
       <DependentUpon>AdminUserForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmpDirectoryReportForm.resx">
+      <DependentUpon>EmpDirectoryReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employee Directory.rdlc" />
+    <EmbeddedResource Include="TimeCardReviewForm.resx">
+      <DependentUpon>TimeCardReviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkSiteAddEditForm.resx">
+      <DependentUpon>WorkSiteAddEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmployeeAddEditForm.resx">
       <DependentUpon>EmployeeAddEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeMainForm.resx">
       <DependentUpon>EmployeeMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ExportForm.resx">
-      <DependentUpon>ExportForm.cs</DependentUpon>
+    <EmbeddedResource Include="PayRateOverrideMainForm.resx">
+      <DependentUpon>PayRateOverrideMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="JobForm.resx">
-      <DependentUpon>JobForm.cs</DependentUpon>
+    <EmbeddedResource Include="JobAddEditForm.resx">
+      <DependentUpon>JobAddEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JobMainForm.resx">
+      <DependentUpon>JobMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
@@ -151,14 +193,14 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportForm.resx">
-      <DependentUpon>ReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="ReportMainForm.resx">
+      <DependentUpon>ReportMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TimeCardForm.resx">
       <DependentUpon>TimeCardForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WorkSiteForm.resx">
-      <DependentUpon>WorkSiteForm.cs</DependentUpon>
+    <EmbeddedResource Include="WorkSiteMainForm.resx">
+      <DependentUpon>WorkSiteMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -175,11 +217,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ReportForm.cs">
+    <Compile Include="ReportMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReportForm.Designer.cs">
-      <DependentUpon>ReportForm.cs</DependentUpon>
+    <Compile Include="ReportMainForm.Designer.cs">
+      <DependentUpon>ReportMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TimeCardForm.cs">
       <SubType>Form</SubType>
@@ -187,11 +229,11 @@
     <Compile Include="TimeCardForm.Designer.cs">
       <DependentUpon>TimeCardForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WorkSiteForm.cs">
+    <Compile Include="WorkSiteMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WorkSiteForm.Designer.cs">
-      <DependentUpon>WorkSiteForm.cs</DependentUpon>
+    <Compile Include="WorkSiteMainForm.Designer.cs">
+      <DependentUpon>WorkSiteMainForm.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +272,7 @@
     <None Include="Resources\Icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\Employee.datasource" />
     <None Include="Resources\Banner.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -29,36 +29,29 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeMainForm));
-            this.empMainLookupCmboBox = new System.Windows.Forms.ComboBox();
             this.empMainAddBtn = new System.Windows.Forms.Button();
             this.empMainEditBtn = new System.Windows.Forms.Button();
-            this.empMainOrLbl = new System.Windows.Forms.Label();
-            this.empMainSelectEmpLbl = new System.Windows.Forms.Label();
+            this.empMainCloseBtn = new System.Windows.Forms.Button();
+            this.empDataGridView = new System.Windows.Forms.DataGridView();
+            this.employeeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.refCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.empDataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // empMainLookupCmboBox
-            // 
-            this.empMainLookupCmboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.empMainLookupCmboBox.FormattingEnabled = true;
-            this.empMainLookupCmboBox.Location = new System.Drawing.Point(12, 161);
-            this.empMainLookupCmboBox.MaxDropDownItems = 100;
-            this.empMainLookupCmboBox.Name = "empMainLookupCmboBox";
-            this.empMainLookupCmboBox.Size = new System.Drawing.Size(233, 21);
-            this.empMainLookupCmboBox.TabIndex = 0;
             // 
             // empMainAddBtn
             // 
-            this.empMainAddBtn.Location = new System.Drawing.Point(11, 11);
+            this.empMainAddBtn.Location = new System.Drawing.Point(12, 233);
             this.empMainAddBtn.Name = "empMainAddBtn";
-            this.empMainAddBtn.Size = new System.Drawing.Size(379, 60);
+            this.empMainAddBtn.Size = new System.Drawing.Size(119, 43);
             this.empMainAddBtn.TabIndex = 1;
-            this.empMainAddBtn.Text = "Add New Employee";
+            this.empMainAddBtn.Text = "Add";
             this.empMainAddBtn.UseVisualStyleBackColor = true;
             this.empMainAddBtn.Click += new System.EventHandler(this.empMainAddBtn_Click);
             // 
             // empMainEditBtn
             // 
-            this.empMainEditBtn.Location = new System.Drawing.Point(263, 161);
+            this.empMainEditBtn.Location = new System.Drawing.Point(154, 233);
             this.empMainEditBtn.Name = "empMainEditBtn";
             this.empMainEditBtn.Size = new System.Drawing.Size(127, 43);
             this.empMainEditBtn.TabIndex = 2;
@@ -66,52 +59,82 @@
             this.empMainEditBtn.UseVisualStyleBackColor = true;
             this.empMainEditBtn.Click += new System.EventHandler(this.empMainEditBtn_Click);
             // 
-            // empMainOrLbl
+            // empMainCloseBtn
             // 
-            this.empMainOrLbl.AutoSize = true;
-            this.empMainOrLbl.Location = new System.Drawing.Point(12, 101);
-            this.empMainOrLbl.Name = "empMainOrLbl";
-            this.empMainOrLbl.Size = new System.Drawing.Size(380, 13);
-            this.empMainOrLbl.TabIndex = 3;
-            this.empMainOrLbl.Text = "----------------------------------------------------------  OR ------------------" +
-                "----------------------------------------";
+            this.empMainCloseBtn.Location = new System.Drawing.Point(303, 233);
+            this.empMainCloseBtn.Name = "empMainCloseBtn";
+            this.empMainCloseBtn.Size = new System.Drawing.Size(127, 43);
+            this.empMainCloseBtn.TabIndex = 3;
+            this.empMainCloseBtn.Text = "Close";
+            this.empMainCloseBtn.UseVisualStyleBackColor = true;
+            this.empMainCloseBtn.Click += new System.EventHandler(this.empMainCloseBtn_Click);
             // 
-            // empMainSelectEmpLbl
+            // empDataGridView
             // 
-            this.empMainSelectEmpLbl.AutoSize = true;
-            this.empMainSelectEmpLbl.Location = new System.Drawing.Point(12, 135);
-            this.empMainSelectEmpLbl.Name = "empMainSelectEmpLbl";
-            this.empMainSelectEmpLbl.Size = new System.Drawing.Size(173, 13);
-            this.empMainSelectEmpLbl.TabIndex = 4;
-            this.empMainSelectEmpLbl.Text = "Select an Existing Employee to Edit";
+            this.empDataGridView.AllowUserToAddRows = false;
+            this.empDataGridView.AllowUserToDeleteRows = false;
+            this.empDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.empDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.employeeId,
+            this.refCode,
+            this.name});
+            this.empDataGridView.Location = new System.Drawing.Point(13, 10);
+            this.empDataGridView.Name = "empDataGridView";
+            this.empDataGridView.ReadOnly = true;
+            this.empDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.empDataGridView.Size = new System.Drawing.Size(416, 213);
+            this.empDataGridView.TabIndex = 4;
+            // 
+            // employeeId
+            // 
+            this.employeeId.HeaderText = "employeeId";
+            this.employeeId.Name = "employeeId";
+            this.employeeId.ReadOnly = true;
+            this.employeeId.Visible = false;
+            // 
+            // refCode
+            // 
+            this.refCode.HeaderText = "Ref Code";
+            this.refCode.Name = "refCode";
+            this.refCode.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.HeaderText = "Name";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
             // 
             // EmployeeMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(403, 228);
-            this.Controls.Add(this.empMainSelectEmpLbl);
-            this.Controls.Add(this.empMainOrLbl);
+            this.ClientSize = new System.Drawing.Size(442, 288);
+            this.Controls.Add(this.empDataGridView);
+            this.Controls.Add(this.empMainCloseBtn);
             this.Controls.Add(this.empMainEditBtn);
             this.Controls.Add(this.empMainAddBtn);
-            this.Controls.Add(this.empMainLookupCmboBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(458, 326);
+            this.MinimumSize = new System.Drawing.Size(458, 326);
             this.Name = "EmployeeMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MCLabor Admin - Employee Definitions";
             this.Load += new System.EventHandler(this.EmployeeMainForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EmployeeMainForm_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.empDataGridView)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ComboBox empMainLookupCmboBox;
         private System.Windows.Forms.Button empMainAddBtn;
         private System.Windows.Forms.Button empMainEditBtn;
-        private System.Windows.Forms.Label empMainOrLbl;
-        private System.Windows.Forms.Label empMainSelectEmpLbl;
+        private System.Windows.Forms.Button empMainCloseBtn;
+        private System.Windows.Forms.DataGridView empDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn employeeId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn refCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
     }
 }

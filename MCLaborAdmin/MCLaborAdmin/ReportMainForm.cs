@@ -9,14 +9,13 @@ using System.Windows.Forms;
 
 namespace MCLaborAdmin
 {
-    public partial class ReportForm : Form
+    public partial class ReportMainForm : Form
     {
         private MainMenuForm mainMenuForm;
 
-        public ReportForm(MainMenuForm mainMenuForm)
+        public ReportMainForm(MainMenuForm mainMenuForm)
         {
             this.mainMenuForm = mainMenuForm;
-            this.StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
         }
 
@@ -26,9 +25,17 @@ namespace MCLaborAdmin
         }
 
         private void ReportForm_Load(object sender, EventArgs e)
-        {
+        {            
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             this.TopMost = true;
             this.TopMost = false;
+        }
+
+        private void empDirectoryRptBtn_Click(object sender, EventArgs e)
+        {
+            EmpDirectoryReportForm empDirRptForm = new EmpDirectoryReportForm();
+            empDirRptForm.Show();
         }
     }
 }

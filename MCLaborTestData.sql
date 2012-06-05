@@ -12,7 +12,7 @@ insert into JOB(refCode, jobName, description) VALUES ('MGR','Office Manager','O
 
 insert into WORK_SITE(refCode, workSiteName, description) VALUES('YRD', 'Yard', 'MCLabor Headquarters Workyard');
 
-insert into PAY_RATE(employeeId, jobId, hourlyPayRate) VALUES (1,1,15.50);
+insert into PAY_RATE(employeeId, jobId, hourlyPayRate, active) VALUES (1,1,15.50,1);
 
 insert into EMP_HIRE_STATUS(employeeId, status) VALUES(1,0);
 
