@@ -102,7 +102,7 @@ namespace MCLaborAdmin
        
         public override string ToString()
         {
-            return this.refCode.PadRight(8) + "| " + this.firstName + " " + this.lastName;
+            return this.firstName + " " + this.lastName + "  (" + this.refCode + ")";
         }
     }
 }

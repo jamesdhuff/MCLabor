@@ -121,7 +121,7 @@ namespace MCLaborAdmin
 
         private void menuPayRateOverrideBtn_Click(object sender, EventArgs e)
         {
-            loadPayRateForm();
+            loadPayRateOverrideForm();
         }
 
         private void menuAdminUserBtn_Click(object sender, EventArgs e)

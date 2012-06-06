@@ -78,11 +78,18 @@
       <DependentUpon>AddEditPayRateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminUser.cs" />
+    <Compile Include="TimeCard.cs" />
     <Compile Include="EmpDirectoryReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EmpDirectoryReportForm.Designer.cs">
       <DependentUpon>EmpDirectoryReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimeCardAddEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeCardAddEditForm.Designer.cs">
+      <DependentUpon>TimeCardAddEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TimeCardReviewForm.cs">
       <SubType>Form</SubType>
@@ -161,6 +168,9 @@
       <DependentUpon>EmpDirectoryReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employee Directory.rdlc" />
+    <EmbeddedResource Include="TimeCardAddEditForm.resx">
+      <DependentUpon>TimeCardAddEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TimeCardReviewForm.resx">
       <DependentUpon>TimeCardReviewForm.cs</DependentUpon>
     </EmbeddedResource>

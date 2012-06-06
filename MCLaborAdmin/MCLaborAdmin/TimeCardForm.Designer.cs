@@ -107,6 +107,7 @@
             this.timeCardGoBtn.TabIndex = 7;
             this.timeCardGoBtn.Text = "Go";
             this.timeCardGoBtn.UseVisualStyleBackColor = true;
+            this.timeCardGoBtn.Click += new System.EventHandler(this.timeCardGoBtn_Click);
             // 
             // TimeCardForm
             // 

@@ -16,9 +16,11 @@ C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.AddEdit
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.JobAddEditForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.JobMainForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.WorkSiteAddEditForm.resources
-C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.ExportMainForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.ReportMainForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.WorkSiteMainForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.EmpDirectoryReportForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\RdlCompile.cache
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\RdlCompile.compiled
+C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.TimeCardReviewForm.resources
+C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.PayRateOverrideMainForm.resources
+C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.TimeCardAddEditForm.resources
