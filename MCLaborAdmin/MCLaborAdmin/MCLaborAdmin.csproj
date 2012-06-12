@@ -46,6 +46,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System" />
@@ -96,6 +100,12 @@
     </Compile>
     <Compile Include="TimeCardReviewForm.Designer.cs">
       <DependentUpon>TimeCardReviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimeCardSummaryTotalsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeCardSummaryTotalsForm.Designer.cs">
+      <DependentUpon>TimeCardSummaryTotalsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WorkSiteAddEditForm.cs">
       <SubType>Form</SubType>
@@ -173,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TimeCardReviewForm.resx">
       <DependentUpon>TimeCardReviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimeCardSummaryTotalsForm.resx">
+      <DependentUpon>TimeCardSummaryTotalsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkSiteAddEditForm.resx">
       <DependentUpon>WorkSiteAddEditForm.cs</DependentUpon>

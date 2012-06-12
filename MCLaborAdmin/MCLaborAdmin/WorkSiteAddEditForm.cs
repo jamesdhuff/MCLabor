@@ -12,6 +12,9 @@ namespace MCLaborAdmin
 {
     public partial class WorkSiteAddEditForm : Form
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger
+            (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private WorkSiteMainForm workSiteMainForm;
         private WorkSite currWorkSite;
 
@@ -32,6 +35,7 @@ namespace MCLaborAdmin
             this.workSiteAddEditNameTxt.Text = this.currWorkSite.WorkSiteName;
             this.workSiteAddEditRefCodeTxt.Text = this.currWorkSite.RefCode;
             this.workSiteAddEditDescriptionTxt.Text = this.currWorkSite.Description;
+            this.activeChkBox.Checked = this.currWorkSite.Active;
 
         }
 
@@ -50,8 +54,8 @@ namespace MCLaborAdmin
         {
             if (validateFormData())
             {
-                string insertString = "INSERT INTO work_site (workSiteName, refCode, description) VALUES (@workSiteName, @refCode, @description); SELECT cast(Scope_Identity() as int)";
-                string updateString = "UPDATE work_site SET workSiteName = @workSiteName, refCode = @refCode, description = @description WHERE workSiteId = @workSiteId";
+                string insertString = "INSERT INTO work_site (workSiteName, refCode, description, active) VALUES (@workSiteName, @refCode, @description, @active); SELECT cast(Scope_Identity() as int)";
+                string updateString = "UPDATE work_site SET workSiteName = @workSiteName, refCode = @refCode, description = @description, active = @active WHERE workSiteId = @workSiteId";
                 using (SqlConnection conn = DBUtils.getConnection("MCLabor"))
                 {
                     conn.Open();
@@ -60,7 +64,7 @@ namespace MCLaborAdmin
                         using (SqlCommand cmd = new SqlCommand(insertString, conn))
                         {
                             cmd.Parameters.AddWithValue("@workSiteName", this.currWorkSite.WorkSiteName);
-                            cmd.Parameters.AddWithValue("@refCode", this.currWorkSite.RefCode);
+                            cmd.Parameters.AddWithValue("@refCode", this.currWorkSite.RefCode);                            
                             if (this.currWorkSite.Description.Equals(string.Empty))
                             {
                                 cmd.Parameters.AddWithValue("@description", DBNull.Value);
@@ -69,6 +73,7 @@ namespace MCLaborAdmin
                             {
                                 cmd.Parameters.AddWithValue("@description", this.currWorkSite.Description);
                             }
+                            cmd.Parameters.AddWithValue("@active", this.currWorkSite.Active);
 
                             this.currWorkSite.WorkSiteId = (int)cmd.ExecuteScalar();
                         }
@@ -87,6 +92,7 @@ namespace MCLaborAdmin
                             {
                                 cmd.Parameters.AddWithValue("@description", this.currWorkSite.Description);
                             }
+                            cmd.Parameters.AddWithValue("@active", this.currWorkSite.Active);
                             cmd.Parameters.AddWithValue("@workSiteId", this.currWorkSite.WorkSiteId);
 
                             cmd.ExecuteNonQuery();
@@ -127,8 +133,9 @@ namespace MCLaborAdmin
                 this.currWorkSite.Description = this.workSiteAddEditDescriptionTxt.Text;
             }
 
+            this.currWorkSite.Active = this.activeChkBox.Checked;
+
             return true;
         }
-
     }
 }

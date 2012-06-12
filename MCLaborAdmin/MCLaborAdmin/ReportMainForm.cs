@@ -11,6 +11,9 @@ namespace MCLaborAdmin
 {
     public partial class ReportMainForm : Form
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger
+            (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private MainMenuForm mainMenuForm;
 
         public ReportMainForm(MainMenuForm mainMenuForm)

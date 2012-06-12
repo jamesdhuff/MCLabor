@@ -12,6 +12,9 @@ namespace MCLaborAdmin
 {
     public partial class WorkSiteMainForm : Form
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger
+            (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private MainMenuForm mainMenuForm;
         private Dictionary<int, WorkSite> workSiteList;
 
@@ -25,7 +28,7 @@ namespace MCLaborAdmin
 
         private void populateWorkSiteGrid()
         {
-            string sqlString = "SELECT workSiteId, workSiteName, refCode, description FROM work_site";
+            string sqlString = "SELECT workSiteId, workSiteName, refCode, description, active FROM work_site";
             using (SqlConnection conn = DBUtils.getConnection("MCLabor"))
             {
                 conn.Open();
@@ -46,8 +49,9 @@ namespace MCLaborAdmin
                         {
                             ws.Description = reader.GetString(3);
                         }
+                        ws.Active = reader.GetBoolean(4);
                         this.workSiteList.Add(ws.WorkSiteId, ws);
-                        this.workSiteDataGridView.Rows.Add(new object[] { ws.WorkSiteId, ws.RefCode, ws.WorkSiteName });
+                        this.workSiteDataGridView.Rows.Add(new object[] { ws.WorkSiteId, ws.RefCode, ws.WorkSiteName, ((ws.Active) ? "\u221A" : string.Empty) });
                     }
                 }
             }
@@ -63,13 +67,14 @@ namespace MCLaborAdmin
                 {
                     newRecord = false;
                     this.workSiteDataGridView.Rows[i].Cells[1].Value = ws.RefCode;
-                    this.workSiteDataGridView.Rows[i].Cells[2].Value = ws.WorkSiteName;                    
+                    this.workSiteDataGridView.Rows[i].Cells[2].Value = ws.WorkSiteName;
+                    this.workSiteDataGridView.Rows[i].Cells[3].Value = ((ws.Active) ? "\u221A" : string.Empty);
                 }
             }
 
             if (newRecord)
             {
-                this.workSiteDataGridView.Rows.Add(new Object[] { ws.WorkSiteId, ws.RefCode, ws.WorkSiteName });
+                this.workSiteDataGridView.Rows.Add(new Object[] { ws.WorkSiteId, ws.RefCode, ws.WorkSiteName, ((ws.Active) ? "\u221A" : string.Empty) });
                 this.workSiteList.Add(ws.WorkSiteId, ws);
             }
         }

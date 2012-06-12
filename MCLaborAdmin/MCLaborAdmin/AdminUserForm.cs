@@ -13,6 +13,9 @@ namespace MCLaborAdmin
 {
     public partial class AdminUserForm : Form
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger
+            (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private MainMenuForm mainMenuForm;
         private Dictionary<String, AdminUser> adminUserMap;
         private string errorMessage;

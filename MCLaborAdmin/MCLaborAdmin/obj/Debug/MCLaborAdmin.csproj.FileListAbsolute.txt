@@ -24,3 +24,5 @@ C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\RdlCompile.compiled
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.TimeCardReviewForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.PayRateOverrideMainForm.resources
 C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.TimeCardAddEditForm.resources
+C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\obj\Debug\MCLaborAdmin.TimeCardSummaryTotalsForm.resources
+C:\Users\jhuff3\MCLabor\MCLaborAdmin\MCLaborAdmin\bin\Debug\log4net.dll

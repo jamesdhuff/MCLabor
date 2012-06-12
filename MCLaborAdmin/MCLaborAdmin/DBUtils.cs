@@ -8,6 +8,9 @@ namespace MCLaborAdmin
 {
     public static class DBUtils
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger
+            (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public static SqlConnection getConnection()
         {
             return getConnection("default");

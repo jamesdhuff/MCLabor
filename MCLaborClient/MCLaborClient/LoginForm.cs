@@ -6,10 +6,21 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.ServiceModel;
+using MCLaborLib;
+
 namespace MCLaborClient
 {
     public partial class LoginForm : Form
     {
+
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger
+            (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        private const string MESSAGE_ENTER_ID = "Enter your Login ID Number";
+        private const string MESSAGE_SERVER_ERROR = "Server Error: See log";
+        private const string MESSAGE_INVALID_LOGINID = "Enter an integer value for the Login ID";
+
         public LoginForm()
         {
             InitializeComponent();
@@ -17,8 +28,6 @@ namespace MCLaborClient
 
         private void loginClearBtn_Click(object sender, EventArgs e)
         {
-            //LaborService.LaborServiceClient proxy = new LaborService.LaborServiceClient();
-            //this.loginInputTxt.Text = proxy.GetMessage();
             this.loginInputTxt.Text = string.Empty;
         }
 
@@ -74,7 +83,71 @@ namespace MCLaborClient
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
+            try
+            {
+                this.Enabled = false;
 
+                int loginId = -1;
+                Employee emp = new Employee();
+
+                try
+                {
+                    loginId = Int32.Parse(this.loginInputTxt.Text);
+                }
+                catch (FormatException)
+                {
+                    this.loginMessageTxt.ForeColor = Color.Red;
+                    this.loginMessageTxt.Text = MESSAGE_INVALID_LOGINID;
+                    this.loginInputTxt.Focus();
+                }
+
+                try
+                {
+                    LaborService.LaborServiceClient proxy = new LaborService.LaborServiceClient();
+                    if (proxy.isValidLogin(loginId))
+                    {
+                        emp = proxy.getEmployee(loginId);
+
+                        if (emp.IsClockedIn)
+                        {
+                            TimeCard currTimeCard = proxy.getLatestOpenTimeCard(emp.EmployeeId);
+                            currTimeCard.Employee = emp;
+                            ClockOutForm clockOutForm = new ClockOutForm(this, currTimeCard);
+                            this.loginInputTxt.Text = string.Empty;
+                            this.loginMessageTxt.Text = MESSAGE_ENTER_ID;
+                            this.loginMessageTxt.ForeColor = Color.Black;
+                            this.Hide();
+                            clockOutForm.Show();
+                        }
+                        else
+                        {
+                            List<WorkSite> workSiteList = proxy.getWorkSiteList().ToList();
+                            List<Job> jobList = proxy.getJobList(emp.EmployeeId).ToList();
+
+                            ClockInForm clockInForm = new ClockInForm(this, emp, workSiteList, jobList);
+                            this.loginInputTxt.Text = string.Empty;
+                            this.loginMessageTxt.Text = MESSAGE_ENTER_ID;
+                            this.loginMessageTxt.ForeColor = Color.Black;
+                            this.Hide();
+                            clockInForm.Show();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this.loginMessageTxt.ForeColor = Color.Red;
+                    this.loginMessageTxt.Text = MESSAGE_SERVER_ERROR;
+                    logger.Error(ex.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.ToString());                
+            }
+            finally
+            {
+                this.Enabled = true;
+            }
         }
 
         private void LoginForm_Load(object sender, EventArgs e)

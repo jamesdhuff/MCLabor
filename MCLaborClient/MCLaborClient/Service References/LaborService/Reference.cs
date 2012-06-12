@@ -17,6 +17,27 @@ namespace MCLaborClient.LaborService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILaborService/GetMessage", ReplyAction="http://tempuri.org/ILaborService/GetMessageResponse")]
         string GetMessage();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILaborService/isValidLogin", ReplyAction="http://tempuri.org/ILaborService/isValidLoginResponse")]
+        bool isValidLogin(int loginId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILaborService/getEmployee", ReplyAction="http://tempuri.org/ILaborService/getEmployeeResponse")]
+        MCLaborLib.Employee getEmployee(int loginId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILaborService/getWorkSiteList", ReplyAction="http://tempuri.org/ILaborService/getWorkSiteListResponse")]
+        MCLaborLib.WorkSite[] getWorkSiteList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILaborService/getJobList", ReplyAction="http://tempuri.org/ILaborService/getJobListResponse")]
+        MCLaborLib.Job[] getJobList(int employeeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILaborService/getLatestOpenTimeCard", ReplyAction="http://tempuri.org/ILaborService/getLatestOpenTimeCardResponse")]
+        MCLaborLib.TimeCard getLatestOpenTimeCard(int employeeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILaborService/doClockOut", ReplyAction="http://tempuri.org/ILaborService/doClockOutResponse")]
+        void doClockOut(MCLaborLib.TimeCard tc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILaborService/doClockIn", ReplyAction="http://tempuri.org/ILaborService/doClockInResponse")]
+        void doClockIn(MCLaborLib.TimeCard tc);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
@@ -48,6 +69,34 @@ namespace MCLaborClient.LaborService {
         
         public string GetMessage() {
             return base.Channel.GetMessage();
+        }
+        
+        public bool isValidLogin(int loginId) {
+            return base.Channel.isValidLogin(loginId);
+        }
+        
+        public MCLaborLib.Employee getEmployee(int loginId) {
+            return base.Channel.getEmployee(loginId);
+        }
+        
+        public MCLaborLib.WorkSite[] getWorkSiteList() {
+            return base.Channel.getWorkSiteList();
+        }
+        
+        public MCLaborLib.Job[] getJobList(int employeeId) {
+            return base.Channel.getJobList(employeeId);
+        }
+        
+        public MCLaborLib.TimeCard getLatestOpenTimeCard(int employeeId) {
+            return base.Channel.getLatestOpenTimeCard(employeeId);
+        }
+        
+        public void doClockOut(MCLaborLib.TimeCard tc) {
+            base.Channel.doClockOut(tc);
+        }
+        
+        public void doClockIn(MCLaborLib.TimeCard tc) {
+            base.Channel.doClockIn(tc);
         }
     }
 }

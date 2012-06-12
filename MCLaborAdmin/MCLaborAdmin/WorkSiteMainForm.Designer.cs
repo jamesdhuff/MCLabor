@@ -30,12 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WorkSiteMainForm));
             this.workSiteDataGridView = new System.Windows.Forms.DataGridView();
-            this.workSiteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.refCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workSiteName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workSiteMainCloseBtn = new System.Windows.Forms.Button();
             this.workSiteMainEditBtn = new System.Windows.Forms.Button();
             this.workSiteMainAddBtn = new System.Windows.Forms.Button();
+            this.workSiteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.refCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workSiteName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.workSiteDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,13 +48,44 @@
             this.workSiteDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.workSiteId,
             this.refCode,
-            this.workSiteName});
+            this.workSiteName,
+            this.active});
             this.workSiteDataGridView.Location = new System.Drawing.Point(12, 12);
             this.workSiteDataGridView.Name = "workSiteDataGridView";
             this.workSiteDataGridView.ReadOnly = true;
             this.workSiteDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.workSiteDataGridView.Size = new System.Drawing.Size(310, 232);
+            this.workSiteDataGridView.Size = new System.Drawing.Size(397, 232);
             this.workSiteDataGridView.TabIndex = 0;
+            // 
+            // workSiteMainCloseBtn
+            // 
+            this.workSiteMainCloseBtn.Location = new System.Drawing.Point(307, 265);
+            this.workSiteMainCloseBtn.Name = "workSiteMainCloseBtn";
+            this.workSiteMainCloseBtn.Size = new System.Drawing.Size(102, 33);
+            this.workSiteMainCloseBtn.TabIndex = 6;
+            this.workSiteMainCloseBtn.Text = "Close";
+            this.workSiteMainCloseBtn.UseVisualStyleBackColor = true;
+            this.workSiteMainCloseBtn.Click += new System.EventHandler(this.workSiteMainCloseBtn_Click);
+            // 
+            // workSiteMainEditBtn
+            // 
+            this.workSiteMainEditBtn.Location = new System.Drawing.Point(153, 265);
+            this.workSiteMainEditBtn.Name = "workSiteMainEditBtn";
+            this.workSiteMainEditBtn.Size = new System.Drawing.Size(102, 33);
+            this.workSiteMainEditBtn.TabIndex = 5;
+            this.workSiteMainEditBtn.Text = "Edit";
+            this.workSiteMainEditBtn.UseVisualStyleBackColor = true;
+            this.workSiteMainEditBtn.Click += new System.EventHandler(this.workSiteMainEditBtn_Click);
+            // 
+            // workSiteMainAddBtn
+            // 
+            this.workSiteMainAddBtn.Location = new System.Drawing.Point(12, 265);
+            this.workSiteMainAddBtn.Name = "workSiteMainAddBtn";
+            this.workSiteMainAddBtn.Size = new System.Drawing.Size(94, 33);
+            this.workSiteMainAddBtn.TabIndex = 4;
+            this.workSiteMainAddBtn.Text = "Add";
+            this.workSiteMainAddBtn.UseVisualStyleBackColor = true;
+            this.workSiteMainAddBtn.Click += new System.EventHandler(this.workSiteMainAddBtn_Click);
             // 
             // workSiteId
             // 
@@ -75,41 +107,18 @@
             this.workSiteName.Name = "workSiteName";
             this.workSiteName.ReadOnly = true;
             // 
-            // workSiteMainCloseBtn
+            // active
             // 
-            this.workSiteMainCloseBtn.Location = new System.Drawing.Point(220, 265);
-            this.workSiteMainCloseBtn.Name = "workSiteMainCloseBtn";
-            this.workSiteMainCloseBtn.Size = new System.Drawing.Size(102, 33);
-            this.workSiteMainCloseBtn.TabIndex = 6;
-            this.workSiteMainCloseBtn.Text = "Close";
-            this.workSiteMainCloseBtn.UseVisualStyleBackColor = true;
-            this.workSiteMainCloseBtn.Click += new System.EventHandler(this.workSiteMainCloseBtn_Click);
-            // 
-            // workSiteMainEditBtn
-            // 
-            this.workSiteMainEditBtn.Location = new System.Drawing.Point(112, 265);
-            this.workSiteMainEditBtn.Name = "workSiteMainEditBtn";
-            this.workSiteMainEditBtn.Size = new System.Drawing.Size(102, 33);
-            this.workSiteMainEditBtn.TabIndex = 5;
-            this.workSiteMainEditBtn.Text = "Edit";
-            this.workSiteMainEditBtn.UseVisualStyleBackColor = true;
-            this.workSiteMainEditBtn.Click += new System.EventHandler(this.workSiteMainEditBtn_Click);
-            // 
-            // workSiteMainAddBtn
-            // 
-            this.workSiteMainAddBtn.Location = new System.Drawing.Point(12, 265);
-            this.workSiteMainAddBtn.Name = "workSiteMainAddBtn";
-            this.workSiteMainAddBtn.Size = new System.Drawing.Size(94, 33);
-            this.workSiteMainAddBtn.TabIndex = 4;
-            this.workSiteMainAddBtn.Text = "Add";
-            this.workSiteMainAddBtn.UseVisualStyleBackColor = true;
-            this.workSiteMainAddBtn.Click += new System.EventHandler(this.workSiteMainAddBtn_Click);
+            this.active.HeaderText = "Active";
+            this.active.Name = "active";
+            this.active.ReadOnly = true;
+            this.active.Width = 45;
             // 
             // WorkSiteMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 310);
+            this.ClientSize = new System.Drawing.Size(421, 310);
             this.Controls.Add(this.workSiteMainCloseBtn);
             this.Controls.Add(this.workSiteMainEditBtn);
             this.Controls.Add(this.workSiteMainAddBtn);
@@ -133,5 +142,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn workSiteId;
         private System.Windows.Forms.DataGridViewTextBoxColumn refCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn workSiteName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn active;
     }
 }

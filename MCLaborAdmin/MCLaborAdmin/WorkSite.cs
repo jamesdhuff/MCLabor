@@ -11,6 +11,7 @@ namespace MCLaborAdmin
         private string refCode;
         private string workSiteName;
         private string description;
+        private bool active;
 
         public int WorkSiteId { get { return this.workSiteId; } set { this.workSiteId = value; } }
 
@@ -20,12 +21,15 @@ namespace MCLaborAdmin
 
         public string Description { get { return this.description; } set { this.description = value; } }
 
+        public bool Active { get { return this.active; } set { this.active = value; } }
+
         public WorkSite()
         {
             this.workSiteId = -1;
             this.workSiteName = string.Empty;
             this.refCode = string.Empty;
             this.description = string.Empty;
+            this.active = true;
         }
 
         public WorkSite(int workSiteId, string refCode, string workSiteName)
@@ -34,6 +38,7 @@ namespace MCLaborAdmin
             this.refCode = refCode;
             this.workSiteName = workSiteName;
             this.description = string.Empty;
+            this.active = true;
         }
 
         public WorkSite(int workSiteId, string refCode, string workSiteName, string description)
@@ -42,6 +47,7 @@ namespace MCLaborAdmin
             this.refCode = refCode;
             this.workSiteName = workSiteName;
             this.description = description;
+            this.active = true;
         }
 
         public override string ToString()

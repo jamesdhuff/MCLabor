@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MCLaborLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MCLabor\bin\Debug\MCLaborLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -54,6 +62,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClockInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClockInForm.Designer.cs">
+      <DependentUpon>ClockInForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClockOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClockOutForm.Designer.cs">
+      <DependentUpon>ClockOutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +82,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ClockInForm.resx">
+      <DependentUpon>ClockInForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClockOutForm.resx">
+      <DependentUpon>ClockOutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,6 +121,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Service References\LaborService\" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +131,7 @@
     <None Include="Service References\LaborService\LaborService.wsdl" />
     <None Include="Service References\LaborService\LaborService.xsd" />
     <None Include="Service References\LaborService\LaborService1.xsd" />
+    <None Include="Service References\LaborService\LaborService2.xsd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\LaborService\configuration91.svcinfo" />
@@ -116,7 +146,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icon.jpg" />
+    <None Include="Properties\DataSources\MCLabor.Employee.datasource" />
+    <None Include="Properties\DataSources\MCLaborLib.Employee.datasource" />
+    <None Include="Properties\DataSources\MCLaborLib.Job.datasource" />
+    <None Include="Properties\DataSources\MCLaborLib.TimeCard.datasource" />
+    <None Include="Properties\DataSources\MCLaborLib.WorkSite.datasource" />
+    <None Include="Resources\Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

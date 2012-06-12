@@ -1,0 +1,5 @@
+C:\Users\jhuff3\MCLabor\MCLabor\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jhuff3\MCLabor\MCLabor\bin\Debug\MCLabor.dll
+C:\Users\jhuff3\MCLabor\MCLabor\bin\Debug\MCLabor.pdb
+C:\Users\jhuff3\MCLabor\MCLabor\obj\Debug\MCLabor.dll
+C:\Users\jhuff3\MCLabor\MCLabor\obj\Debug\MCLabor.pdb

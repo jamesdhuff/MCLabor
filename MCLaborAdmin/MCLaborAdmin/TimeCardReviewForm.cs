@@ -12,6 +12,9 @@ namespace MCLaborAdmin
 {
     public partial class TimeCardReviewForm : Form
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger
+            (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private Employee currEmp;
         private Form parentForm;
         private DateTime startDate;
@@ -51,26 +54,40 @@ namespace MCLaborAdmin
                         while (reader.Read())
                         {
                             TimeCard tc = new TimeCard();
-                            tc.LaborDetailID = reader.GetInt32(0);
+                            tc.LaborDetailId = reader.GetInt32(0);
                             tc.CalendarDate = reader.GetDateTime(1);
                             tc.LocalStartTime = reader.GetDateTime(2);
-                            tc.LocalEndTime = reader.GetDateTime(3);
+                            if (reader.IsDBNull(3))
+                            {
+                                tc.LocalEndTime = null;
+                            }
+                            else
+                            {
+                                tc.LocalEndTime = reader.GetDateTime(3);
+                            }
                             tc.UtcStartTime = reader.GetDateTime(4);
-                            tc.UtcEndTime = reader.GetDateTime(5);
+                            if (reader.IsDBNull(5))
+                            {
+                                tc.UtcEndTime = null;
+                            }
+                            else
+                            {
+                                tc.UtcEndTime = reader.GetDateTime(5);
+                            }
                             tc.WorkSite = new WorkSite(reader.GetInt32(6), reader.GetString(8), reader.GetString(7));
                             tc.Job = new Job(reader.GetInt32(9), reader.GetString(11), reader.GetString(10));
                             tc.Employee = this.currEmp;
 
                             this.timeCardDataGridView.Rows.Add(new Object[] 
-                                                                    {   tc.LaborDetailID,
-                                                                        tc.CalendarDate.ToString("d"),
-                                                                        tc.Job.JobName,
-                                                                        tc.WorkSite.WorkSiteName,
-                                                                        tc.LocalStartTime,
-                                                                        tc.LocalEndTime, 
+                                                                    {   tc.LaborDetailId,
+                                                                        ((DateTime)tc.CalendarDate).ToString("d"),
+                                                                        tc.Job.ToString(),
+                                                                        tc.WorkSite.ToString(),
+                                                                        tc.LocalStartTime.ToString(),
+                                                                        (tc.LocalEndTime == null) ? string.Empty : tc.LocalEndTime.ToString(), 
                                                                         String.Format("{0:0.00}",tc.TotalHours)   });
 
-                            this.timeCardList.Add(tc.LaborDetailID, tc);
+                            this.timeCardList.Add(tc.LaborDetailId, tc);
                         }
                     }
                 }
@@ -78,11 +95,48 @@ namespace MCLaborAdmin
 
         }
 
+        public void updateTimeCardGrid(TimeCard tc)
+        {
+            bool newRecord = true;
+
+            for (int i = this.timeCardDataGridView.Rows.Count - 1; i > -1; i--)
+            {
+                if (tc.LaborDetailId == (int)this.timeCardDataGridView.Rows[i].Cells[0].Value)
+                {
+                    newRecord = false;
+                    this.timeCardDataGridView.Rows[i].Cells[1].Value = ((DateTime)tc.CalendarDate).ToString("d");
+                    this.timeCardDataGridView.Rows[i].Cells[2].Value = tc.Job.ToString();
+                    this.timeCardDataGridView.Rows[i].Cells[3].Value = tc.WorkSite.ToString();
+                    this.timeCardDataGridView.Rows[i].Cells[4].Value = tc.LocalStartTime.ToString();
+                    this.timeCardDataGridView.Rows[i].Cells[5].Value = (tc.LocalEndTime == null) ? string.Empty : tc.LocalEndTime.ToString();
+                    this.timeCardDataGridView.Rows[i].Cells[6].Value = String.Format("{0:0.00}", tc.TotalHours);
+
+                    this.timeCardList[tc.LaborDetailId] = tc;
+                }
+            }
+
+            if (newRecord)
+            {
+                this.timeCardDataGridView.Rows.Add(new Object[] 
+                                                                    {   tc.LaborDetailId,
+                                                                        ((DateTime)tc.CalendarDate).ToString("d"),
+                                                                        tc.Job.ToString(),
+                                                                        tc.WorkSite.ToString(),
+                                                                        tc.LocalStartTime.ToString(),
+                                                                        (tc.LocalEndTime == null) ? string.Empty : tc.LocalEndTime.ToString(), 
+                                                                        String.Format("{0:0.00}",tc.TotalHours)   });
+
+                this.timeCardList.Add(tc.LaborDetailId, tc);
+            }
+        }
+
 
         private void TimeCardReviewForm_Load(object sender, EventArgs e)
         {
             this.TopMost = true;
             this.TopMost = false;
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             populateTimeCardDataGrid();
             this.timeCardReviewEmpNameTxt.Text = this.currEmp.FullName;
             this.timeCardReviewDateRangeTxt.Text = this.startDate.ToString("d") + " - " + this.endDate.ToString("d");
@@ -127,6 +181,13 @@ namespace MCLaborAdmin
         private void TimeCardReviewForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.parentForm.Show();
+        }
+
+        private void timeCardReviewSummaryTotalsBtn_Click(object sender, EventArgs e)
+        {
+            TimeCardSummaryTotalsForm summaryForm = new TimeCardSummaryTotalsForm(this, this.timeCardList.Values.ToList(), this.currEmp, this.timeCardReviewDateRangeTxt.Text);
+            this.Hide();
+            summaryForm.Show();
         }
     }
 }

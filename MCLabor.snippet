@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2008/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ConnCmdReader</Title>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[using (SqlConnection conn = DBUtils.getConnection("MCLabor"))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("", conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+                    }
+                }
+            }]]>
+
+      </Code>
+    </Snippet>
+
+
+  </CodeSnippet>
+</CodeSnippets>

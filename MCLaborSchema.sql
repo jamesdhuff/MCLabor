@@ -76,6 +76,7 @@ CREATE TABLE dbo.WORK_SITE
 	workSiteName nvarchar(50) NOT NULL,
 	refCode nvarchar(50),
 	description nvarchar(500),
+	active bit DEFAULT 1 NOT NULL,
 	CONSTRAINT PK_WORKSITE PRIMARY KEY CLUSTERED(workSiteId ASC)
 )
 GO

@@ -3,3 +3,6 @@ C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborServer\bin\MCLaborServer.pdb
 C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborServer\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborServer\obj\Debug\MCLaborServer.dll
 C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborServer\obj\Debug\MCLaborServer.pdb
+C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborServer\bin\log4net.dll
+C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborServer\bin\MCLaborLib.dll
+C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborServer\bin\MCLaborLib.pdb

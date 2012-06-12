@@ -7,3 +7,8 @@ C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\obj\Debug\MCLaborClient.cspr
 C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\obj\Debug\MCLaborClient.exe
 C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\obj\Debug\MCLaborClient.pdb
 C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\obj\Debug\MCLaborClient.LoginForm.resources
+C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\bin\Debug\log4net.dll
+C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\obj\Debug\MCLaborClient.ClockInForm.resources
+C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\bin\Debug\MCLaborLib.dll
+C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\bin\Debug\MCLaborLib.pdb
+C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\obj\Debug\MCLaborClient.ClockOutForm.resources

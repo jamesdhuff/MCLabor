@@ -22,6 +22,7 @@ namespace MCLaborAdmin
 
         public Job()
         {
+            this.jobId = -1;
         }
 
         public Job(int jobId, string refCode, string jobName)

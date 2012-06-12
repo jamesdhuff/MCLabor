@@ -34,9 +34,6 @@
             this.timeCardReviewEmpNameTxt = new System.Windows.Forms.TextBox();
             this.timeCardReviewDateRangeTxt = new System.Windows.Forms.TextBox();
             this.timeCardDataGridView = new System.Windows.Forms.DataGridView();
-            this.timeCardReviewAddBtn = new System.Windows.Forms.Button();
-            this.timeCardReviewEditBtn = new System.Windows.Forms.Button();
-            this.timeCardReviewCloseBtn = new System.Windows.Forms.Button();
             this.laborDetailId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.calendarDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jobName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +41,10 @@
             this.localStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.localEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeCardReviewAddBtn = new System.Windows.Forms.Button();
+            this.timeCardReviewEditBtn = new System.Windows.Forms.Button();
+            this.timeCardReviewCloseBtn = new System.Windows.Forms.Button();
+            this.timeCardReviewSummaryTotalsBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.timeCardDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,36 +108,6 @@
             this.timeCardDataGridView.Size = new System.Drawing.Size(818, 516);
             this.timeCardDataGridView.TabIndex = 4;
             // 
-            // timeCardReviewAddBtn
-            // 
-            this.timeCardReviewAddBtn.Location = new System.Drawing.Point(24, 586);
-            this.timeCardReviewAddBtn.Name = "timeCardReviewAddBtn";
-            this.timeCardReviewAddBtn.Size = new System.Drawing.Size(124, 35);
-            this.timeCardReviewAddBtn.TabIndex = 5;
-            this.timeCardReviewAddBtn.Text = "Add";
-            this.timeCardReviewAddBtn.UseVisualStyleBackColor = true;
-            this.timeCardReviewAddBtn.Click += new System.EventHandler(this.timeCardReviewAddBtn_Click);
-            // 
-            // timeCardReviewEditBtn
-            // 
-            this.timeCardReviewEditBtn.Location = new System.Drawing.Point(181, 586);
-            this.timeCardReviewEditBtn.Name = "timeCardReviewEditBtn";
-            this.timeCardReviewEditBtn.Size = new System.Drawing.Size(124, 35);
-            this.timeCardReviewEditBtn.TabIndex = 6;
-            this.timeCardReviewEditBtn.Text = "Edit";
-            this.timeCardReviewEditBtn.UseVisualStyleBackColor = true;
-            this.timeCardReviewEditBtn.Click += new System.EventHandler(this.timeCardReviewEditBtn_Click);
-            // 
-            // timeCardReviewCloseBtn
-            // 
-            this.timeCardReviewCloseBtn.Location = new System.Drawing.Point(337, 586);
-            this.timeCardReviewCloseBtn.Name = "timeCardReviewCloseBtn";
-            this.timeCardReviewCloseBtn.Size = new System.Drawing.Size(124, 35);
-            this.timeCardReviewCloseBtn.TabIndex = 7;
-            this.timeCardReviewCloseBtn.Text = "Close";
-            this.timeCardReviewCloseBtn.UseVisualStyleBackColor = true;
-            this.timeCardReviewCloseBtn.Click += new System.EventHandler(this.timeCardReviewCloseBtn_Click);
-            // 
             // laborDetailId
             // 
             this.laborDetailId.HeaderText = "laborDetailId";
@@ -184,11 +155,52 @@
             this.totalHours.Name = "totalHours";
             this.totalHours.ReadOnly = true;
             // 
+            // timeCardReviewAddBtn
+            // 
+            this.timeCardReviewAddBtn.Location = new System.Drawing.Point(24, 586);
+            this.timeCardReviewAddBtn.Name = "timeCardReviewAddBtn";
+            this.timeCardReviewAddBtn.Size = new System.Drawing.Size(124, 35);
+            this.timeCardReviewAddBtn.TabIndex = 5;
+            this.timeCardReviewAddBtn.Text = "Add";
+            this.timeCardReviewAddBtn.UseVisualStyleBackColor = true;
+            this.timeCardReviewAddBtn.Click += new System.EventHandler(this.timeCardReviewAddBtn_Click);
+            // 
+            // timeCardReviewEditBtn
+            // 
+            this.timeCardReviewEditBtn.Location = new System.Drawing.Point(186, 586);
+            this.timeCardReviewEditBtn.Name = "timeCardReviewEditBtn";
+            this.timeCardReviewEditBtn.Size = new System.Drawing.Size(124, 35);
+            this.timeCardReviewEditBtn.TabIndex = 6;
+            this.timeCardReviewEditBtn.Text = "Edit";
+            this.timeCardReviewEditBtn.UseVisualStyleBackColor = true;
+            this.timeCardReviewEditBtn.Click += new System.EventHandler(this.timeCardReviewEditBtn_Click);
+            // 
+            // timeCardReviewCloseBtn
+            // 
+            this.timeCardReviewCloseBtn.Location = new System.Drawing.Point(505, 586);
+            this.timeCardReviewCloseBtn.Name = "timeCardReviewCloseBtn";
+            this.timeCardReviewCloseBtn.Size = new System.Drawing.Size(124, 35);
+            this.timeCardReviewCloseBtn.TabIndex = 7;
+            this.timeCardReviewCloseBtn.Text = "Close";
+            this.timeCardReviewCloseBtn.UseVisualStyleBackColor = true;
+            this.timeCardReviewCloseBtn.Click += new System.EventHandler(this.timeCardReviewCloseBtn_Click);
+            // 
+            // timeCardReviewSummaryTotalsBtn
+            // 
+            this.timeCardReviewSummaryTotalsBtn.Location = new System.Drawing.Point(346, 586);
+            this.timeCardReviewSummaryTotalsBtn.Name = "timeCardReviewSummaryTotalsBtn";
+            this.timeCardReviewSummaryTotalsBtn.Size = new System.Drawing.Size(124, 35);
+            this.timeCardReviewSummaryTotalsBtn.TabIndex = 8;
+            this.timeCardReviewSummaryTotalsBtn.Text = "Summary Totals";
+            this.timeCardReviewSummaryTotalsBtn.UseVisualStyleBackColor = true;
+            this.timeCardReviewSummaryTotalsBtn.Click += new System.EventHandler(this.timeCardReviewSummaryTotalsBtn_Click);
+            // 
             // TimeCardReviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(865, 633);
+            this.Controls.Add(this.timeCardReviewSummaryTotalsBtn);
             this.Controls.Add(this.timeCardReviewCloseBtn);
             this.Controls.Add(this.timeCardReviewEditBtn);
             this.Controls.Add(this.timeCardReviewAddBtn);
@@ -199,6 +211,7 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TimeCardReviewForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MCLabor Administration - Add/Edit Time Cards";
             this.Load += new System.EventHandler(this.TimeCardReviewForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TimeCardReviewForm_FormClosing);
@@ -225,5 +238,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn localStartTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn localEndTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalHours;
+        private System.Windows.Forms.Button timeCardReviewSummaryTotalsBtn;
     }
 }

@@ -43,6 +43,8 @@
             this.clockOutTimePicker = new System.Windows.Forms.DateTimePicker();
             this.timeCardAddEditSaveBtn = new System.Windows.Forms.Button();
             this.timeCardAddEditCancelBtn = new System.Windows.Forms.Button();
+            this.noClockOutChkBox = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // empNameLbl
@@ -58,9 +60,10 @@
             // 
             this.empNameTxt.BackColor = System.Drawing.SystemColors.Control;
             this.empNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.empNameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.empNameTxt.Location = new System.Drawing.Point(110, 12);
             this.empNameTxt.Name = "empNameTxt";
-            this.empNameTxt.Size = new System.Drawing.Size(183, 13);
+            this.empNameTxt.Size = new System.Drawing.Size(183, 16);
             this.empNameTxt.TabIndex = 1;
             // 
             // jobCmbo
@@ -104,6 +107,7 @@
             this.clockInTimePicker.Name = "clockInTimePicker";
             this.clockInTimePicker.Size = new System.Drawing.Size(99, 20);
             this.clockInTimePicker.TabIndex = 6;
+            this.clockInTimePicker.ValueChanged += new System.EventHandler(this.clockInTimePicker_ValueChanged);
             // 
             // clockInLbl
             // 
@@ -130,6 +134,7 @@
             this.clockInDatePicker.Name = "clockInDatePicker";
             this.clockInDatePicker.Size = new System.Drawing.Size(120, 20);
             this.clockInDatePicker.TabIndex = 10;
+            this.clockInDatePicker.ValueChanged += new System.EventHandler(this.clockInDatePicker_ValueChanged);
             // 
             // clockOutDatePicker
             // 
@@ -138,6 +143,7 @@
             this.clockOutDatePicker.Name = "clockOutDatePicker";
             this.clockOutDatePicker.Size = new System.Drawing.Size(120, 20);
             this.clockOutDatePicker.TabIndex = 12;
+            this.clockOutDatePicker.ValueChanged += new System.EventHandler(this.clockOutDatePicker_ValueChanged);
             // 
             // clockOutTimePicker
             // 
@@ -146,30 +152,54 @@
             this.clockOutTimePicker.Name = "clockOutTimePicker";
             this.clockOutTimePicker.Size = new System.Drawing.Size(99, 20);
             this.clockOutTimePicker.TabIndex = 11;
+            this.clockOutTimePicker.ValueChanged += new System.EventHandler(this.clockOutTimePicker_ValueChanged);
             // 
             // timeCardAddEditSaveBtn
             // 
-            this.timeCardAddEditSaveBtn.Location = new System.Drawing.Point(24, 219);
+            this.timeCardAddEditSaveBtn.Location = new System.Drawing.Point(24, 250);
             this.timeCardAddEditSaveBtn.Name = "timeCardAddEditSaveBtn";
             this.timeCardAddEditSaveBtn.Size = new System.Drawing.Size(108, 31);
             this.timeCardAddEditSaveBtn.TabIndex = 13;
             this.timeCardAddEditSaveBtn.Text = "Save";
             this.timeCardAddEditSaveBtn.UseVisualStyleBackColor = true;
+            this.timeCardAddEditSaveBtn.Click += new System.EventHandler(this.timeCardAddEditSaveBtn_Click);
             // 
             // timeCardAddEditCancelBtn
             // 
-            this.timeCardAddEditCancelBtn.Location = new System.Drawing.Point(148, 219);
+            this.timeCardAddEditCancelBtn.Location = new System.Drawing.Point(148, 250);
             this.timeCardAddEditCancelBtn.Name = "timeCardAddEditCancelBtn";
             this.timeCardAddEditCancelBtn.Size = new System.Drawing.Size(108, 31);
             this.timeCardAddEditCancelBtn.TabIndex = 14;
             this.timeCardAddEditCancelBtn.Text = "Cancel";
             this.timeCardAddEditCancelBtn.UseVisualStyleBackColor = true;
+            this.timeCardAddEditCancelBtn.Click += new System.EventHandler(this.timeCardAddEditCancelBtn_Click);
+            // 
+            // noClockOutChkBox
+            // 
+            this.noClockOutChkBox.AutoSize = true;
+            this.noClockOutChkBox.Location = new System.Drawing.Point(112, 202);
+            this.noClockOutChkBox.Name = "noClockOutChkBox";
+            this.noClockOutChkBox.Size = new System.Drawing.Size(15, 14);
+            this.noClockOutChkBox.TabIndex = 15;
+            this.noClockOutChkBox.UseVisualStyleBackColor = true;
+            this.noClockOutChkBox.CheckedChanged += new System.EventHandler(this.noClockOutChkBox_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 202);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "No Clock Out:";
             // 
             // TimeCardAddEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 262);
+            this.ClientSize = new System.Drawing.Size(386, 293);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.noClockOutChkBox);
             this.Controls.Add(this.timeCardAddEditCancelBtn);
             this.Controls.Add(this.timeCardAddEditSaveBtn);
             this.Controls.Add(this.clockOutDatePicker);
@@ -186,6 +216,7 @@
             this.Controls.Add(this.empNameLbl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TimeCardAddEditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MCLabor Administration - Add/Edit Time Cards";
             this.Load += new System.EventHandler(this.TimeCardAddEditForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TimeCardAddEditForm_FormClosing);
@@ -210,5 +241,7 @@
         private System.Windows.Forms.DateTimePicker clockOutTimePicker;
         private System.Windows.Forms.Button timeCardAddEditSaveBtn;
         private System.Windows.Forms.Button timeCardAddEditCancelBtn;
+        private System.Windows.Forms.CheckBox noClockOutChkBox;
+        private System.Windows.Forms.Label label1;
     }
 }

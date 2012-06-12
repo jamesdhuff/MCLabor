@@ -1,15 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="GetMessage">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetMessageResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetMessageResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MCLaborLib" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MCLaborLib" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Employee">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmployeeId" type="xs:int" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsClockedIn" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoginId" type="xs:int" />
+      <xs:element minOccurs="0" name="RefCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Employee" nillable="true" type="tns:Employee" />
+  <xs:complexType name="ArrayOfWorkSite">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkSite" nillable="true" type="tns:WorkSite" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWorkSite" nillable="true" type="tns:ArrayOfWorkSite" />
+  <xs:complexType name="WorkSite">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RefCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WorkSiteId" type="xs:int" />
+      <xs:element minOccurs="0" name="WorkSiteName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WorkSite" nillable="true" type="tns:WorkSite" />
+  <xs:complexType name="ArrayOfJob">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Job" nillable="true" type="tns:Job" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfJob" nillable="true" type="tns:ArrayOfJob" />
+  <xs:complexType name="Job">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="JobId" type="xs:int" />
+      <xs:element minOccurs="0" name="JobName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RefCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="jobId" type="xs:int" />
+      <xs:element minOccurs="0" name="jobName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="refCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Job" nillable="true" type="tns:Job" />
+  <xs:complexType name="TimeCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CalendarDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Employee" nillable="true" type="tns:Employee" />
+      <xs:element minOccurs="0" name="Job" nillable="true" type="tns:Job" />
+      <xs:element minOccurs="0" name="LaborDetailId" type="xs:int" />
+      <xs:element minOccurs="0" name="LocalEndTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LocalStartTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UtcEndTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UtcStartTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="WorkSite" nillable="true" type="tns:WorkSite" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TimeCard" nillable="true" type="tns:TimeCard" />
 </xs:schema>

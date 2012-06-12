@@ -1,0 +1,319 @@
+2012-06-08 16:36:31,995 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 16:37:44,973 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 16:53:35,094 [8] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:02:07,349 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:04:40,519 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:05:24,292 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:07:29,565 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:11:48,346 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:13:22,413 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:15:10,090 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:16:33,299 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:19:49,995 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:21:43,626 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:23:07,975 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:28:17,012 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:30:53,694 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:32:21,881 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:33:17,760 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:35:30,109 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:36:30,593 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:38:03,119 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:40:39,087 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 17:42:59,751 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 20:33:27,698 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 20:38:07,887 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 20:56:39,847 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-08 21:16:05,182 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-10 20:36:15,773 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-10 20:39:10,619 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-10 22:05:23,420 [8] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-10 22:06:57,508 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-10 22:07:14,000 [9] ERROR MCLaborClient.LoginForm - System.NullReferenceException: Object reference not set to an instance of an object.
+   at MCLaborClient.LoginForm.loginBtn_Click(Object sender, EventArgs e) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\LoginForm.cs:line 118
+2012-06-10 22:11:33,827 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-10 22:11:55,129 [9] ERROR MCLaborClient.LoginForm - System.ServiceModel.CommunicationException: An error occurred while receiving the HTTP response to http://jhuff3-8460p.corp.educate.com/MCLaborServer/LaborService.svc. This could be due to the service endpoint binding not using the HTTP protocol. This could also be due to an HTTP request context being aborted by the server (possibly due to the service shutting down). See server logs for more details. ---> System.Net.WebException: The underlying connection was closed: An unexpected error occurred on a receive. ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.Connection.SyncRead(HttpWebRequest request, Boolean userRetrievedStream, Boolean probeRead)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at System.ServiceModel.Channels.HttpChannelFactory.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   --- End of inner exception stack trace ---
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpChannelUtilities.ProcessGetResponseWebException(WebException webException, HttpWebRequest request, HttpAbortReason abortReason)
+   at System.ServiceModel.Channels.HttpChannelFactory.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ClientReliableChannelBinder`1.RequestClientReliableChannelBinder`1.OnRequest(TRequestChannel channel, Message message, TimeSpan timeout, MaskingMode maskingMode)
+   at System.ServiceModel.Channels.ClientReliableChannelBinder`1.Request(Message message, TimeSpan timeout, MaskingMode maskingMode)
+   at System.ServiceModel.Channels.ClientReliableChannelBinder`1.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Security.SecuritySessionClientSettings`1.SecurityRequestSessionChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at MCLaborClient.LaborService.ILaborService.getEmployee(Int32 loginId)
+   at MCLaborClient.LaborService.LaborServiceClient.getEmployee(Int32 loginId) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\Service References\LaborService\Reference.cs:line 787
+   at MCLaborClient.LoginForm.loginBtn_Click(Object sender, EventArgs e) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\LoginForm.cs:line 102
+2012-06-10 22:13:12,891 [9] ERROR MCLaborClient.LoginForm - System.ServiceModel.CommunicationException: The underlying connection was closed: A connection that was expected to be kept alive was closed by the server. ---> System.Net.WebException: The underlying connection was closed: A connection that was expected to be kept alive was closed by the server. ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.Connection.SyncRead(HttpWebRequest request, Boolean userRetrievedStream, Boolean probeRead)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at System.ServiceModel.Channels.HttpChannelFactory.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   --- End of inner exception stack trace ---
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpChannelUtilities.ProcessGetResponseWebException(WebException webException, HttpWebRequest request, HttpAbortReason abortReason)
+   at System.ServiceModel.Channels.HttpChannelFactory.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ClientReliableChannelBinder`1.RequestClientReliableChannelBinder`1.OnRequest(TRequestChannel channel, Message message, TimeSpan timeout, MaskingMode maskingMode)
+   at System.ServiceModel.Channels.ClientReliableChannelBinder`1.Request(Message message, TimeSpan timeout, MaskingMode maskingMode)
+   at System.ServiceModel.Channels.ClientReliableChannelBinder`1.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Security.SecuritySessionClientSettings`1.SecurityRequestSessionChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at MCLaborClient.LaborService.ILaborService.getEmployee(Int32 loginId)
+   at MCLaborClient.LaborService.LaborServiceClient.getEmployee(Int32 loginId) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\Service References\LaborService\Reference.cs:line 787
+   at MCLaborClient.LoginForm.loginBtn_Click(Object sender, EventArgs e) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\LoginForm.cs:line 102
+2012-06-10 22:13:55,238 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-10 22:13:58,738 [9] ERROR MCLaborClient.LoginForm - System.ServiceModel.CommunicationException: The underlying connection was closed: A connection that was expected to be kept alive was closed by the server. ---> System.Net.WebException: The underlying connection was closed: A connection that was expected to be kept alive was closed by the server. ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.Connection.SyncRead(HttpWebRequest request, Boolean userRetrievedStream, Boolean probeRead)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at System.ServiceModel.Channels.HttpChannelFactory.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   --- End of inner exception stack trace ---
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpChannelUtilities.ProcessGetResponseWebException(WebException webException, HttpWebRequest request, HttpAbortReason abortReason)
+   at System.ServiceModel.Channels.HttpChannelFactory.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ClientReliableChannelBinder`1.RequestClientReliableChannelBinder`1.OnRequest(TRequestChannel channel, Message message, TimeSpan timeout, MaskingMode maskingMode)
+   at System.ServiceModel.Channels.ClientReliableChannelBinder`1.Request(Message message, TimeSpan timeout, MaskingMode maskingMode)
+   at System.ServiceModel.Channels.ClientReliableChannelBinder`1.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Security.SecuritySessionClientSettings`1.SecurityRequestSessionChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at MCLaborClient.LaborService.ILaborService.getEmployee(Int32 loginId)
+   at MCLaborClient.LaborService.LaborServiceClient.getEmployee(Int32 loginId) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\Service References\LaborService\Reference.cs:line 787
+   at MCLaborClient.LoginForm.loginBtn_Click(Object sender, EventArgs e) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\LoginForm.cs:line 102
+2012-06-11 13:00:01,546 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-11 13:06:10,167 [8] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-11 13:08:37,187 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-11 14:40:34,479 [8] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-11 14:41:28,092 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-11 14:44:39,837 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-11 14:47:04,670 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-11 15:16:54,918 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-11 15:17:01,594 [9] ERROR MCLaborClient.LoginForm - System.ServiceModel.FaultException: The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework 3.0 SDK documentation and inspect the server trace logs.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at MCLaborClient.LaborService.ILaborService.getJobList(Int32 employeeId)
+   at MCLaborClient.LaborService.LaborServiceClient.getJobList(Int32 employeeId) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\Service References\LaborService\Reference.cs:line 78
+   at MCLaborClient.LoginForm.loginBtn_Click(Object sender, EventArgs e) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\LoginForm.cs:line 118
+2012-06-11 15:19:42,519 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-11 15:20:30,121 [10] ERROR MCLaborClient.LoginForm - System.ServiceModel.FaultException: The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework 3.0 SDK documentation and inspect the server trace logs.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at MCLaborClient.LaborService.ILaborService.getJobList(Int32 employeeId)
+   at MCLaborClient.LaborService.LaborServiceClient.getJobList(Int32 employeeId) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\Service References\LaborService\Reference.cs:line 78
+   at MCLaborClient.LoginForm.loginBtn_Click(Object sender, EventArgs e) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\LoginForm.cs:line 118
+2012-06-11 15:20:49,513 [10] ERROR MCLaborClient.LoginForm - System.ServiceModel.FaultException: The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework 3.0 SDK documentation and inspect the server trace logs.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at MCLaborClient.LaborService.ILaborService.getJobList(Int32 employeeId)
+   at MCLaborClient.LaborService.LaborServiceClient.getJobList(Int32 employeeId) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\Service References\LaborService\Reference.cs:line 78
+   at MCLaborClient.LoginForm.loginBtn_Click(Object sender, EventArgs e) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\LoginForm.cs:line 118
+2012-06-11 15:28:45,438 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-11 15:28:53,607 [9] ERROR MCLaborClient.LoginForm - System.ServiceModel.FaultException: The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework 3.0 SDK documentation and inspect the server trace logs.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at MCLaborClient.LaborService.ILaborService.getJobList(Int32 employeeId)
+   at MCLaborClient.LaborService.LaborServiceClient.getJobList(Int32 employeeId) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\Service References\LaborService\Reference.cs:line 78
+   at MCLaborClient.LoginForm.loginBtn_Click(Object sender, EventArgs e) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\LoginForm.cs:line 118
+2012-06-11 15:29:48,241 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-11 16:42:16,493 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-11 16:42:19,956 [10] ERROR MCLaborClient.LoginForm - System.ServiceModel.FaultException: The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework 3.0 SDK documentation and inspect the server trace logs.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at MCLaborClient.LaborService.ILaborService.getLatestOpenTimeCard(Int32 employeeId)
+   at MCLaborClient.LaborService.LaborServiceClient.getLatestOpenTimeCard(Int32 employeeId) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\Service References\LaborService\Reference.cs:line 85
+   at MCLaborClient.LoginForm.loginBtn_Click(Object sender, EventArgs e) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\LoginForm.cs:line 112
+2012-06-11 16:43:54,580 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-11 20:59:31,536 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started

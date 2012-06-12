@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCLaborServer", "MCLaborServer\MCLaborServer.csproj", "{B2834CE7-3E45-4A54-B8FA-E9AF0500F229}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCLaborLib", "..\MCLabor\MCLaborLib.csproj", "{2D4B55A5-E6D5-4021-A9C7-756B1EBC2BDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{B2834CE7-3E45-4A54-B8FA-E9AF0500F229}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2834CE7-3E45-4A54-B8FA-E9AF0500F229}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2834CE7-3E45-4A54-B8FA-E9AF0500F229}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D4B55A5-E6D5-4021-A9C7-756B1EBC2BDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D4B55A5-E6D5-4021-A9C7-756B1EBC2BDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D4B55A5-E6D5-4021-A9C7-756B1EBC2BDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D4B55A5-E6D5-4021-A9C7-756B1EBC2BDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

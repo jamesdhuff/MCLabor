@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCLaborClient", "MCLaborClient\MCLaborClient.csproj", "{58D67141-548E-444B-8E9A-5BE212E41B19}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MCLaborSetup", "Setup1\Setup1.vdproj", "{D83F7E3A-6379-447E-9EFE-644E8A3C7BB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,8 @@ Global
 		{58D67141-548E-444B-8E9A-5BE212E41B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58D67141-548E-444B-8E9A-5BE212E41B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58D67141-548E-444B-8E9A-5BE212E41B19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D83F7E3A-6379-447E-9EFE-644E8A3C7BB1}.Debug|Any CPU.ActiveCfg = Debug
+		{D83F7E3A-6379-447E-9EFE-644E8A3C7BB1}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,6 +14,9 @@ namespace MCLaborAdmin
 {
     public partial class LoginForm : Form
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger
+            (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public LoginForm()
         {
             this.StartPosition = FormStartPosition.CenterScreen;

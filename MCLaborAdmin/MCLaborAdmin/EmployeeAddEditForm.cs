@@ -12,6 +12,9 @@ namespace MCLaborAdmin
 {
     public partial class EmployeeAddEditForm : Form
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger
+            (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private EmployeeMainForm empMainForm;
         private Employee currEmp;
 

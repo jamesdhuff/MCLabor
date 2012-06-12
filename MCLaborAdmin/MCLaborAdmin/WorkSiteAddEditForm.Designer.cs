@@ -37,11 +37,13 @@
             this.workSiteAddEditDescriptionLbl = new System.Windows.Forms.Label();
             this.workSiteAddEditDescriptionTxt = new System.Windows.Forms.TextBox();
             this.workSiteAddEditCancelBtn = new System.Windows.Forms.Button();
+            this.workSiteAddEditActiveLbl = new System.Windows.Forms.Label();
+            this.activeChkBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // workSiteAddEditSaveBtn
             // 
-            this.workSiteAddEditSaveBtn.Location = new System.Drawing.Point(30, 148);
+            this.workSiteAddEditSaveBtn.Location = new System.Drawing.Point(30, 180);
             this.workSiteAddEditSaveBtn.Name = "workSiteAddEditSaveBtn";
             this.workSiteAddEditSaveBtn.Size = new System.Drawing.Size(111, 35);
             this.workSiteAddEditSaveBtn.TabIndex = 0;
@@ -99,7 +101,7 @@
             // 
             // workSiteAddEditCancelBtn
             // 
-            this.workSiteAddEditCancelBtn.Location = new System.Drawing.Point(187, 148);
+            this.workSiteAddEditCancelBtn.Location = new System.Drawing.Point(187, 180);
             this.workSiteAddEditCancelBtn.Name = "workSiteAddEditCancelBtn";
             this.workSiteAddEditCancelBtn.Size = new System.Drawing.Size(111, 35);
             this.workSiteAddEditCancelBtn.TabIndex = 7;
@@ -107,11 +109,33 @@
             this.workSiteAddEditCancelBtn.UseVisualStyleBackColor = true;
             this.workSiteAddEditCancelBtn.Click += new System.EventHandler(this.workSiteAddEditCancelBtn_Click);
             // 
+            // workSiteAddEditActiveLbl
+            // 
+            this.workSiteAddEditActiveLbl.AutoSize = true;
+            this.workSiteAddEditActiveLbl.Location = new System.Drawing.Point(27, 142);
+            this.workSiteAddEditActiveLbl.Name = "workSiteAddEditActiveLbl";
+            this.workSiteAddEditActiveLbl.Size = new System.Drawing.Size(37, 13);
+            this.workSiteAddEditActiveLbl.TabIndex = 8;
+            this.workSiteAddEditActiveLbl.Text = "Active";
+            // 
+            // activeChkBox
+            // 
+            this.activeChkBox.AutoSize = true;
+            this.activeChkBox.Checked = true;
+            this.activeChkBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.activeChkBox.Location = new System.Drawing.Point(118, 142);
+            this.activeChkBox.Name = "activeChkBox";
+            this.activeChkBox.Size = new System.Drawing.Size(15, 14);
+            this.activeChkBox.TabIndex = 9;
+            this.activeChkBox.UseVisualStyleBackColor = true;
+            // 
             // WorkSiteAddEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(326, 199);
+            this.ClientSize = new System.Drawing.Size(326, 227);
+            this.Controls.Add(this.activeChkBox);
+            this.Controls.Add(this.workSiteAddEditActiveLbl);
             this.Controls.Add(this.workSiteAddEditCancelBtn);
             this.Controls.Add(this.workSiteAddEditDescriptionLbl);
             this.Controls.Add(this.workSiteAddEditDescriptionTxt);
@@ -141,5 +165,7 @@
         private System.Windows.Forms.Label workSiteAddEditDescriptionLbl;
         private System.Windows.Forms.TextBox workSiteAddEditDescriptionTxt;
         private System.Windows.Forms.Button workSiteAddEditCancelBtn;
+        private System.Windows.Forms.Label workSiteAddEditActiveLbl;
+        private System.Windows.Forms.CheckBox activeChkBox;
     }
 }

@@ -4,17 +4,36 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using MCLaborLib;
 
 namespace MCLaborServer
 {
-    // NOTE: If you change the interface name "IService1" here, you must also update the reference to "IService1" in Web.config.
     [ServiceContract]
     public interface ILaborService
     {
-
         [OperationContract]
         string GetMessage();
 
-        // TODO: Add your service operations here
+        [OperationContract]
+        bool isValidLogin(int loginId);
+
+        [OperationContract]
+        Employee getEmployee(int loginId);
+
+        [OperationContract]
+        List<WorkSite> getWorkSiteList();
+
+        [OperationContract]
+        List<Job> getJobList(int employeeId);
+
+        [OperationContract]
+        TimeCard getLatestOpenTimeCard(int employeeId);
+
+        [OperationContract]
+        void doClockOut(TimeCard tc);
+
+        [OperationContract]
+        void doClockIn(TimeCard tc);
+
     }
 }
