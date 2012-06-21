@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="MCLabor">
+      <rd:DataSourceID>3e03f5e9-9ebc-4bc4-a0e2-e27aa65b01b5</rd:DataSourceID>
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>1in</RightMargin>
+  <LeftMargin>1in</LeftMargin>
+  <BottomMargin>1in</BottomMargin>
+  <rd:ReportID>23004189-c3f1-45c7-b8a4-ce6d92cb4cbd</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DSPayRateList_DTPayRateList">
+      <Fields>
+        <Field Name="employeeId">
+          <DataField>employeeId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="firstName">
+          <DataField>firstName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="lastName">
+          <DataField>lastName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="jobName">
+          <DataField>jobName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="hourlyPayRate">
+          <DataField>hourlyPayRate</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>MCLabor</DataSourceName>
+        <CommandText>SELECT e.employeeId, e.firstName, e.lastName, j.jobName, pr.hourlyPayRate
+FROM employee e, pay_rate pr, job j
+WHERE e.employeeId = pr.employeeId
+AND j.jobId = pr.jobId
+AND pr.active = 1</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>DSPayRateList</rd:DataSetName>
+        <rd:TableName>DTPayRateList</rd:TableName>
+        <rd:TableAdapterName>DTPayRateListTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <Width>5.375in</Width>
+  <Body>
+    <ReportItems>
+      <List Name="list1">
+        <Left>0.125in</Left>
+        <DataSetName>DSPayRateList_DTPayRateList</DataSetName>
+        <ReportItems>
+          <List Name="list2">
+            <ZIndex>1</ZIndex>
+            <Left>0.25in</Left>
+            <ReportItems>
+              <Textbox Name="hourlyPayRate">
+                <rd:DefaultName>hourlyPayRate</rd:DefaultName>
+                <Top>0.125in</Top>
+                <Width>1in</Width>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+                <ZIndex>1</ZIndex>
+                <CanGrow>true</CanGrow>
+                <Left>1.625in</Left>
+                <Height>0.25in</Height>
+                <Value>=Fields!hourlyPayRate.Value</Value>
+              </Textbox>
+              <Textbox Name="jobName">
+                <rd:DefaultName>jobName</rd:DefaultName>
+                <Top>0.125in</Top>
+                <Width>1in</Width>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+                <CanGrow>true</CanGrow>
+                <Left>0.125in</Left>
+                <Height>0.25in</Height>
+                <Value>=Fields!jobName.Value</Value>
+              </Textbox>
+            </ReportItems>
+            <Top>0.5in</Top>
+            <Width>4.625in</Width>
+            <Height>0.625in</Height>
+          </List>
+          <Textbox Name="firstName">
+            <rd:DefaultName>firstName</rd:DefaultName>
+            <Top>0.125in</Top>
+            <Width>2.375in</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <CanGrow>true</CanGrow>
+            <Left>0.25in</Left>
+            <Height>0.25in</Height>
+            <Value>=Fields!firstName.Value &amp; " " &amp; Fields!lastName.Value</Value>
+          </Textbox>
+        </ReportItems>
+        <Top>0.25in</Top>
+        <Width>5.125in</Width>
+        <Grouping Name="list1_Details_Group">
+          <GroupExpressions>
+            <GroupExpression>=Fields!employeeId.Value</GroupExpression>
+          </GroupExpressions>
+        </Grouping>
+        <Height>1.375in</Height>
+      </List>
+    </ReportItems>
+    <Height>1.75in</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>1in</TopMargin>
+</Report>

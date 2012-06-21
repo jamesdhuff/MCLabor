@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClearUsernameBinding, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\SWSetup\ClearUsernameBinding v1.0\ClearUsernameBinding\ClearUserPassBinding\bin\Release\ClearUsernameBinding.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\log4net.dll</HintPath>
@@ -79,6 +83,10 @@
     <ProjectReference Include="..\..\MCLabor\MCLaborLib.csproj">
       <Project>{2D4B55A5-E6D5-4021-A9C7-756B1EBC2BDA}</Project>
       <Name>MCLaborLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCLaborAuthenticator\MCLaborAuthenticator.csproj">
+      <Project>{D59BF771-1924-42AF-BFF6-3068DB9C772F}</Project>
+      <Name>MCLaborAuthenticator</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

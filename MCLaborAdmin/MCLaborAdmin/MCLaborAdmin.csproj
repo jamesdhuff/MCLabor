@@ -82,13 +82,17 @@
       <DependentUpon>AddEditPayRateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminUser.cs" />
+    <Compile Include="DSEmployee.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSEmployee.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSPayRateList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSPayRateList.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TimeCard.cs" />
-    <Compile Include="EmpDirectoryReportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EmpDirectoryReportForm.Designer.cs">
-      <DependentUpon>EmpDirectoryReportForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="TimeCardAddEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,10 +178,8 @@
     <EmbeddedResource Include="AdminUserForm.resx">
       <DependentUpon>AdminUserForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmpDirectoryReportForm.resx">
-      <DependentUpon>EmpDirectoryReportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Employee Directory.rdlc" />
+    <EmbeddedResource Include="RPTPayRateList.rdlc" />
+    <EmbeddedResource Include="RPTEmployeeDirectory.rdlc" />
     <EmbeddedResource Include="TimeCardAddEditForm.resx">
       <DependentUpon>TimeCardAddEditForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,7 +297,29 @@
     <None Include="Resources\Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\DataSources\Employee.datasource" />
+    <None Include="DSEmployee.xsc">
+      <DependentUpon>DSEmployee.xsd</DependentUpon>
+    </None>
+    <None Include="DSEmployee.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSEmployee.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSEmployee.xss">
+      <DependentUpon>DSEmployee.xsd</DependentUpon>
+    </None>
+    <None Include="DSPayRateList.xsc">
+      <DependentUpon>DSPayRateList.xsd</DependentUpon>
+    </None>
+    <None Include="DSPayRateList.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSPayRateList.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSPayRateList.xss">
+      <DependentUpon>DSPayRateList.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\DataSources\dsEmployeeDirectory.datasource" />
     <None Include="Resources\Banner.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

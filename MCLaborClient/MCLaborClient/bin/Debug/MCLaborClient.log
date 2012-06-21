@@ -317,3 +317,48 @@ Exception rethrown at [0]:
 2012-06-11 20:59:31,536 [9] INFO MCLaborClient.Program - 
 
 ::MCLabor Client Started
+2012-06-12 20:34:30,767 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-13 16:07:00,560 [10] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-13 16:07:04,939 [10] ERROR MCLaborClient.LoginForm - System.ServiceModel.FaultException: An error occurred when verifying security for the message.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at MCLaborClient.LaborService.ILaborService.isValidLogin(Int32 loginId)
+   at MCLaborClient.LaborService.LaborServiceClient.isValidLogin(Int32 loginId) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\Service References\LaborService\Reference.cs:line 75
+   at MCLaborClient.LoginForm.loginBtn_Click(Object sender, EventArgs e) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\LoginForm.cs:line 110
+2012-06-14 10:52:38,574 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-14 10:52:45,473 [9] ERROR MCLaborClient.LoginForm - System.ServiceModel.FaultException: An error occurred when verifying security for the message.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at MCLaborClient.LaborService.ILaborService.isValidLogin(Int32 loginId)
+   at MCLaborClient.LaborService.LaborServiceClient.isValidLogin(Int32 loginId) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\Service References\LaborService\Reference.cs:line 75
+   at MCLaborClient.LoginForm.loginBtn_Click(Object sender, EventArgs e) in C:\Users\jhuff3\MCLabor\MCLaborClient\MCLaborClient\LoginForm.cs:line 110
+2012-06-14 11:05:41,015 [9] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started
+2012-06-14 16:12:51,865 [1] INFO MCLaborClient.Program - 
+
+::MCLabor Client Started

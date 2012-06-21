@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCLaborServer", "MCLaborSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCLaborLib", "..\MCLabor\MCLaborLib.csproj", "{2D4B55A5-E6D5-4021-A9C7-756B1EBC2BDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCLaborAuthenticator", "MCLaborAuthenticator\MCLaborAuthenticator.csproj", "{D59BF771-1924-42AF-BFF6-3068DB9C772F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{2D4B55A5-E6D5-4021-A9C7-756B1EBC2BDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D4B55A5-E6D5-4021-A9C7-756B1EBC2BDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D4B55A5-E6D5-4021-A9C7-756B1EBC2BDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D59BF771-1924-42AF-BFF6-3068DB9C772F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D59BF771-1924-42AF-BFF6-3068DB9C772F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D59BF771-1924-42AF-BFF6-3068DB9C772F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D59BF771-1924-42AF-BFF6-3068DB9C772F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

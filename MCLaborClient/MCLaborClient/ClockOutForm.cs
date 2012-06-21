@@ -27,6 +27,8 @@ namespace MCLaborClient
         private void clockOutBtn_Click(object sender, EventArgs e)
         {
             LaborService.LaborServiceClient proxy = new LaborService.LaborServiceClient();
+            //proxy.ClientCredentials.UserName.UserName = "snaps";
+            //proxy.ClientCredentials.UserName.Password = "ax23%%$tyTT0"; 
             try
             {
                 proxy.doClockOut(this.currTimeCard);

@@ -104,6 +104,9 @@ namespace MCLaborClient
                 try
                 {
                     LaborService.LaborServiceClient proxy = new LaborService.LaborServiceClient();
+                    //proxy.ClientCredentials.UserName.UserName = "snaps";
+                    //proxy.ClientCredentials.UserName.Password = "ax23%%$tyTT0"; 
+
                     if (proxy.isValidLogin(loginId))
                     {
                         emp = proxy.getEmployee(loginId);

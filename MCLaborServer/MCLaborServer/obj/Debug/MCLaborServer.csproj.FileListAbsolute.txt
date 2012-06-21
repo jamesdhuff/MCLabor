@@ -6,3 +6,7 @@ C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborServer\obj\Debug\MCLaborServer.pdb
 C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborServer\bin\log4net.dll
 C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborServer\bin\MCLaborLib.dll
 C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborServer\bin\MCLaborLib.pdb
+C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborServer\bin\ClearUsernameBinding.dll
+C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborServer\bin\MCLaborAuthenticator.dll
+C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborServer\bin\MCLaborAuthenticator.pdb
+C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborServer\bin\ClearUsernameBinding.pdb

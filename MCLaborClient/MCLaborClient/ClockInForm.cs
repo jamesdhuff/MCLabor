@@ -55,6 +55,8 @@ namespace MCLaborClient
                     tc.WorkSite = (WorkSite)this.workSiteCmbo.SelectedItem;
                     tc.Job = (Job)this.jobCmbo.SelectedItem;
                     LaborService.LaborServiceClient proxy = new LaborService.LaborServiceClient();
+                    //proxy.ClientCredentials.UserName.UserName = "snaps";
+                    //proxy.ClientCredentials.UserName.Password = "ax23%%$tyTT0"; 
                     proxy.doClockIn(tc);
                 }
                 catch (FaultException ex)

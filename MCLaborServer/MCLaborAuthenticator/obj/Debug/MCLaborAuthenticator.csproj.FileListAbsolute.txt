@@ -1,0 +1,5 @@
+C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborAuthenticator\bin\Debug\MCLaborAuthenticator.dll
+C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborAuthenticator\bin\Debug\MCLaborAuthenticator.pdb
+C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborAuthenticator\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborAuthenticator\obj\Debug\MCLaborAuthenticator.dll
+C:\Users\jhuff3\MCLabor\MCLaborServer\MCLaborAuthenticator\obj\Debug\MCLaborAuthenticator.pdb
