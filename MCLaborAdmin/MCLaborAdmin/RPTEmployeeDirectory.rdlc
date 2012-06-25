@@ -78,25 +78,26 @@ FROM employee</CommandText>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Width>9in</Width>
+  <Width>9.75in</Width>
   <Body>
     <ReportItems>
       <Textbox Name="textbox1">
         <rd:DefaultName>textbox1</rd:DefaultName>
         <Style>
-          <PaddingLeft>2pt</PaddingLeft>
+          <FontSize>14pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>6pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
+          <PaddingTop>10pt</PaddingTop>
+          <PaddingBottom>10pt</PaddingBottom>
         </Style>
         <ZIndex>1</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Height>0.21in</Height>
-        <Value>Employee Directory Report</Value>
+        <Height>0.625in</Height>
+        <Value> Employee Directory Report</Value>
       </Textbox>
       <Table Name="table1">
         <DataSetName>DSEmployee_EMPLOYEE</DataSetName>
-        <Top>0.21in</Top>
+        <Top>0.625in</Top>
         <Details>
           <TableRows>
             <TableRow>
@@ -177,7 +178,7 @@ FROM employee</CommandText>
                   </ReportItems>
                 </TableCell>
               </TableCells>
-              <Height>0.21in</Height>
+              <Height>0.2725in</Height>
             </TableRow>
           </TableRows>
         </Details>
@@ -190,6 +191,7 @@ FROM employee</CommandText>
                     <Textbox Name="textbox2">
                       <rd:DefaultName>textbox2</rd:DefaultName>
                       <Style>
+                        <TextDecoration>Underline</TextDecoration>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -205,6 +207,7 @@ FROM employee</CommandText>
                     <Textbox Name="textbox3">
                       <rd:DefaultName>textbox3</rd:DefaultName>
                       <Style>
+                        <TextDecoration>Underline</TextDecoration>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -220,6 +223,7 @@ FROM employee</CommandText>
                     <Textbox Name="textbox10">
                       <rd:DefaultName>textbox10</rd:DefaultName>
                       <Style>
+                        <TextDecoration>Underline</TextDecoration>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -235,6 +239,7 @@ FROM employee</CommandText>
                     <Textbox Name="textbox11">
                       <rd:DefaultName>textbox11</rd:DefaultName>
                       <Style>
+                        <TextDecoration>Underline</TextDecoration>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -250,6 +255,7 @@ FROM employee</CommandText>
                     <Textbox Name="textbox6">
                       <rd:DefaultName>textbox6</rd:DefaultName>
                       <Style>
+                        <TextDecoration>Underline</TextDecoration>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -261,7 +267,7 @@ FROM employee</CommandText>
                   </ReportItems>
                 </TableCell>
               </TableCells>
-              <Height>0.21in</Height>
+              <Height>0.2725in</Height>
             </TableRow>
           </TableRows>
           <RepeatOnNewPage>true</RepeatOnNewPage>
@@ -274,18 +280,19 @@ FROM employee</CommandText>
             <Width>1.875in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1in</Width>
+            <Width>1.25in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1in</Width>
+            <Width>1.25in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>4.25in</Width>
+            <Width>4.375in</Width>
           </TableColumn>
         </TableColumns>
+        <Left>0.125in</Left>
       </Table>
     </ReportItems>
-    <Height>0.63in</Height>
+    <Height>1.17in</Height>
   </Body>
   <Language>en-US</Language>
   <TopMargin>1in</TopMargin>

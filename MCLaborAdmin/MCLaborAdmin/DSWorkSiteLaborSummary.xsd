@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSWorkSiteLaborSummary" targetNamespace="http://tempuri.org/DSWorkSiteLaborSummary.xsd" xmlns:mstns="http://tempuri.org/DSWorkSiteLaborSummary.xsd" xmlns="http://tempuri.org/DSWorkSiteLaborSummary.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="MCLabor" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="MCLabor (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.MCLaborAdmin.Properties.Settings.GlobalReference.Default.MCLabor" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DTWorkSiteLaborSummaryTableAdapter" GeneratorDataComponentClassName="DTWorkSiteLaborSummaryTableAdapter" Name="DTWorkSiteLaborSummary" UserDataComponentName="DTWorkSiteLaborSummaryTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MCLabor (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT	ws.workSiteName, ws.refCode as workSiteRefCode, 
+		j.jobName, j.refCode as jobRefCode, 
+		 CAST((CAST(sum(DateDiff(minute, dtl.laborStartUTCDateTime, dtl.laborEndUTCDateTime)) AS DECIMAL) / CAST (60 AS DECIMAL)) AS DECIMAL(10,2)) as minsWorked, 
+		count(distinct(dtl.laborCalendarDate)) as daysWorked
+FROM	work_site ws, job j, labor_detail dtl
+WHERE	dtl.workSiteId = ws.workSiteId AND dtl.jobId = j.jobId
+GROUP BY ws.workSiteName, ws.refCode, j.jobName, j.refCode</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="workSiteName" DataSetColumn="workSiteName" />
+              <Mapping SourceColumn="workSiteRefCode" DataSetColumn="workSiteRefCode" />
+              <Mapping SourceColumn="jobName" DataSetColumn="jobName" />
+              <Mapping SourceColumn="jobRefCode" DataSetColumn="jobRefCode" />
+              <Mapping SourceColumn="minsWorked" DataSetColumn="hoursWorked" />
+              <Mapping SourceColumn="daysWorked" DataSetColumn="daysWorked" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSWorkSiteLaborSummary" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="DSWorkSiteLaborSummary" msprop:Generator_UserDSName="DSWorkSiteLaborSummary" msprop:EnableTableAdapterManager="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DTWorkSiteLaborSummary" msprop:Generator_UserTableName="DTWorkSiteLaborSummary" msprop:Generator_RowDeletedName="DTWorkSiteLaborSummaryRowDeleted" msprop:Generator_TableClassName="DTWorkSiteLaborSummaryDataTable" msprop:Generator_RowChangedName="DTWorkSiteLaborSummaryRowChanged" msprop:Generator_RowClassName="DTWorkSiteLaborSummaryRow" msprop:Generator_RowChangingName="DTWorkSiteLaborSummaryRowChanging" msprop:Generator_RowEvArgName="DTWorkSiteLaborSummaryRowChangeEvent" msprop:Generator_RowEvHandlerName="DTWorkSiteLaborSummaryRowChangeEventHandler" msprop:Generator_TablePropName="DTWorkSiteLaborSummary" msprop:Generator_TableVarName="tableDTWorkSiteLaborSummary" msprop:Generator_RowDeletingName="DTWorkSiteLaborSummaryRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="workSiteName" msprop:Generator_UserColumnName="workSiteName" msprop:Generator_ColumnPropNameInRow="workSiteName" msprop:Generator_ColumnVarNameInTable="columnworkSiteName" msprop:Generator_ColumnPropNameInTable="workSiteNameColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="workSiteRefCode" msprop:Generator_UserColumnName="workSiteRefCode" msprop:Generator_ColumnPropNameInRow="workSiteRefCode" msprop:Generator_ColumnVarNameInTable="columnworkSiteRefCode" msprop:Generator_ColumnPropNameInTable="workSiteRefCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="jobName" msprop:Generator_UserColumnName="jobName" msprop:Generator_ColumnPropNameInRow="jobName" msprop:Generator_ColumnVarNameInTable="columnjobName" msprop:Generator_ColumnPropNameInTable="jobNameColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="jobRefCode" msprop:Generator_UserColumnName="jobRefCode" msprop:Generator_ColumnPropNameInRow="jobRefCode" msprop:Generator_ColumnVarNameInTable="columnjobRefCode" msprop:Generator_ColumnPropNameInTable="jobRefCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="hoursWorked" msdata:ReadOnly="true" msdata:Caption="minsWorked" msprop:Generator_UserColumnName="hoursWorked" msprop:Generator_ColumnPropNameInRow="hoursWorked" msprop:Generator_ColumnVarNameInTable="columnhoursWorked" msprop:Generator_ColumnPropNameInTable="hoursWorkedColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="daysWorked" msdata:ReadOnly="true" msprop:Generator_UserColumnName="daysWorked" msprop:Generator_ColumnPropNameInRow="daysWorked" msprop:Generator_ColumnVarNameInTable="columndaysWorked" msprop:Generator_ColumnPropNameInTable="daysWorkedColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

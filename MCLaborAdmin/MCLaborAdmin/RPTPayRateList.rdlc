@@ -62,20 +62,69 @@ AND pr.active = 1</CommandText>
   <Width>5.375in</Width>
   <Body>
     <ReportItems>
+      <Textbox Name="textbox3">
+        <rd:DefaultName>textbox3</rd:DefaultName>
+        <Width>4.25in</Width>
+        <Style>
+          <FontSize>14pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>6pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>12pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.125in</Left>
+        <Height>0.5in</Height>
+        <Value>Employee Pay Rate List</Value>
+      </Textbox>
       <List Name="list1">
         <Left>0.125in</Left>
         <DataSetName>DSPayRateList_DTPayRateList</DataSetName>
         <ReportItems>
+          <Textbox Name="textbox2">
+            <Top>0.5in</Top>
+            <Width>1in</Width>
+            <Style>
+              <TextDecoration>Underline</TextDecoration>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>3</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>2.25in</Left>
+            <Height>0.25in</Height>
+            <Value>Hourly Rate</Value>
+          </Textbox>
+          <Textbox Name="textbox1">
+            <rd:DefaultName>textbox1</rd:DefaultName>
+            <Top>0.5in</Top>
+            <Width>1.625in</Width>
+            <Style>
+              <TextDecoration>Underline</TextDecoration>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>2</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.375in</Left>
+            <Height>0.25in</Height>
+            <Value>Job</Value>
+          </Textbox>
           <List Name="list2">
             <ZIndex>1</ZIndex>
-            <Left>0.25in</Left>
+            <Left>0.375in</Left>
             <ReportItems>
               <Textbox Name="hourlyPayRate">
                 <rd:DefaultName>hourlyPayRate</rd:DefaultName>
-                <Top>0.125in</Top>
-                <Width>1in</Width>
                 <Style>
-                  <TextAlign>Right</TextAlign>
+                  <TextAlign>Left</TextAlign>
                   <PaddingLeft>2pt</PaddingLeft>
                   <PaddingRight>2pt</PaddingRight>
                   <PaddingTop>2pt</PaddingTop>
@@ -83,14 +132,12 @@ AND pr.active = 1</CommandText>
                 </Style>
                 <ZIndex>1</ZIndex>
                 <CanGrow>true</CanGrow>
-                <Left>1.625in</Left>
-                <Height>0.25in</Height>
-                <Value>=Fields!hourlyPayRate.Value</Value>
+                <Left>1.875in</Left>
+                <Value>="$" &amp; Fields!hourlyPayRate.Value</Value>
               </Textbox>
               <Textbox Name="jobName">
                 <rd:DefaultName>jobName</rd:DefaultName>
-                <Top>0.125in</Top>
-                <Width>1in</Width>
+                <Width>1.625in</Width>
                 <Style>
                   <PaddingLeft>2pt</PaddingLeft>
                   <PaddingRight>2pt</PaddingRight>
@@ -98,20 +145,19 @@ AND pr.active = 1</CommandText>
                   <PaddingBottom>2pt</PaddingBottom>
                 </Style>
                 <CanGrow>true</CanGrow>
-                <Left>0.125in</Left>
-                <Height>0.25in</Height>
                 <Value>=Fields!jobName.Value</Value>
               </Textbox>
             </ReportItems>
-            <Top>0.5in</Top>
-            <Width>4.625in</Width>
-            <Height>0.625in</Height>
+            <Top>0.75in</Top>
+            <Width>2.875in</Width>
+            <Height>0.25in</Height>
           </List>
           <Textbox Name="firstName">
             <rd:DefaultName>firstName</rd:DefaultName>
             <Top>0.125in</Top>
             <Width>2.375in</Width>
             <Style>
+              <FontWeight>700</FontWeight>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -123,14 +169,14 @@ AND pr.active = 1</CommandText>
             <Value>=Fields!firstName.Value &amp; " " &amp; Fields!lastName.Value</Value>
           </Textbox>
         </ReportItems>
-        <Top>0.25in</Top>
-        <Width>5.125in</Width>
+        <Top>0.5in</Top>
+        <Width>4.25in</Width>
         <Grouping Name="list1_Details_Group">
           <GroupExpressions>
             <GroupExpression>=Fields!employeeId.Value</GroupExpression>
           </GroupExpressions>
         </Grouping>
-        <Height>1.375in</Height>
+        <Height>1.125in</Height>
       </List>
     </ReportItems>
     <Height>1.75in</Height>

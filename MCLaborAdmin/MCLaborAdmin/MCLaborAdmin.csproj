@@ -82,6 +82,15 @@
       <DependentUpon>AddEditPayRateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminUser.cs" />
+    <Compile Include="DSEmpLaborDetail.cs">
+      <DependentUpon>DSEmpLaborDetail.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DSEmpLaborDetail.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSEmpLaborDetail.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSEmployee.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -91,6 +100,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DSPayRateList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSWorkSiteLaborSummary.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSWorkSiteLaborSummary.xsd</DependentUpon>
     </Compile>
     <Compile Include="TimeCard.cs" />
     <Compile Include="TimeCardAddEditForm.cs">
@@ -178,6 +192,8 @@
     <EmbeddedResource Include="AdminUserForm.resx">
       <DependentUpon>AdminUserForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RPTEmployeeLaborDetail.rdlc" />
+    <EmbeddedResource Include="RPTWorkSiteLaborSummary.rdlc" />
     <EmbeddedResource Include="RPTPayRateList.rdlc" />
     <EmbeddedResource Include="RPTEmployeeDirectory.rdlc" />
     <EmbeddedResource Include="TimeCardAddEditForm.resx">
@@ -297,6 +313,17 @@
     <None Include="Resources\Icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DSEmpLaborDetail.xsc">
+      <DependentUpon>DSEmpLaborDetail.xsd</DependentUpon>
+    </None>
+    <None Include="DSEmpLaborDetail.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSEmpLaborDetail.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSEmpLaborDetail.xss">
+      <DependentUpon>DSEmpLaborDetail.xsd</DependentUpon>
+    </None>
     <None Include="DSEmployee.xsc">
       <DependentUpon>DSEmployee.xsd</DependentUpon>
     </None>
@@ -318,6 +345,17 @@
     </None>
     <None Include="DSPayRateList.xss">
       <DependentUpon>DSPayRateList.xsd</DependentUpon>
+    </None>
+    <None Include="DSWorkSiteLaborSummary.xsc">
+      <DependentUpon>DSWorkSiteLaborSummary.xsd</DependentUpon>
+    </None>
+    <None Include="DSWorkSiteLaborSummary.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSWorkSiteLaborSummary.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSWorkSiteLaborSummary.xss">
+      <DependentUpon>DSWorkSiteLaborSummary.xsd</DependentUpon>
     </None>
     <None Include="Properties\DataSources\dsEmployeeDirectory.datasource" />
     <None Include="Resources\Banner.jpg" />

@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="MCLabor">
+      <rd:DataSourceID>ff0c6866-e05a-4dc1-a409-e18bc7261546</rd:DataSourceID>
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="ParmWorkSiteName">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ParmWorkSiteName</Prompt>
+      <MultiValue>true</MultiValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="ParmJobName">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ParmJobName</Prompt>
+      <MultiValue>true</MultiValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>1in</RightMargin>
+  <LeftMargin>1in</LeftMargin>
+  <BottomMargin>1in</BottomMargin>
+  <rd:ReportID>1ab3bbb9-0e91-4d26-93e5-c291509d9568</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DSWorkSiteLaborSummary_DTWorkSiteLaborSummary">
+      <Fields>
+        <Field Name="workSiteName">
+          <DataField>workSiteName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="workSiteRefCode">
+          <DataField>workSiteRefCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="jobName">
+          <DataField>jobName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="jobRefCode">
+          <DataField>jobRefCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="minsWorked">
+          <DataField>minsWorked</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="daysWorked">
+          <DataField>daysWorked</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="hoursWorked">
+          <DataField>hoursWorked</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>MCLabor</DataSourceName>
+        <CommandText>SELECT	ws.workSiteName, ws.refCode as workSiteRefCode, 
+		j.jobName, j.refCode as jobRefCode, 
+		 CAST((CAST(sum(DateDiff(minute, dtl.laborStartUTCDateTime, dtl.laborEndUTCDateTime)) AS DECIMAL) / CAST (60 AS DECIMAL)) AS DECIMAL(10,2)) as minsWorked, 
+		count(distinct(dtl.laborCalendarDate)) as daysWorked
+FROM	work_site ws, job j, labor_detail dtl
+WHERE	dtl.workSiteId = ws.workSiteId AND dtl.jobId = j.jobId
+GROUP BY ws.workSiteName, ws.refCode, j.jobName, j.refCode</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>DSWorkSiteLaborSummary</rd:DataSetName>
+        <rd:TableName>DTWorkSiteLaborSummary</rd:TableName>
+        <rd:TableAdapterName>DTWorkSiteLaborSummaryTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <Width>6.5in</Width>
+  <Body>
+    <ReportItems>
+      <List Name="workSiteList">
+        <ZIndex>1</ZIndex>
+        <Left>0.25in</Left>
+        <DataSetName>DSWorkSiteLaborSummary_DTWorkSiteLaborSummary</DataSetName>
+        <ReportItems>
+          <Textbox Name="textbox5">
+            <Top>0.625in</Top>
+            <Width>2.125in</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>7</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.125in</Left>
+            <Height>0.25in</Height>
+            <Value>Total Hours Worked :</Value>
+          </Textbox>
+          <Textbox Name="textbox6">
+            <Top>0.625in</Top>
+            <Width>1in</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Left</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>6</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>2.25in</Left>
+            <Height>0.25in</Height>
+            <Value>=SUM(Fields!hoursWorked.Value)</Value>
+          </Textbox>
+          <Textbox Name="textbox4">
+            <rd:DefaultName>textbox4</rd:DefaultName>
+            <Top>0.375in</Top>
+            <Width>2.125in</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>5</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.125in</Left>
+            <Height>0.25in</Height>
+            <Value>Calendar Days at Work Site :</Value>
+          </Textbox>
+          <List Name="jobList">
+            <ZIndex>4</ZIndex>
+            <Left>0.375in</Left>
+            <DataSetName>DSWorkSiteLaborSummary_DTWorkSiteLaborSummary</DataSetName>
+            <ReportItems>
+              <Textbox Name="hoursWorked">
+                <rd:DefaultName>hoursWorked</rd:DefaultName>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+                <ZIndex>1</ZIndex>
+                <CanGrow>true</CanGrow>
+                <Left>2.625in</Left>
+                <Value>=Fields!hoursWorked.Value</Value>
+              </Textbox>
+              <Textbox Name="jobName">
+                <rd:DefaultName>jobName</rd:DefaultName>
+                <Width>2.625in</Width>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+                <CanGrow>true</CanGrow>
+                <Value>=Fields!jobName.Value &amp; " (" &amp; Fields!jobRefCode.Value &amp; ")"</Value>
+              </Textbox>
+            </ReportItems>
+            <Top>1.25in</Top>
+            <Width>3.75in</Width>
+            <Grouping Name="list2_Details_Group">
+              <GroupExpressions>
+                <GroupExpression>=Fields!jobName.Value</GroupExpression>
+              </GroupExpressions>
+              <Parent>=Fields!workSiteName.Value</Parent>
+            </Grouping>
+            <Height>0.25in</Height>
+          </List>
+          <Textbox Name="workSiteName">
+            <rd:DefaultName>workSiteName</rd:DefaultName>
+            <Width>3.5in</Width>
+            <Style>
+              <FontSize>12pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>3</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Height>0.25in</Height>
+            <Value>=Fields!workSiteName.Value &amp; " (" &amp; Fields!workSiteRefCode.Value &amp; ")"</Value>
+          </Textbox>
+          <Textbox Name="daysWorked">
+            <rd:DefaultName>daysWorked</rd:DefaultName>
+            <Top>0.375in</Top>
+            <Width>1in</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Left</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>2</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>2.25in</Left>
+            <Height>0.25in</Height>
+            <Value>=SUM(Fields!daysWorked.Value)</Value>
+          </Textbox>
+          <Textbox Name="textbox3">
+            <rd:DefaultName>textbox3</rd:DefaultName>
+            <Top>1in</Top>
+            <Width>2.625in</Width>
+            <Style>
+              <TextDecoration>Underline</TextDecoration>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>1</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.375in</Left>
+            <Height>0.25in</Height>
+            <Value>Job</Value>
+          </Textbox>
+          <Textbox Name="textbox2">
+            <rd:DefaultName>textbox2</rd:DefaultName>
+            <Top>1in</Top>
+            <Width>1.125in</Width>
+            <Style>
+              <TextDecoration>Underline</TextDecoration>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <CanGrow>true</CanGrow>
+            <Left>3in</Left>
+            <Height>0.25in</Height>
+            <Value>Hours Worked</Value>
+          </Textbox>
+        </ReportItems>
+        <Filters>
+          <Filter>
+            <FilterExpression>=Fields!workSiteName.Value</FilterExpression>
+            <Operator>In</Operator>
+            <FilterValues>
+              <FilterValue>=Parameters!ParmWorkSiteName.Value</FilterValue>
+            </FilterValues>
+          </Filter>
+          <Filter>
+            <FilterExpression>=Fields!jobName.Value</FilterExpression>
+            <Operator>In</Operator>
+            <FilterValues>
+              <FilterValue>=Parameters!ParmJobName.Value</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
+        <Top>0.625in</Top>
+        <Width>5.25in</Width>
+        <Style>
+          <FontSize>11pt</FontSize>
+        </Style>
+        <Grouping Name="list1_Details_Group">
+          <GroupExpressions>
+            <GroupExpression>=Fields!workSiteName.Value</GroupExpression>
+          </GroupExpressions>
+        </Grouping>
+        <Height>1.75in</Height>
+      </List>
+      <Textbox Name="textbox1">
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Style>
+          <FontSize>14pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>6pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>10pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.5in</Height>
+        <Value>Work Site Labor Summary</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>2.625in</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>1in</TopMargin>
+</Report>

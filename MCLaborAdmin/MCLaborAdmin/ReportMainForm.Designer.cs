@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportMainForm));
             this.EMPLOYEEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DSEmployee = new MCLaborAdmin.DSEmployee();
@@ -39,8 +38,8 @@
             this.jobCmbo = new System.Windows.Forms.ComboBox();
             this.workSiteCmbo = new System.Windows.Forms.ComboBox();
             this.employeeCmbo = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.jobLbl = new System.Windows.Forms.Label();
+            this.workSiteLbl = new System.Windows.Forms.Label();
             this.empLbl = new System.Windows.Forms.Label();
             this.endDatePicker = new System.Windows.Forms.DateTimePicker();
             this.startDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -53,11 +52,21 @@
             this.DTPayRateListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DSPayRateList = new MCLaborAdmin.DSPayRateList();
             this.DTPayRateListTableAdapter = new MCLaborAdmin.DSPayRateListTableAdapters.DTPayRateListTableAdapter();
+            this.DSWorkSiteLaborSummary = new MCLaborAdmin.DSWorkSiteLaborSummary();
+            this.DTWorkSiteLaborSummaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DTWorkSiteLaborSummaryTableAdapter = new MCLaborAdmin.DSWorkSiteLaborSummaryTableAdapters.DTWorkSiteLaborSummaryTableAdapter();
+            this.DSEmpLaborDetail = new MCLaborAdmin.DSEmpLaborDetail();
+            this.EMP_LABOR_DETAILBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.EMP_LABOR_DETAILTableAdapter = new MCLaborAdmin.DSEmpLaborDetailTableAdapters.EMP_LABOR_DETAILTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.EMPLOYEEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DSEmployee)).BeginInit();
             this.filtersGrpBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DTPayRateListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DSPayRateList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DSWorkSiteLaborSummary)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DTWorkSiteLaborSummaryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DSEmpLaborDetail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EMP_LABOR_DETAILBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // EMPLOYEEBindingSource
@@ -84,20 +93,23 @@
             // 
             this.reportCmbo.FormattingEnabled = true;
             this.reportCmbo.Items.AddRange(new object[] {
+            "Employee Labor Detail",
+            "Work Site Labor Summary",
             "Employee Directory",
             "Pay Rate List"});
             this.reportCmbo.Location = new System.Drawing.Point(12, 41);
             this.reportCmbo.Name = "reportCmbo";
             this.reportCmbo.Size = new System.Drawing.Size(211, 21);
             this.reportCmbo.TabIndex = 1;
+            this.reportCmbo.SelectedIndexChanged += new System.EventHandler(this.reportCmbo_SelectedIndexChanged);
             // 
             // filtersGrpBox
             // 
             this.filtersGrpBox.Controls.Add(this.jobCmbo);
             this.filtersGrpBox.Controls.Add(this.workSiteCmbo);
             this.filtersGrpBox.Controls.Add(this.employeeCmbo);
-            this.filtersGrpBox.Controls.Add(this.label2);
-            this.filtersGrpBox.Controls.Add(this.label1);
+            this.filtersGrpBox.Controls.Add(this.jobLbl);
+            this.filtersGrpBox.Controls.Add(this.workSiteLbl);
             this.filtersGrpBox.Controls.Add(this.empLbl);
             this.filtersGrpBox.Controls.Add(this.endDatePicker);
             this.filtersGrpBox.Controls.Add(this.startDatePicker);
@@ -113,6 +125,9 @@
             // 
             // jobCmbo
             // 
+            this.jobCmbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.jobCmbo.Enabled = false;
+            this.jobCmbo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.jobCmbo.FormattingEnabled = true;
             this.jobCmbo.Location = new System.Drawing.Point(24, 251);
             this.jobCmbo.Name = "jobCmbo";
@@ -121,6 +136,9 @@
             // 
             // workSiteCmbo
             // 
+            this.workSiteCmbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.workSiteCmbo.Enabled = false;
+            this.workSiteCmbo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.workSiteCmbo.FormattingEnabled = true;
             this.workSiteCmbo.Location = new System.Drawing.Point(24, 206);
             this.workSiteCmbo.Name = "workSiteCmbo";
@@ -129,35 +147,41 @@
             // 
             // employeeCmbo
             // 
+            this.employeeCmbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.employeeCmbo.Enabled = false;
+            this.employeeCmbo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.employeeCmbo.FormattingEnabled = true;
             this.employeeCmbo.Location = new System.Drawing.Point(24, 153);
             this.employeeCmbo.Name = "employeeCmbo";
             this.employeeCmbo.Size = new System.Drawing.Size(161, 21);
             this.employeeCmbo.TabIndex = 7;
             // 
-            // label2
+            // jobLbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(23, 235);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Job";
+            this.jobLbl.AutoSize = true;
+            this.jobLbl.Enabled = false;
+            this.jobLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.jobLbl.Location = new System.Drawing.Point(23, 235);
+            this.jobLbl.Name = "jobLbl";
+            this.jobLbl.Size = new System.Drawing.Size(24, 13);
+            this.jobLbl.TabIndex = 6;
+            this.jobLbl.Text = "Job";
             // 
-            // label1
+            // workSiteLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 190);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Work Site";
+            this.workSiteLbl.AutoSize = true;
+            this.workSiteLbl.Enabled = false;
+            this.workSiteLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.workSiteLbl.Location = new System.Drawing.Point(19, 190);
+            this.workSiteLbl.Name = "workSiteLbl";
+            this.workSiteLbl.Size = new System.Drawing.Size(54, 13);
+            this.workSiteLbl.TabIndex = 5;
+            this.workSiteLbl.Text = "Work Site";
             // 
             // empLbl
             // 
             this.empLbl.AutoSize = true;
+            this.empLbl.Enabled = false;
             this.empLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.empLbl.Location = new System.Drawing.Point(21, 137);
             this.empLbl.Name = "empLbl";
@@ -167,7 +191,9 @@
             // 
             // endDatePicker
             // 
+            this.endDatePicker.Enabled = false;
             this.endDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.endDatePicker.Location = new System.Drawing.Point(24, 98);
             this.endDatePicker.Name = "endDatePicker";
             this.endDatePicker.Size = new System.Drawing.Size(161, 20);
@@ -175,7 +201,9 @@
             // 
             // startDatePicker
             // 
+            this.startDatePicker.Enabled = false;
             this.startDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.startDatePicker.Location = new System.Drawing.Point(24, 43);
             this.startDatePicker.Name = "startDatePicker";
             this.startDatePicker.Size = new System.Drawing.Size(161, 20);
@@ -184,6 +212,7 @@
             // endDateLbl
             // 
             this.endDateLbl.AutoSize = true;
+            this.endDateLbl.Enabled = false;
             this.endDateLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endDateLbl.Location = new System.Drawing.Point(21, 82);
             this.endDateLbl.Name = "endDateLbl";
@@ -194,6 +223,7 @@
             // startDateLbl
             // 
             this.startDateLbl.AutoSize = true;
+            this.startDateLbl.Enabled = false;
             this.startDateLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startDateLbl.Location = new System.Drawing.Point(21, 27);
             this.startDateLbl.Name = "startDateLbl";
@@ -203,10 +233,6 @@
             // 
             // reportViewer1
             // 
-            //reportDataSource1.Name = "DSPayRateList_DTPayRateList";
-            //reportDataSource1.Value = this.DTPayRateListBindingSource;
-            //this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            //this.reportViewer1.LocalReport.ReportEmbeddedResource = "MCLaborAdmin.RPTPayRateList.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(254, 12);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(960, 582);
@@ -250,6 +276,34 @@
             // 
             this.DTPayRateListTableAdapter.ClearBeforeFill = true;
             // 
+            // DSWorkSiteLaborSummary
+            // 
+            this.DSWorkSiteLaborSummary.DataSetName = "DSWorkSiteLaborSummary";
+            this.DSWorkSiteLaborSummary.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // DTWorkSiteLaborSummaryBindingSource
+            // 
+            this.DTWorkSiteLaborSummaryBindingSource.DataMember = "DTWorkSiteLaborSummary";
+            this.DTWorkSiteLaborSummaryBindingSource.DataSource = this.DSWorkSiteLaborSummary;
+            // 
+            // DTWorkSiteLaborSummaryTableAdapter
+            // 
+            this.DTWorkSiteLaborSummaryTableAdapter.ClearBeforeFill = true;
+            // 
+            // DSEmpLaborDetail
+            // 
+            this.DSEmpLaborDetail.DataSetName = "DSEmpLaborDetail";
+            this.DSEmpLaborDetail.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // EMP_LABOR_DETAILBindingSource
+            // 
+            this.EMP_LABOR_DETAILBindingSource.DataMember = "EMP_LABOR_DETAIL";
+            this.EMP_LABOR_DETAILBindingSource.DataSource = this.DSEmpLaborDetail;
+            // 
+            // EMP_LABOR_DETAILTableAdapter
+            // 
+            this.EMP_LABOR_DETAILTableAdapter.ClearBeforeFill = true;
+            // 
             // ReportMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,6 +327,10 @@
             this.filtersGrpBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DTPayRateListBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DSPayRateList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DSWorkSiteLaborSummary)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DTWorkSiteLaborSummaryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DSEmpLaborDetail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EMP_LABOR_DETAILBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,8 +345,8 @@
         private System.Windows.Forms.DateTimePicker startDatePicker;
         private System.Windows.Forms.Label endDateLbl;
         private System.Windows.Forms.Label startDateLbl;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label jobLbl;
+        private System.Windows.Forms.Label workSiteLbl;
         private System.Windows.Forms.Label empLbl;
         private System.Windows.Forms.ComboBox jobCmbo;
         private System.Windows.Forms.ComboBox workSiteCmbo;
@@ -302,6 +360,12 @@
         private System.Windows.Forms.BindingSource DTPayRateListBindingSource;
         private DSPayRateList DSPayRateList;
         private MCLaborAdmin.DSPayRateListTableAdapters.DTPayRateListTableAdapter DTPayRateListTableAdapter;
+        private System.Windows.Forms.BindingSource DTWorkSiteLaborSummaryBindingSource;
+        private DSWorkSiteLaborSummary DSWorkSiteLaborSummary;
+        private MCLaborAdmin.DSWorkSiteLaborSummaryTableAdapters.DTWorkSiteLaborSummaryTableAdapter DTWorkSiteLaborSummaryTableAdapter;
+        private System.Windows.Forms.BindingSource EMP_LABOR_DETAILBindingSource;
+        private DSEmpLaborDetail DSEmpLaborDetail;
+        private MCLaborAdmin.DSEmpLaborDetailTableAdapters.EMP_LABOR_DETAILTableAdapter EMP_LABOR_DETAILTableAdapter;
 
 
     }
