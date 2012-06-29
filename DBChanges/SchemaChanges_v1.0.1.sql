@@ -22,10 +22,6 @@ BEGIN
 	AND		dtl.laborEndUTCDateTime IS NOT NULL
 	AND		dtl.laborCalendarDate BETWEEN @StartDate AND @EndDate
 END;
-
-
-
-USE MCLabor;
 GO
 
 IF EXISTS(SELECT object_id FROM Sys.Procedures WHERE name='EMP_LABOR_SUMMARY')
