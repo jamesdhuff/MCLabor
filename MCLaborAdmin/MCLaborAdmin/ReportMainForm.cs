@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -115,7 +116,7 @@ namespace MCLaborAdmin
         }
 
         private void ReportForm_Load(object sender, EventArgs e)
-        {                        
+        {            
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
             this.TopMost = true;
@@ -146,6 +147,8 @@ namespace MCLaborAdmin
             string selectedReport = this.reportCmbo.SelectedItem.ToString().ToLower();
             ReportDataSource rptDS = new Microsoft.Reporting.WinForms.ReportDataSource();
             List<ReportParameter> rptParams = new List<ReportParameter>();
+            DateTime? startDate = null;
+            DateTime? endDate = null;
             
             this.reportViewer1.Reset();
             this.reportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
@@ -154,6 +157,7 @@ namespace MCLaborAdmin
             switch(selectedReport)
             {
                 case "employee directory" :
+                    this.EMPLOYEETableAdapter.Connection.ConnectionString = ConfigurationManager.ConnectionStrings["MCLabor"].ToString();
                     this.EMPLOYEETableAdapter.Fill(this.DSEmployee.EMPLOYEE);
                     rptDS.Name = "DSEmployee_EMPLOYEE";
                     rptDS.Value = this.EMPLOYEEBindingSource;
@@ -162,7 +166,8 @@ namespace MCLaborAdmin
                     this.reportViewer1.LocalReport.ReportEmbeddedResource = "MCLaborAdmin.RPTEmployeeDirectory.rdlc";                    
                     break;
 
-                case "pay rate list" :                    
+                case "pay rate list" :
+                    this.DTPayRateListTableAdapter.Connection.ConnectionString = ConfigurationManager.ConnectionStrings["MCLabor"].ToString();
                     this.DTPayRateListTableAdapter.Fill(this.DSPayRateList.DTPayRateList);
                     rptDS.Name = "DSPayRateList_DTPayRateList";
                     rptDS.Value = this.DTPayRateListBindingSource;
@@ -171,7 +176,8 @@ namespace MCLaborAdmin
                     this.reportViewer1.LocalReport.ReportEmbeddedResource = "MCLaborAdmin.RPTPayRateList.rdlc";
                     break;
                 
-                case "work site labor summary" :                                    
+                case "work site labor summary" :
+                    this.DTWorkSiteLaborSummaryTableAdapter.Connection.ConnectionString = ConfigurationManager.ConnectionStrings["MCLabor"].ToString();             
                     this.DTWorkSiteLaborSummaryTableAdapter.Fill(this.DSWorkSiteLaborSummary.DTWorkSiteLaborSummary);
                     rptDS.Name = "DSWorkSiteLaborSummary_DTWorkSiteLaborSummary";
                     rptDS.Value = this.DTWorkSiteLaborSummaryBindingSource;
@@ -213,14 +219,75 @@ namespace MCLaborAdmin
                         break;
                     }
 
-                    DateTime? startDate = this.startDatePicker.Value;
-                    DateTime? endDate = this.endDatePicker.Value;
+                    startDate = this.startDatePicker.Value;
+                    endDate = this.endDatePicker.Value;
+                    this.EMP_LABOR_DETAILTableAdapter.Connection.ConnectionString = ConfigurationManager.ConnectionStrings["MCLabor"].ToString();             
                     this.EMP_LABOR_DETAILTableAdapter.Fill(this.DSEmpLaborDetail.EMP_LABOR_DETAIL, startDate, endDate);
                     rptDS.Name = "DSEmpLaborDetail_EMP_LABOR_DETAIL";
                     rptDS.Value = this.EMP_LABOR_DETAILBindingSource;
                     this.reportViewer1.LocalReport.DataSources.Clear();
                     this.reportViewer1.LocalReport.DataSources.Add(rptDS);
                     this.reportViewer1.LocalReport.ReportEmbeddedResource = "MCLaborAdmin.RPTEmployeeLaborDetail.rdlc";
+
+                    rptParams.Add(new ReportParameter("ParmStartDate", startDate.Value.ToString()));
+                    rptParams.Add(new ReportParameter("ParmEndDate", endDate.Value.ToString()));
+
+                    if ((this.employeeCmbo.SelectedItem != null) && (this.employeeCmbo.SelectedIndex != 0))
+                    {
+                        rptParams.Add(new ReportParameter("ParmEmpId", ((Employee)this.employeeCmbo.SelectedItem).EmployeeId.ToString()));
+                    }
+                    else
+                    {
+                        for (int i = 1; i < this.employeeCmbo.Items.Count; i++)
+                        {
+                            rptParams.Add(new ReportParameter("ParmEmpId", ((Employee)this.employeeCmbo.Items[i]).EmployeeId.ToString()));
+                        }
+                    }
+
+                    if ((this.workSiteCmbo.SelectedItem != null) && (this.workSiteCmbo.SelectedIndex != 0))
+                    {
+                        rptParams.Add(new ReportParameter("ParmWorkSiteName", ((WorkSite)this.workSiteCmbo.SelectedItem).WorkSiteName));
+                    }
+                    else
+                    {
+                        for (int i = 1; i < this.workSiteCmbo.Items.Count; i++)
+                        {
+                            rptParams.Add(new ReportParameter("ParmWorkSiteName", ((WorkSite)this.workSiteCmbo.Items[i]).WorkSiteName));
+                        }
+                    }
+
+                    if ((this.jobCmbo.SelectedItem != null) && (this.jobCmbo.SelectedIndex != 0))
+                    {
+                        rptParams.Add(new ReportParameter("ParmJobName", ((Job)this.jobCmbo.SelectedItem).JobName));
+                    }
+                    else
+                    {
+                        for (int i = 1; i < this.jobCmbo.Items.Count; i++)
+                        {
+                            rptParams.Add(new ReportParameter("ParmJobName", ((Job)this.jobCmbo.Items[i]).JobName));
+                        }
+                    }
+
+                    this.reportViewer1.LocalReport.SetParameters(rptParams);
+                    break;
+                
+                case "employee labor summary" :
+                    if (!validateDateParams())
+                    {
+                        break;
+                    }
+
+                    startDate = this.startDatePicker.Value;
+                    endDate = this.endDatePicker.Value;
+
+                    this.EMP_LABOR_SUMMARYTableAdapter.Connection.ConnectionString = ConfigurationManager.ConnectionStrings["MCLabor"].ToString();
+                    this.EMP_LABOR_SUMMARYTableAdapter.Fill(this.DSEmpLaborSummary.EMP_LABOR_SUMMARY, startDate, endDate);
+
+                    rptDS.Name = "DSEmpLaborSummary_EMP_LABOR_SUMMARY";
+                    rptDS.Value = this.EMP_LABOR_SUMMARYBindingSource;
+                    this.reportViewer1.LocalReport.DataSources.Clear();
+                    this.reportViewer1.LocalReport.DataSources.Add(rptDS);
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "MCLaborAdmin.RPTEmployeeLaborSummary.rdlc";
 
                     rptParams.Add(new ReportParameter("ParmStartDate", startDate.Value.ToString()));
                     rptParams.Add(new ReportParameter("ParmEndDate", endDate.Value.ToString()));
@@ -288,6 +355,7 @@ namespace MCLaborAdmin
                     break;
 
                 case "employee labor detail" :
+                case "employee labor summary" :
                     this.startDateLbl.Enabled = true;
                     this.startDatePicker.Enabled = true;
                     this.endDateLbl.Enabled = true;

@@ -91,6 +91,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSEmpLaborDetail.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSEmpLaborSummary.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSEmpLaborSummary.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSEmployee.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -193,6 +198,7 @@
       <DependentUpon>AdminUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RPTEmployeeLaborDetail.rdlc" />
+    <EmbeddedResource Include="RPTEmployeeLaborSummary.rdlc" />
     <EmbeddedResource Include="RPTWorkSiteLaborSummary.rdlc" />
     <EmbeddedResource Include="RPTPayRateList.rdlc" />
     <EmbeddedResource Include="RPTEmployeeDirectory.rdlc" />
@@ -323,6 +329,17 @@
     </None>
     <None Include="DSEmpLaborDetail.xss">
       <DependentUpon>DSEmpLaborDetail.xsd</DependentUpon>
+    </None>
+    <None Include="DSEmpLaborSummary.xsc">
+      <DependentUpon>DSEmpLaborSummary.xsd</DependentUpon>
+    </None>
+    <None Include="DSEmpLaborSummary.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSEmpLaborSummary.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSEmpLaborSummary.xss">
+      <DependentUpon>DSEmpLaborSummary.xsd</DependentUpon>
     </None>
     <None Include="DSEmployee.xsc">
       <DependentUpon>DSEmployee.xsd</DependentUpon>

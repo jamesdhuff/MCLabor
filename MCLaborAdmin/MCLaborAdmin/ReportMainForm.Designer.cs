@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportMainForm));
             this.EMPLOYEEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DSEmployee = new MCLaborAdmin.DSEmployee();
@@ -58,6 +59,9 @@
             this.DSEmpLaborDetail = new MCLaborAdmin.DSEmpLaborDetail();
             this.EMP_LABOR_DETAILBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.EMP_LABOR_DETAILTableAdapter = new MCLaborAdmin.DSEmpLaborDetailTableAdapters.EMP_LABOR_DETAILTableAdapter();
+            this.DSEmpLaborSummary = new MCLaborAdmin.DSEmpLaborSummary();
+            this.EMP_LABOR_SUMMARYBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.EMP_LABOR_SUMMARYTableAdapter = new MCLaborAdmin.DSEmpLaborSummaryTableAdapters.EMP_LABOR_SUMMARYTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.EMPLOYEEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DSEmployee)).BeginInit();
             this.filtersGrpBox.SuspendLayout();
@@ -67,6 +71,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DTWorkSiteLaborSummaryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DSEmpLaborDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EMP_LABOR_DETAILBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DSEmpLaborSummary)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EMP_LABOR_SUMMARYBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // EMPLOYEEBindingSource
@@ -94,6 +100,7 @@
             this.reportCmbo.FormattingEnabled = true;
             this.reportCmbo.Items.AddRange(new object[] {
             "Employee Labor Detail",
+            "Employee Labor Summary",
             "Work Site Labor Summary",
             "Employee Directory",
             "Pay Rate List"});
@@ -232,7 +239,7 @@
             this.startDateLbl.Text = "Start Date";
             // 
             // reportViewer1
-            // 
+            //             
             this.reportViewer1.Location = new System.Drawing.Point(254, 12);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(960, 582);
@@ -304,6 +311,20 @@
             // 
             this.EMP_LABOR_DETAILTableAdapter.ClearBeforeFill = true;
             // 
+            // DSEmpLaborSummary
+            // 
+            this.DSEmpLaborSummary.DataSetName = "DSEmpLaborSummary";
+            this.DSEmpLaborSummary.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // EMP_LABOR_SUMMARYBindingSource
+            // 
+            this.EMP_LABOR_SUMMARYBindingSource.DataMember = "EMP_LABOR_SUMMARY";
+            this.EMP_LABOR_SUMMARYBindingSource.DataSource = this.DSEmpLaborSummary;
+            // 
+            // EMP_LABOR_SUMMARYTableAdapter
+            // 
+            this.EMP_LABOR_SUMMARYTableAdapter.ClearBeforeFill = true;
+            // 
             // ReportMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,6 +352,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DTWorkSiteLaborSummaryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DSEmpLaborDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EMP_LABOR_DETAILBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DSEmpLaborSummary)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EMP_LABOR_SUMMARYBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,6 +389,9 @@
         private System.Windows.Forms.BindingSource EMP_LABOR_DETAILBindingSource;
         private DSEmpLaborDetail DSEmpLaborDetail;
         private MCLaborAdmin.DSEmpLaborDetailTableAdapters.EMP_LABOR_DETAILTableAdapter EMP_LABOR_DETAILTableAdapter;
+        private System.Windows.Forms.BindingSource EMP_LABOR_SUMMARYBindingSource;
+        private DSEmpLaborSummary DSEmpLaborSummary;
+        private MCLaborAdmin.DSEmpLaborSummaryTableAdapters.EMP_LABOR_SUMMARYTableAdapter EMP_LABOR_SUMMARYTableAdapter;
 
 
     }
