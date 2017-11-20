@@ -45,7 +45,7 @@ namespace MCLaborAdmin
         public PayRate(int payRateId, int jobId, string jobRefCode, string jobName, decimal hourlyPayRate, bool active)
         {
             this.payRateId = payRateId;
-            this.job = new Job(jobId, jobRefCode, jobName);
+            this.job = new Job() { JobID = jobId, RefCode = jobRefCode, JobName = jobName };
             this.hourlyPayRate = hourlyPayRate;
             this.active = active;
         }

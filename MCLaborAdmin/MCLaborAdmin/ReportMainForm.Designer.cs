@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportMainForm));
             this.EMPLOYEEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DSEmployee = new MCLaborAdmin.DSEmployee();
@@ -62,6 +61,7 @@
             this.DSEmpLaborSummary = new MCLaborAdmin.DSEmpLaborSummary();
             this.EMP_LABOR_SUMMARYBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.EMP_LABOR_SUMMARYTableAdapter = new MCLaborAdmin.DSEmpLaborSummaryTableAdapters.EMP_LABOR_SUMMARYTableAdapter();
+            this.chkShowInactiveFilters = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.EMPLOYEEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DSEmployee)).BeginInit();
             this.filtersGrpBox.SuspendLayout();
@@ -112,6 +112,7 @@
             // 
             // filtersGrpBox
             // 
+            this.filtersGrpBox.Controls.Add(this.chkShowInactiveFilters);
             this.filtersGrpBox.Controls.Add(this.jobCmbo);
             this.filtersGrpBox.Controls.Add(this.workSiteCmbo);
             this.filtersGrpBox.Controls.Add(this.employeeCmbo);
@@ -239,7 +240,7 @@
             this.startDateLbl.Text = "Start Date";
             // 
             // reportViewer1
-            //             
+            // 
             this.reportViewer1.Location = new System.Drawing.Point(254, 12);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(960, 582);
@@ -325,6 +326,17 @@
             // 
             this.EMP_LABOR_SUMMARYTableAdapter.ClearBeforeFill = true;
             // 
+            // chkShowInactiveFilters
+            // 
+            this.chkShowInactiveFilters.AutoSize = true;
+            this.chkShowInactiveFilters.Location = new System.Drawing.Point(26, 298);
+            this.chkShowInactiveFilters.Name = "chkShowInactiveFilters";
+            this.chkShowInactiveFilters.Size = new System.Drawing.Size(145, 17);
+            this.chkShowInactiveFilters.TabIndex = 10;
+            this.chkShowInactiveFilters.Text = "Show Inactive Filters";
+            this.chkShowInactiveFilters.UseVisualStyleBackColor = true;
+            this.chkShowInactiveFilters.CheckedChanged += new System.EventHandler(this.chkShowInactiveFilters_CheckedChanged);
+            // 
             // ReportMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,8 +352,8 @@
             this.Name = "ReportMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MCLabor Administration - Reports";
-            this.Load += new System.EventHandler(this.ReportForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ReportForm_FormClosing);
+            this.Load += new System.EventHandler(this.ReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.EMPLOYEEBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DSEmployee)).EndInit();
             this.filtersGrpBox.ResumeLayout(false);
@@ -392,6 +404,7 @@
         private System.Windows.Forms.BindingSource EMP_LABOR_SUMMARYBindingSource;
         private DSEmpLaborSummary DSEmpLaborSummary;
         private MCLaborAdmin.DSEmpLaborSummaryTableAdapters.EMP_LABOR_SUMMARYTableAdapter EMP_LABOR_SUMMARYTableAdapter;
+        private System.Windows.Forms.CheckBox chkShowInactiveFilters;
 
 
     }

@@ -148,8 +148,8 @@
             this.Name = "WorkSiteAddEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WorkSiteAddEditForm";
-            this.Load += new System.EventHandler(this.WorkSiteAddEditForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WorkSiteAddEditForm_FormClosing);
+            this.Load += new System.EventHandler(this.WorkSiteAddEditForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -46,7 +46,7 @@ namespace MCLaborAdmin
                                                         "ORDER BY laborStartDateTime",
                                                         conn))
                 {
-                    cmd.Parameters.AddWithValue("@employeeId", this.currEmp.EmployeeId);
+                    cmd.Parameters.AddWithValue("@employeeId", this.currEmp.EmployeeID);
                     cmd.Parameters.AddWithValue("@startDate", this.startDate);
                     cmd.Parameters.AddWithValue("@endDate", this.endDate);
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -75,7 +75,7 @@ namespace MCLaborAdmin
                                 tc.UtcEndTime = reader.GetDateTime(5);
                             }
                             tc.WorkSite = new WorkSite(reader.GetInt32(6), reader.GetString(8), reader.GetString(7));
-                            tc.Job = new Job(reader.GetInt32(9), reader.GetString(11), reader.GetString(10));
+                            tc.Job = new Job() { JobID = reader.GetInt32(9), RefCode = reader.GetString(11), JobName = reader.GetString(10)};
                             tc.Employee = this.currEmp;
 
                             this.timeCardDataGridView.Rows.Add(new Object[] 

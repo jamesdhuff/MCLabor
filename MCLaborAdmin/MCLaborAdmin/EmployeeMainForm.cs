@@ -30,7 +30,7 @@ namespace MCLaborAdmin
 
             for (int i = this.empDataGridView.Rows.Count - 1; i > -1; i--)
             {
-                if (emp.EmployeeId == (int)this.empDataGridView.Rows[i].Cells[0].Value)
+                if (emp.EmployeeID == (int)this.empDataGridView.Rows[i].Cells[0].Value)
                 {
                     newRecord = false;
                     this.empDataGridView.Rows[i].Cells[1].Value = emp.RefCode;
@@ -40,14 +40,16 @@ namespace MCLaborAdmin
 
             if (newRecord)
             {
-                this.empDataGridView.Rows.Add(new Object[] { emp.EmployeeId, emp.RefCode, emp.FullName });
-                this.empList.Add(emp.EmployeeId, emp);
+                this.empDataGridView.Rows.Add(new Object[] { emp.EmployeeID, emp.RefCode, emp.FullName });
+                this.empList.Add(emp.EmployeeID, emp);
             }
         }
 
         private void populateEmployeeList()
         {
             this.empList = new Dictionary<int, Employee>();
+            this.empDataGridView.Rows.Clear();
+
             using(SqlConnection conn = DBUtils.getConnection("MCLabor"))
             {
                 string sqlString = "SELECT employeeId, refCode, firstName, middleName, lastName, loginId, " +
@@ -63,7 +65,7 @@ namespace MCLaborAdmin
                     while (reader.Read())
                     {
                         Employee emp = new Employee();
-                        emp.EmployeeId = reader.GetInt32(0);
+                        emp.EmployeeID = reader.GetInt32(0);
                         emp.RefCode = reader.GetString(1);
                         emp.FirstName = reader.GetString(2);
                         if (reader.IsDBNull(3))
@@ -76,7 +78,7 @@ namespace MCLaborAdmin
                         }
 
                         emp.LastName = reader.GetString(4);
-                        emp.LoginId = reader.GetInt32(5);
+                        emp.LoginID = reader.GetInt32(5);
                         
                         if (reader.IsDBNull(6))
                         {
@@ -204,13 +206,16 @@ namespace MCLaborAdmin
                             emp.EmergencyContactPhone = reader.GetString(19);
                         }
 
-                        string hireStatusLookupSql = "SELECT status, statusStartDate, terminationReason FROM emp_hire_status WHERE employeeId = @empId AND statusEndDate IS NULL";
+                        string hireStatusLookupSql = "SELECT s.status, statusStartDate, terminationReason, sEnum.description as hireStatusDesc " + 
+                                                     "FROM emp_hire_status s JOIN HIRE_STATUS_ENUM sEnum ON s.status = sEnum.status " + 
+                                                     "WHERE employeeId = @empId AND statusEndDate IS NULL";
+
                         using (SqlConnection conn2 = DBUtils.getConnection("MCLabor"))                       
                         {
                             conn2.Open();
                             using (SqlCommand hireStatusLookupCmd = new SqlCommand(hireStatusLookupSql, conn2))
                             {
-                                hireStatusLookupCmd.Parameters.AddWithValue("@empId", emp.EmployeeId);
+                                hireStatusLookupCmd.Parameters.AddWithValue("@empId", emp.EmployeeID);
                                 SqlDataReader hireStatusReader = hireStatusLookupCmd.ExecuteReader();
                                 if (hireStatusReader.Read())
                                 {
@@ -224,12 +229,14 @@ namespace MCLaborAdmin
                                     {
                                         emp.TermReason = hireStatusReader.GetString(2);
                                     }
+                                    emp.HireStatusDesc = hireStatusReader.GetString(3);
                                 }
                                 else
                                 {
                                     emp.HireStatus = 0;
                                     emp.HireStatusDate = DateTime.Today;
                                     emp.TermReason = string.Empty;
+                                    emp.HireStatusDesc = string.Empty;
                                 }
                                 hireStatusReader.Close();
                             }                            
@@ -240,7 +247,7 @@ namespace MCLaborAdmin
 
                             using (SqlCommand payRateLookupCmd = new SqlCommand(payRateLookupSql, conn2))
                             {
-                                payRateLookupCmd.Parameters.AddWithValue("@empId", emp.EmployeeId);
+                                payRateLookupCmd.Parameters.AddWithValue("@empId", emp.EmployeeID);
                                 SqlDataReader payRateReader = payRateLookupCmd.ExecuteReader();
                                 List<PayRate> payRateList = new List<PayRate>();
 
@@ -253,9 +260,13 @@ namespace MCLaborAdmin
                             }
                         }
 
-                        this.empList.Add(emp.EmployeeId, emp);
-                        this.empDataGridView.Rows.Add(new Object[] { emp.EmployeeId, emp.RefCode, emp.FullName });
-                    }                    
+                        if (this.chkShowTerminated.Checked ||
+                            !emp.HireStatusDesc.Contains("Terminated"))
+                        {
+                            this.empList.Add(emp.EmployeeID, emp);
+                            this.empDataGridView.Rows.Add(new Object[] { emp.EmployeeID, emp.RefCode, emp.FullName, emp.HireStatusDesc });
+                        }
+                    }
                 }
             }
         }
@@ -303,6 +314,11 @@ namespace MCLaborAdmin
         private void empMainCloseBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void chkShowTerminated_CheckedChanged(object sender, EventArgs e)
+        {
+            populateEmployeeList();
         }
     }
 

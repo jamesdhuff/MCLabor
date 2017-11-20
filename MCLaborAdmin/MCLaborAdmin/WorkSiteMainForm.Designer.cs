@@ -33,9 +33,11 @@
             this.workSiteMainCloseBtn = new System.Windows.Forms.Button();
             this.workSiteMainEditBtn = new System.Windows.Forms.Button();
             this.workSiteMainAddBtn = new System.Windows.Forms.Button();
+            this.chkShowInactive = new System.Windows.Forms.CheckBox();
             this.workSiteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.refCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workSiteName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.workSiteDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -49,17 +51,18 @@
             this.workSiteId,
             this.refCode,
             this.workSiteName,
+            this.Description,
             this.active});
             this.workSiteDataGridView.Location = new System.Drawing.Point(12, 12);
             this.workSiteDataGridView.Name = "workSiteDataGridView";
             this.workSiteDataGridView.ReadOnly = true;
             this.workSiteDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.workSiteDataGridView.Size = new System.Drawing.Size(397, 232);
+            this.workSiteDataGridView.Size = new System.Drawing.Size(792, 527);
             this.workSiteDataGridView.TabIndex = 0;
             // 
             // workSiteMainCloseBtn
             // 
-            this.workSiteMainCloseBtn.Location = new System.Drawing.Point(307, 265);
+            this.workSiteMainCloseBtn.Location = new System.Drawing.Point(307, 554);
             this.workSiteMainCloseBtn.Name = "workSiteMainCloseBtn";
             this.workSiteMainCloseBtn.Size = new System.Drawing.Size(102, 33);
             this.workSiteMainCloseBtn.TabIndex = 6;
@@ -69,7 +72,7 @@
             // 
             // workSiteMainEditBtn
             // 
-            this.workSiteMainEditBtn.Location = new System.Drawing.Point(153, 265);
+            this.workSiteMainEditBtn.Location = new System.Drawing.Point(153, 554);
             this.workSiteMainEditBtn.Name = "workSiteMainEditBtn";
             this.workSiteMainEditBtn.Size = new System.Drawing.Size(102, 33);
             this.workSiteMainEditBtn.TabIndex = 5;
@@ -79,13 +82,23 @@
             // 
             // workSiteMainAddBtn
             // 
-            this.workSiteMainAddBtn.Location = new System.Drawing.Point(12, 265);
+            this.workSiteMainAddBtn.Location = new System.Drawing.Point(12, 554);
             this.workSiteMainAddBtn.Name = "workSiteMainAddBtn";
             this.workSiteMainAddBtn.Size = new System.Drawing.Size(94, 33);
             this.workSiteMainAddBtn.TabIndex = 4;
             this.workSiteMainAddBtn.Text = "Add";
             this.workSiteMainAddBtn.UseVisualStyleBackColor = true;
             this.workSiteMainAddBtn.Click += new System.EventHandler(this.workSiteMainAddBtn_Click);
+            // 
+            // chkShowInactive
+            // 
+            this.chkShowInactive.Location = new System.Drawing.Point(464, 552);
+            this.chkShowInactive.Name = "chkShowInactive";
+            this.chkShowInactive.Size = new System.Drawing.Size(109, 39);
+            this.chkShowInactive.TabIndex = 7;
+            this.chkShowInactive.Text = "Show Inactive";
+            this.chkShowInactive.UseVisualStyleBackColor = true;
+            this.chkShowInactive.CheckedChanged += new System.EventHandler(this.chkShowInactive_CheckedChanged);
             // 
             // workSiteId
             // 
@@ -107,6 +120,13 @@
             this.workSiteName.Name = "workSiteName";
             this.workSiteName.ReadOnly = true;
             // 
+            // Description
+            // 
+            this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
             // active
             // 
             this.active.HeaderText = "Active";
@@ -118,7 +138,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 310);
+            this.ClientSize = new System.Drawing.Size(816, 599);
+            this.Controls.Add(this.chkShowInactive);
             this.Controls.Add(this.workSiteMainCloseBtn);
             this.Controls.Add(this.workSiteMainEditBtn);
             this.Controls.Add(this.workSiteMainAddBtn);
@@ -126,8 +147,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WorkSiteMainForm";
             this.Text = "MCLabor Administration - Work Site Definitions";
-            this.Load += new System.EventHandler(this.WorkSiteForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WorkSiteForm_FormClosing);
+            this.Load += new System.EventHandler(this.WorkSiteForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.workSiteDataGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -139,9 +160,11 @@
         private System.Windows.Forms.Button workSiteMainCloseBtn;
         private System.Windows.Forms.Button workSiteMainEditBtn;
         private System.Windows.Forms.Button workSiteMainAddBtn;
+        private System.Windows.Forms.CheckBox chkShowInactive;
         private System.Windows.Forms.DataGridViewTextBoxColumn workSiteId;
         private System.Windows.Forms.DataGridViewTextBoxColumn refCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn workSiteName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn active;
     }
 }

@@ -26,14 +26,19 @@ namespace MCLaborAdmin
             InitializeComponent();
         }
 
-        private void populateWorkSiteGrid()
+        public void populateWorkSiteGrid()
         {
-            string sqlString = "SELECT workSiteId, workSiteName, refCode, description, active FROM work_site";
+            this.workSiteDataGridView.Rows.Clear();
+            this.workSiteList.Clear();
+
+            string sqlString = "SELECT workSiteId, workSiteName, refCode, description, active FROM work_site WHERE active = 1 OR @ShowInactive = 1 ORDER BY 1 DESC";
             using (SqlConnection conn = DBUtils.getConnection("MCLabor"))
             {
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand(sqlString, conn))
                 {
+                    cmd.Parameters.AddWithValue("@ShowInactive", this.chkShowInactive.Checked);
+
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
@@ -51,33 +56,11 @@ namespace MCLaborAdmin
                         }
                         ws.Active = reader.GetBoolean(4);
                         this.workSiteList.Add(ws.WorkSiteId, ws);
-                        this.workSiteDataGridView.Rows.Add(new object[] { ws.WorkSiteId, ws.RefCode, ws.WorkSiteName, ((ws.Active) ? "\u221A" : string.Empty) });
+                        this.workSiteDataGridView.Rows.Add(new object[] { ws.WorkSiteId, ws.RefCode, ws.WorkSiteName, ws.Description, ((ws.Active) ? "\u221A" : string.Empty) });
                     }
                 }
             }
-        }
-
-        public void updateWorkSiteGrid(WorkSite ws)
-        {
-            bool newRecord = true;
-
-            for (int i = this.workSiteDataGridView.Rows.Count - 1; i > -1; i--)
-            {
-                if (ws.WorkSiteId == (int)this.workSiteDataGridView.Rows[i].Cells[0].Value)
-                {
-                    newRecord = false;
-                    this.workSiteDataGridView.Rows[i].Cells[1].Value = ws.RefCode;
-                    this.workSiteDataGridView.Rows[i].Cells[2].Value = ws.WorkSiteName;
-                    this.workSiteDataGridView.Rows[i].Cells[3].Value = ((ws.Active) ? "\u221A" : string.Empty);
-                }
-            }
-
-            if (newRecord)
-            {
-                this.workSiteDataGridView.Rows.Add(new Object[] { ws.WorkSiteId, ws.RefCode, ws.WorkSiteName, ((ws.Active) ? "\u221A" : string.Empty) });
-                this.workSiteList.Add(ws.WorkSiteId, ws);
-            }
-        }
+        }        
 
         private void WorkSiteForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -122,6 +105,11 @@ namespace MCLaborAdmin
         private void workSiteMainCloseBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void chkShowInactive_CheckedChanged(object sender, EventArgs e)
+        {
+            populateWorkSiteGrid();
         }
     }
 }

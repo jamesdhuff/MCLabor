@@ -49,13 +49,13 @@ namespace MCLaborAdmin
                                                         "AND p.employeeId = @employeeId"
                                                         , conn))
                 {
-                    cmd.Parameters.AddWithValue("@employeeId", this.currTimeCard.Employee.EmployeeId);
+                    cmd.Parameters.AddWithValue("@employeeId", this.currTimeCard.Employee.EmployeeID);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             Job j = new Job();
-                            j.JobId = reader.GetInt32(0);
+                            j.JobID = reader.GetInt32(0);
                             j.JobName = reader.GetString(1);
                             j.RefCode = reader.GetString(2);
 
@@ -187,7 +187,7 @@ namespace MCLaborAdmin
                 using (SqlCommand cmd = new SqlCommand(sqlstring, conn))
                 {
                     cmd.Parameters.AddWithValue("@laborDetailId", this.updatedTimeCard.LaborDetailId);
-                    cmd.Parameters.AddWithValue("@employeeId", this.updatedTimeCard.Employee.EmployeeId);
+                    cmd.Parameters.AddWithValue("@employeeId", this.updatedTimeCard.Employee.EmployeeID);
                     cmd.Parameters.AddWithValue("@clockInTime", this.updatedTimeCard.UtcStartTime);
                     if (!this.noClockOutChkBox.Checked)
                     {
@@ -261,9 +261,9 @@ namespace MCLaborAdmin
                 {
                     using (SqlCommand cmd = new SqlCommand(insertString, conn))
                     {
-                        cmd.Parameters.AddWithValue("@employeeId", this.updatedTimeCard.Employee.EmployeeId);
+                        cmd.Parameters.AddWithValue("@employeeId", this.updatedTimeCard.Employee.EmployeeID);
                         cmd.Parameters.AddWithValue("@workSiteId", this.updatedTimeCard.WorkSite.WorkSiteId);
-                        cmd.Parameters.AddWithValue("@jobId", this.updatedTimeCard.Job.JobId);
+                        cmd.Parameters.AddWithValue("@jobId", this.updatedTimeCard.Job.JobID);
                         cmd.Parameters.AddWithValue("@calendarDate", this.updatedTimeCard.CalendarDate);
                         cmd.Parameters.AddWithValue("@startTime", this.updatedTimeCard.LocalStartTime);                        
                         cmd.Parameters.AddWithValue("@startUtcTime", this.updatedTimeCard.UtcStartTime);
@@ -287,9 +287,9 @@ namespace MCLaborAdmin
                     using (SqlCommand cmd = new SqlCommand(updateString, conn))
                     {
                         cmd.Parameters.AddWithValue("@laborDetailId", this.updatedTimeCard.LaborDetailId);
-                        cmd.Parameters.AddWithValue("@employeeId", this.updatedTimeCard.Employee.EmployeeId);
+                        cmd.Parameters.AddWithValue("@employeeId", this.updatedTimeCard.Employee.EmployeeID);
                         cmd.Parameters.AddWithValue("@workSiteId", this.updatedTimeCard.WorkSite.WorkSiteId);
-                        cmd.Parameters.AddWithValue("@jobId", this.updatedTimeCard.Job.JobId);
+                        cmd.Parameters.AddWithValue("@jobId", this.updatedTimeCard.Job.JobID);
                         cmd.Parameters.AddWithValue("@calendarDate", this.updatedTimeCard.CalendarDate);
                         cmd.Parameters.AddWithValue("@startTime", this.updatedTimeCard.LocalStartTime);
                         cmd.Parameters.AddWithValue("@startUtcTime", this.updatedTimeCard.UtcStartTime);
@@ -327,7 +327,7 @@ namespace MCLaborAdmin
             bool jobNotInList = true;
             for (int i = this.jobCmbo.Items.Count - 1; i > -1 ; i-- )
             {
-                if (this.currTimeCard.Job.JobId == ((Job)this.jobCmbo.Items[i]).JobId)
+                if (this.currTimeCard.Job.JobID == ((Job)this.jobCmbo.Items[i]).JobID)
                 {
                     this.jobCmbo.SelectedIndex = i;
                     jobNotInList = false;
@@ -344,7 +344,7 @@ namespace MCLaborAdmin
 
             if (jobNotInList)
             {
-                if (this.currTimeCard.Job.JobId != -1)
+                if (this.currTimeCard.Job.JobID != -1)
                 {
                     this.jobCmbo.Items.Insert(this.jobCmbo.Items.Count, this.currTimeCard.Job);
                     this.jobCmbo.SelectedIndex = this.jobCmbo.Items.Count - 1;

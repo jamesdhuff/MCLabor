@@ -27,18 +27,25 @@ namespace MCLaborAdmin
 
         private void loadEmployees()
         {
+            this.employeeCmbo.Items.Clear();
             this.employeeCmbo.Items.Add("<< No Filter >>");
             using (SqlConnection conn = DBUtils.getConnection("MCLabor"))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT employeeId, firstName, lastName, refCode FROM employee ORDER BY firstName", conn))
+                using (SqlCommand cmd = new SqlCommand( "SELECT emp.employeeId, emp.firstName, emp.lastName, emp.refCode " + 
+                                                        "FROM employee emp " +
+                                                        "JOIN emp_hire_status hireStatus ON emp.employeeId = hireStatus.employeeId " +
+                                                        "WHERE hireStatus.statusEndDate IS NULL " +
+                                                        "AND (hireStatus.status IN (0,1,2) OR @ShowInactive = 1) " +
+                                                        "ORDER BY emp.firstName, emp.lastName", conn))
                 {
+                    cmd.Parameters.AddWithValue("@ShowInactive", this.chkShowInactiveFilters.Checked);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             Employee emp = new Employee();
-                            emp.EmployeeId = reader.GetInt32(0);
+                            emp.EmployeeID = reader.GetInt32(0);
                             emp.FirstName = reader.GetString(1);
                             emp.LastName = reader.GetString(2);
                             emp.RefCode = reader.GetString(3);
@@ -52,12 +59,14 @@ namespace MCLaborAdmin
 
         private void loadWorkSites()
         {
+            this.workSiteCmbo.Items.Clear();
             this.workSiteCmbo.Items.Add("<< No Filter >>");
             using (SqlConnection conn = DBUtils.getConnection("MCLabor"))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT workSiteId, workSiteName, refCode FROM work_site ORDER BY workSiteName", conn))
+                using (SqlCommand cmd = new SqlCommand("SELECT workSiteId, workSiteName, refCode FROM work_site WHERE active = 1 or @ShowInactive = 1 ORDER BY workSiteId DESC", conn))
                 {
+                    cmd.Parameters.AddWithValue("@ShowInactive", this.chkShowInactiveFilters.Checked);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -76,18 +85,21 @@ namespace MCLaborAdmin
 
         private void loadJobs()
         {
+            this.jobCmbo.Items.Clear();
             this.jobCmbo.Items.Add("<< No Filter >>");
             using (SqlConnection conn = DBUtils.getConnection("MCLabor"))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT jobId, jobName, refCode FROM job ORDER BY jobName", conn))
+                using (SqlCommand cmd = new SqlCommand("SELECT jobId, jobName, refCode FROM job WHERE isActive = 1 OR @ShowInactive = 1 ORDER BY jobName", conn))
                 {
+                    cmd.Parameters.AddWithValue("@ShowInactive", this.chkShowInactiveFilters.Checked);
+
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             Job j = new Job();
-                            j.JobId = reader.GetInt32(0);
+                            j.JobID = reader.GetInt32(0);
                             j.JobName = reader.GetString(1);
                             j.RefCode = reader.GetString(2);
 
@@ -125,16 +137,18 @@ namespace MCLaborAdmin
             this.startDatePicker.Value = DateTime.Today.AddDays(-14);
             this.endDatePicker.Value = DateTime.Today.AddDays(1);
 
+            loadFilterValues();
+
+        }
+
+        private void loadFilterValues()
+        {
             loadEmployees();
             loadWorkSites();
             loadJobs();
             this.jobCmbo.SelectedIndex = 0;
             this.workSiteCmbo.SelectedIndex = 0;
             this.employeeCmbo.SelectedIndex = 0;
-            
-            //this.reportViewer1.RefreshReport();
-
-
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
@@ -234,13 +248,13 @@ namespace MCLaborAdmin
 
                     if ((this.employeeCmbo.SelectedItem != null) && (this.employeeCmbo.SelectedIndex != 0))
                     {
-                        rptParams.Add(new ReportParameter("ParmEmpId", ((Employee)this.employeeCmbo.SelectedItem).EmployeeId.ToString()));
+                        rptParams.Add(new ReportParameter("ParmEmpId", ((Employee)this.employeeCmbo.SelectedItem).EmployeeID.ToString()));
                     }
                     else
                     {
                         for (int i = 1; i < this.employeeCmbo.Items.Count; i++)
                         {
-                            rptParams.Add(new ReportParameter("ParmEmpId", ((Employee)this.employeeCmbo.Items[i]).EmployeeId.ToString()));
+                            rptParams.Add(new ReportParameter("ParmEmpId", ((Employee)this.employeeCmbo.Items[i]).EmployeeID.ToString()));
                         }
                     }
 
@@ -294,13 +308,13 @@ namespace MCLaborAdmin
 
                     if ((this.employeeCmbo.SelectedItem != null) && (this.employeeCmbo.SelectedIndex != 0))
                     {
-                        rptParams.Add(new ReportParameter("ParmEmpId", ((Employee)this.employeeCmbo.SelectedItem).EmployeeId.ToString()));
+                        rptParams.Add(new ReportParameter("ParmEmpId", ((Employee)this.employeeCmbo.SelectedItem).EmployeeID.ToString()));
                     }
                     else
                     {
                         for (int i = 1; i < this.employeeCmbo.Items.Count; i++)
                         {
-                            rptParams.Add(new ReportParameter("ParmEmpId", ((Employee)this.employeeCmbo.Items[i]).EmployeeId.ToString()));
+                            rptParams.Add(new ReportParameter("ParmEmpId", ((Employee)this.employeeCmbo.Items[i]).EmployeeID.ToString()));
                         }
                     }
 
@@ -382,6 +396,11 @@ namespace MCLaborAdmin
                     break;
             }
 
+        }
+
+        private void chkShowInactiveFilters_CheckedChanged(object sender, EventArgs e)
+        {
+            loadFilterValues();
         }
     }
 }

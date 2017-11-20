@@ -35,6 +35,7 @@ namespace MCLaborAdmin
             this.jobAddEditNameTxt.Text = this.currJob.JobName;
             this.jobAddEditRefCodeTxt.Text = this.currJob.RefCode;
             this.jobAddEditDescriptionTxt.Text = this.currJob.Description;
+            this.chkIsActive.Checked = this.currJob.IsActive;
 
         }
 
@@ -53,12 +54,12 @@ namespace MCLaborAdmin
         {
             if (validateFormData())
             {
-                string insertString = "INSERT INTO job (jobName, refCode, description) VALUES (@jobName, @refCode, @description); SELECT cast(Scope_Identity() as int)";
-                string updateString = "UPDATE job SET jobName = @jobName, refCode = @refCode, description = @description WHERE jobId = @jobId";
+                string insertString = "INSERT INTO job (jobName, refCode, description, isActive) VALUES (@jobName, @refCode, @description, @isActive); SELECT cast(Scope_Identity() as int)";
+                string updateString = "UPDATE job SET jobName = @jobName, refCode = @refCode, description = @description, isActive = @isActive WHERE jobId = @jobId";
                 using (SqlConnection conn = DBUtils.getConnection("MCLabor"))
                 {
                     conn.Open();
-                    if (this.currJob.JobId == -1)
+                    if (this.currJob.JobID == -1)
                     {
                         using (SqlCommand cmd = new SqlCommand(insertString, conn))
                         {
@@ -72,8 +73,9 @@ namespace MCLaborAdmin
                             {
                                 cmd.Parameters.AddWithValue("@description", this.currJob.Description);
                             }
+                            cmd.Parameters.AddWithValue("@isActive", this.currJob.IsActive);
 
-                            this.currJob.JobId = (int)cmd.ExecuteScalar();
+                            this.currJob.JobID = (int)cmd.ExecuteScalar();
                         }
                     }
                     else
@@ -90,13 +92,14 @@ namespace MCLaborAdmin
                             {
                                 cmd.Parameters.AddWithValue("@description", this.currJob.Description);
                             }
-                            cmd.Parameters.AddWithValue("@jobId", this.currJob.JobId);
+                            cmd.Parameters.AddWithValue("@isActive", this.currJob.IsActive);
+                            cmd.Parameters.AddWithValue("@jobId", this.currJob.JobID);
 
                             cmd.ExecuteNonQuery();
                         }
                     }
                 }
-                this.jobMainForm.updateJobGrid(this.currJob);                
+                this.jobMainForm.PopulateJobGrid();
                 this.Close();
             }
         }
@@ -129,6 +132,8 @@ namespace MCLaborAdmin
             {
                 this.currJob.Description = this.jobAddEditDescriptionTxt.Text;
             }
+
+            this.currJob.IsActive = this.chkIsActive.Checked;
 
             return true;
         }

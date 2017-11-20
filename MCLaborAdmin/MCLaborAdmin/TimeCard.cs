@@ -71,8 +71,8 @@ namespace MCLaborAdmin
         {
             if (
                 (this.laborDetailId == tc.LaborDetailId) &&
-                (this.employee.EmployeeId == tc.Employee.EmployeeId) &&
-                (this.job.JobId == tc.job.JobId) &&
+                (this.employee.EmployeeID == tc.Employee.EmployeeID) &&
+                (this.job.JobID == tc.job.JobID) &&
                 (this.workSite.WorkSiteId == tc.WorkSite.WorkSiteId) &&
                 (this.calendarDate.Equals(tc.CalendarDate)) &&
                 (this.localStartTime.Equals(tc.LocalStartTime)) &&

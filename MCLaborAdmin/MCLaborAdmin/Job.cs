@@ -7,43 +7,22 @@ namespace MCLaborAdmin
 {
     public class Job
     {
-        private int jobId;
-        private string refCode;
-        private string jobName;
-        private string description;
 
-        public int JobId { get { return this.jobId; } set { this.jobId = value; } }
+        public int JobID { get; set; }
 
-        public string RefCode { get { return this.refCode; } set { this.refCode = value; } }
+        public string RefCode { get; set; }
 
-        public string JobName { get { return this.jobName; } set { this.jobName = value; } }
+        public string JobName { get; set; }
 
-        public string Description { get { return this.description; } set { this.description = value; } }
+        public string Description { get; set; }
 
-        public Job()
-        {
-            this.jobId = -1;
-        }
-
-        public Job(int jobId, string refCode, string jobName)
-        {
-            this.jobId = jobId;
-            this.refCode = refCode;
-            this.jobName = jobName;
-        }
-
-        public Job(int jobId, string refCode, string jobName, string description)
-        {
-            this.jobId = jobId;
-            this.refCode = refCode;
-            this.jobName = jobName;
-            this.description = description;
-        }
+        public bool IsActive { get; set; }
 
         public override string ToString()
         {
-            return this.jobName + "  (" + this.refCode + ")";
+            return string.Format("{0} ({1})", 
+                this.JobName,
+                this.RefCode);
         }
-
     }
 }

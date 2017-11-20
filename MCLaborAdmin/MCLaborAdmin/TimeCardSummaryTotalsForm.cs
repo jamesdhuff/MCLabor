@@ -36,7 +36,7 @@ namespace MCLaborAdmin
             {
                 bool newGroup = true;
                 int groupIndex = 0;
-                string id = tc.WorkSite.WorkSiteId + "|" + tc.Job.JobId;
+                string id = tc.WorkSite.WorkSiteId + "|" + tc.Job.JobID;
 
                 for (int i = this.timeCardSummaryDataGridView.Rows.Count - 1; i > -1; i--)
                 {

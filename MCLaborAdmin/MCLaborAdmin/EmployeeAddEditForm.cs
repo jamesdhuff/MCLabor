@@ -37,7 +37,7 @@ namespace MCLaborAdmin
         public void addPayRate(PayRate p)
         {
             this.currEmp.PayRateList.Add(p);
-            this.empJobDataGridView.Rows.Add(new Object[] { -1, p.Job.JobId, p.Job.JobName, p.Job.RefCode, p.Active, String.Format("{0:0.00}",p.HourlyPayRate) });
+            this.empJobDataGridView.Rows.Add(new Object[] { -1, p.Job.JobID, p.Job.JobName, p.Job.RefCode, p.Active, String.Format("{0:0.00}",p.HourlyPayRate) });
         }
 
         public bool editPayRate(PayRate p)
@@ -77,7 +77,7 @@ namespace MCLaborAdmin
             {
                 this.empRefCodeTxt.Text = this.currEmp.RefCode;
             }
-            this.empLoginIdTxt.Text = this.currEmp.LoginId.ToString();
+            this.empLoginIdTxt.Text = this.currEmp.LoginID.ToString();
             if (this.currEmp.Address != null)
             {
                 this.empAddressTxt.Text = this.currEmp.Address;
@@ -186,7 +186,7 @@ namespace MCLaborAdmin
         {
             foreach (PayRate p in this.currEmp.PayRateList)
             {
-                this.empJobDataGridView.Rows.Add(new object[] { p.PayRateId, p.Job.JobId, p.Job.JobName, p.Job.RefCode, p.Active, p.HourlyPayRate });
+                this.empJobDataGridView.Rows.Add(new object[] { p.PayRateId, p.Job.JobID, p.Job.JobName, p.Job.RefCode, p.Active, p.HourlyPayRate });
             }
         }
 
@@ -247,7 +247,7 @@ namespace MCLaborAdmin
                     
                     cmd.Parameters.AddWithValue("@lastName", emp.LastName);
                     
-                    cmd.Parameters.AddWithValue("@loginId", emp.LoginId);
+                    cmd.Parameters.AddWithValue("@loginId", emp.LoginID);
                     
                     if (emp.Address.Length < 1)
                     {
@@ -407,7 +407,7 @@ namespace MCLaborAdmin
 
                     cmd.Parameters.AddWithValue("@lastName", emp.LastName);
 
-                    cmd.Parameters.AddWithValue("@loginId", emp.LoginId);
+                    cmd.Parameters.AddWithValue("@loginId", emp.LoginID);
 
                     if (emp.Address.Length < 1)
                     {
@@ -535,7 +535,7 @@ namespace MCLaborAdmin
                         cmd.Parameters.AddWithValue("@emergencyContactPhone", emp.EmergencyContactPhone);
                     }
 
-                    cmd.Parameters.AddWithValue("@employeeId", emp.EmployeeId);
+                    cmd.Parameters.AddWithValue("@employeeId", emp.EmployeeID);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -553,7 +553,7 @@ namespace MCLaborAdmin
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand("SELECT empHireStatusId, status, statusStartDate, terminationReason FROM emp_hire_status WHERE employeeId = @employeeId AND statusEndDate IS NULL", conn))
                 {
-                    cmd.Parameters.AddWithValue("@employeeId", emp.EmployeeId);
+                    cmd.Parameters.AddWithValue("@employeeId", emp.EmployeeID);
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
@@ -593,14 +593,14 @@ namespace MCLaborAdmin
                         using (SqlCommand cmd = new SqlCommand("UPDATE emp_hire_status SET statusEndDate = @statusEndDate WHERE employeeId = @employeeId AND statusEndDate IS NULL", conn))
                         {
                             cmd.Parameters.AddWithValue("@statusEndDate", emp.HireStatusDate.Subtract(new TimeSpan(1, 0, 0, 0)));
-                            cmd.Parameters.AddWithValue("@employeeId", emp.EmployeeId);
+                            cmd.Parameters.AddWithValue("@employeeId", emp.EmployeeID);
 
                             cmd.ExecuteNonQuery();
                         }
                     }
                     using (SqlCommand cmd = new SqlCommand("INSERT INTO EMP_HIRE_STATUS (employeeId, status, statusStartDate, terminationReason) VALUES (@employeeId, @status, @statusStartDate, @terminationReason)", conn))
                     {
-                        cmd.Parameters.AddWithValue("@employeeId", emp.EmployeeId);
+                        cmd.Parameters.AddWithValue("@employeeId", emp.EmployeeID);
                         cmd.Parameters.AddWithValue("@status", emp.HireStatus);
                         cmd.Parameters.AddWithValue("@statusStartDate", emp.HireStatusDate);
                         if (emp.TermReason.Length < 1)
@@ -629,7 +629,7 @@ namespace MCLaborAdmin
                             {
                                 cmd.Parameters.AddWithValue("@termReason", emp.TermReason);
                             }
-                            cmd.Parameters.AddWithValue("@employeeId", emp.EmployeeId);
+                            cmd.Parameters.AddWithValue("@employeeId", emp.EmployeeID);
                             cmd.ExecuteNonQuery();
                         }
                     }
@@ -647,8 +647,8 @@ namespace MCLaborAdmin
                                                        "VALUES (@employeeId, @jobId, @hourlyPayRate, @active); " +
                                                        "SELECT cast(Scope_Identity() as int)", conn))
                 {
-                    cmd.Parameters.AddWithValue("@employeeId", emp.EmployeeId);
-                    cmd.Parameters.AddWithValue("@jobId", p.Job.JobId);
+                    cmd.Parameters.AddWithValue("@employeeId", emp.EmployeeID);
+                    cmd.Parameters.AddWithValue("@jobId", p.Job.JobID);
                     cmd.Parameters.AddWithValue("@hourlyPayRate", p.HourlyPayRate);
                     cmd.Parameters.AddWithValue("@active", p.Active);
 
@@ -666,8 +666,8 @@ namespace MCLaborAdmin
                                                        "SET employeeId = @employeeId, jobId = @jobId, hourlyPayRate = @hourlyPayRate, active = @active " +
                                                        "WHERE payRateId = @payRateId", conn))
                 {
-                    cmd.Parameters.AddWithValue("@employeeId", emp.EmployeeId);
-                    cmd.Parameters.AddWithValue("@jobId", p.Job.JobId);
+                    cmd.Parameters.AddWithValue("@employeeId", emp.EmployeeID);
+                    cmd.Parameters.AddWithValue("@jobId", p.Job.JobID);
                     cmd.Parameters.AddWithValue("@hourlyPayRate", p.HourlyPayRate);
                     cmd.Parameters.AddWithValue("@active", p.Active);
                     cmd.Parameters.AddWithValue("@payRateId", p.PayRateId);
@@ -717,7 +717,7 @@ namespace MCLaborAdmin
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        if ((reader.GetInt32(0) != this.currEmp.EmployeeId) && (reader.GetString(1).ToUpper().Equals(this.currEmp.RefCode.ToUpper())))
+                        if ((reader.GetInt32(0) != this.currEmp.EmployeeID) && (reader.GetString(1).ToUpper().Equals(this.currEmp.RefCode.ToUpper())))
                         {
                             MessageBox.Show("Ref Code must be unique.  The Ref Code entered is already in use by " + reader.GetString(2) + " " + reader.GetString(3) + ".  Pick a different Ref Code value.", "Data Validation Failed");
                             this.empRefCodeTxt.Focus();
@@ -736,7 +736,7 @@ namespace MCLaborAdmin
 
             try
             {
-                this.currEmp.LoginId = Int32.Parse(this.empLoginIdTxt.Text);
+                this.currEmp.LoginID = Int32.Parse(this.empLoginIdTxt.Text);
             }
             catch (FormatException)
             {
@@ -753,7 +753,7 @@ namespace MCLaborAdmin
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        if ((reader.GetInt32(0) != this.currEmp.EmployeeId) && (reader.GetInt32(1) == this.currEmp.LoginId))
+                        if ((reader.GetInt32(0) != this.currEmp.EmployeeID) && (reader.GetInt32(1) == this.currEmp.LoginID))
                         {
                             MessageBox.Show("Login ID must be unique.  The Login ID entered is already in use by " + reader.GetString(2) + " " + reader.GetString(3) + ".  Pick a different Login ID value.", "Data Validation Failed");
                             this.empLoginIdTxt.Focus();
@@ -890,9 +890,9 @@ namespace MCLaborAdmin
         {
             if (validateFormData())
             {
-                if (this.currEmp.EmployeeId == -1)
+                if (this.currEmp.EmployeeID < 1)
                 {
-                    this.currEmp.EmployeeId = insertNewEmployee(this.currEmp);
+                    this.currEmp.EmployeeID = insertNewEmployee(this.currEmp);
                     updateHireStatus(this.currEmp);
                 }
                 else
@@ -903,7 +903,7 @@ namespace MCLaborAdmin
 
                 for (int i = 0; i < this.currEmp.PayRateList.Count; i++)
                 {
-                    if (this.currEmp.PayRateList[i].PayRateId == -1)
+                    if (this.currEmp.PayRateList[i].PayRateId < 1)
                     {
                         this.currEmp.PayRateList[i].PayRateId = insertNewPayRate(this.currEmp, this.currEmp.PayRateList[i]);
                     }
@@ -997,7 +997,7 @@ namespace MCLaborAdmin
 
                 if (this.empJobDataGridView.SelectedRows[0].Cells[1].Value != null)
                 {
-                    currSelectedPayRate.Job.JobId = (int)this.empJobDataGridView.SelectedRows[0].Cells[1].Value;
+                    currSelectedPayRate.Job.JobID = (int)this.empJobDataGridView.SelectedRows[0].Cells[1].Value;
                 }
 
                 currSelectedPayRate.Job.JobName = this.empJobDataGridView.SelectedRows[0].Cells[2].Value.ToString();

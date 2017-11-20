@@ -104,7 +104,7 @@ namespace MCLaborAdmin
                         {
                             while (reader.Read())
                             {
-                                Job j = new Job(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+                                Job j = new Job() { JobID = reader.GetInt32(0), RefCode = reader.GetString(1), JobName = reader.GetString(2) };
 
                                 bool jobAlreadyAssigned = false;
                                 foreach (Job alreadyAssignedJob in alreadyAssignedJobList)

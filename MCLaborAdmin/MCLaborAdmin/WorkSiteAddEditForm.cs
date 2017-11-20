@@ -99,7 +99,7 @@ namespace MCLaborAdmin
                         }
                     }
                 }
-                this.workSiteMainForm.updateWorkSiteGrid(this.currWorkSite);                
+                this.workSiteMainForm.populateWorkSiteGrid();                
                 this.Close();
             }
         }

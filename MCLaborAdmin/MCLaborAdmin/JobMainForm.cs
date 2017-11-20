@@ -26,19 +26,25 @@ namespace MCLaborAdmin
             InitializeComponent();
         }
 
-        private void populateJobGrid()
+        public void PopulateJobGrid()
         {
-            string sqlString = "SELECT jobId, jobName, refCode, description FROM job";
+            this.jobDataGridView.Rows.Clear();
+            this.jobList.Clear();
+
+            string sqlString = "SELECT jobId, jobName, refCode, description, isActive FROM job WHERE isActive = 1 OR @ShowInactive = 1 ORDER BY jobName";
+
             using (SqlConnection conn = DBUtils.getConnection("MCLabor"))
             {
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand(sqlString, conn))
                 {
+                    cmd.Parameters.AddWithValue("@ShowInactive", this.chkShowInactive.Checked);
+
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                         Job job = new Job();
-                        job.JobId = reader.GetInt32(0);
+                        job.JobID = reader.GetInt32(0);
                         job.JobName = reader.GetString(1);
                         job.RefCode = reader.GetString(2);
                         if(reader.IsDBNull(3))
@@ -49,33 +55,13 @@ namespace MCLaborAdmin
                         {
                             job.Description = reader.GetString(3);
                         }
-                        this.jobList.Add(job.JobId, job);
-                        this.jobDataGridView.Rows.Add(new object[] { job.JobId, job.JobName, job.RefCode, job.Description });
+                        job.IsActive = reader.GetBoolean(4);
+
+                        this.jobList.Add(job.JobID, job);
+                        this.jobDataGridView.Rows.Add(new object[] { job.JobID, job.JobName, job.RefCode, job.Description, job.IsActive });
                     }
                 }
-            }
-        }
-
-        public void updateJobGrid(Job job)
-        {
-            bool newJob = true;
-
-            for (int i = this.jobDataGridView.Rows.Count - 1; i > -1; i--)
-            {
-                if (job.JobId == (int)this.jobDataGridView.Rows[i].Cells[0].Value)
-                {
-                    newJob = false;
-                    this.jobDataGridView.Rows[i].Cells[1].Value = job.JobName;
-                    this.jobDataGridView.Rows[i].Cells[2].Value = job.RefCode;
-                    this.jobDataGridView.Rows[i].Cells[3].Value = job.Description;
-                }
-            }
-
-            if (newJob)
-            {
-                this.jobDataGridView.Rows.Add(new Object[] { job.JobId, job.JobName, job.RefCode, job.Description });
-                this.jobList.Add(job.JobId, job);
-            }
+            }            
         }
 
         private void JobForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -90,17 +76,17 @@ namespace MCLaborAdmin
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
 
-            populateJobGrid();
+            PopulateJobGrid();
         }
 
-        private void jobAddBtn_Click(object sender, EventArgs e)
+        private void JobAddBtn_Click(object sender, EventArgs e)
         {
-            JobAddEditForm jobAddEditForm = new JobAddEditForm(this, new Job(-1, string.Empty, string.Empty, string.Empty));
+            JobAddEditForm jobAddEditForm = new JobAddEditForm(this, new Job() { JobID = -1 });
             this.Enabled = false;
             jobAddEditForm.Show();
         }
 
-        private void jobEditBtn_Click(object sender, EventArgs e)
+        private void JobEditBtn_Click(object sender, EventArgs e)
         {
             if (this.jobDataGridView.SelectedRows.Count > 1)
             {
@@ -114,16 +100,21 @@ namespace MCLaborAdmin
             {
                 Job currJob = this.jobList[(int)this.jobDataGridView.SelectedRows[0].Cells[0].Value];
                 JobAddEditForm jobAddEditForm = new JobAddEditForm(this, currJob);
+                jobAddEditForm.Text = "Edit Job";
                 this.Enabled = false;
                 jobAddEditForm.Show();
             }
         }
 
-        private void jobCloseBtn_Click(object sender, EventArgs e)
+        private void JobCloseBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        private void ChkShowInactive_CheckedChanged(object sender, EventArgs e)
+        {
+            PopulateJobGrid();
+        }
     }
 }
 

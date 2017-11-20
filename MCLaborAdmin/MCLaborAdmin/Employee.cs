@@ -7,102 +7,69 @@ namespace MCLaborAdmin
 {
     public class Employee
     {
-        private int employeeId;
-        private string refCode;
-        private string firstName;
-        private string middleName;
-        private string lastName;
-        private int loginId;
-        private string address;
-        private string city;
-        private string state;
-        private int zip;
-        private string ssn;
-        private string primaryPhone;
-        private string alternatePhone;
-        private string emergencyContactName;
-        private string emergencyContactRelationship;
-        private string emergencyContactAddress;
-        private string emergencyContactCity;
-        private string emergencyContactState;
-        private int emergencyContactZip;
-        private string emergencyContactPhone;
-        private int hireStatus;
-        private DateTime hireStatusDate;
-        private string termReason;
+        public int EmployeeID { get; set; }
 
-        private List<PayRate> payRateList;
-        
+        public string RefCode { get; set; }
 
-        public int EmployeeId { get { return this.employeeId; } set { this.employeeId = value; } }
+        public string FirstName { get; set; }
 
-        public string RefCode { get { return this.refCode; } set { this.refCode = value; } }
+        public string LastName { get; set; }
 
-        public string FirstName { get { return this.firstName; } set { this.firstName = value; } }
+        public string MiddleName { get; set; }
 
-        public string LastName { get { return this.lastName; } set { this.lastName = value; } }
+        public string FullName { get { return String.Format("{0} {1}", this.FirstName,this.LastName); } }
 
-        public string MiddleName { get { return this.middleName; } set { this.middleName = value; } }
+        public string Address { get; set; }
 
-        public string FullName { get { return this.firstName + " " + this.lastName; } }
+        public string City { get; set; }
 
-        public string Address { get { return this.address; } set { this.address = value; } }
+        public string State { get; set; }
 
-        public string City { get { return this.city; } set { this.city = value; } }
+        public int Zip { get; set; }
 
-        public string State { get { return this.state; } set { this.state = value; } }
+        public int LoginID { get; set; }
 
-        public int Zip { get { return this.zip; } set { this.zip = value; } }
+        public string PrimaryPhone { get; set; }
 
-        public int LoginId { get { return this.loginId; } set { this.loginId = value; } }
+        public string AlternatePhone { get; set; }
 
-        public string PrimaryPhone { get { return this.primaryPhone; } set { this.primaryPhone = value; } }
+        public string Ssn { get; set; }
 
-        public string AlternatePhone { get { return this.alternatePhone; } set { this.alternatePhone = value; } }
+        public string EmergencyContactName { get; set; }
 
-        public string Ssn { get { return this.ssn; } set { this.ssn = value; } }
+        public string EmergencyContactRelationship { get; set; }
 
-        public string EmergencyContactName { get { return this.emergencyContactName; } set { this.emergencyContactName = value; } }
+        public string EmergencyContactPhone { get; set; }
 
-        public string EmergencyContactRelationship { get { return this.emergencyContactRelationship; } set { this.emergencyContactRelationship = value; } }
+        public string EmergencyContactAddress { get; set; }
 
-        public string EmergencyContactPhone { get { return this.emergencyContactPhone; } set { this.emergencyContactPhone = value; } }
+        public string EmergencyContactCity { get; set; }
 
-        public string EmergencyContactAddress { get { return this.emergencyContactAddress; } set { this.emergencyContactAddress = value; } }
+        public string EmergencyContactState { get; set; }
 
-        public string EmergencyContactCity { get { return this.emergencyContactCity; } set { this.emergencyContactCity = value; } }
+        public int EmergencyContactZip { get; set; }
 
-        public string EmergencyContactState { get { return this.emergencyContactState; } set { this.emergencyContactState = value; } }
+        public int HireStatus { get; set; }
 
-        public int EmergencyContactZip { get { return this.emergencyContactZip; } set { this.emergencyContactZip = value; } }
+        public DateTime HireStatusDate { get; set; }
 
-        public int HireStatus { get { return this.hireStatus; } set { this.hireStatus = value; } }
+        public string HireStatusDesc { get; set; }
 
-        public DateTime HireStatusDate { get { return this.hireStatusDate; } set { this.hireStatusDate = value; } }
+        public List<PayRate> PayRateList { get; set; }
 
-        public List<PayRate> PayRateList { get { return this.payRateList; } set { this.payRateList = value; } }
-
-        public string TermReason { get { return this.termReason; } set { this.termReason = value; } }
+        public string TermReason { get; set; }
 
 
         public Employee()
         {
-            this.employeeId = -1;
-            this.payRateList = new List<PayRate>();
-        }
-
-        public Employee(int id, string refCode, string firstname, string lastname)
-        {
-            this.employeeId = id;
-            this.refCode = refCode;
-            this.firstName = firstname;
-            this.lastName = lastname;
-            this.payRateList = new List<PayRate>();
+            this.PayRateList = new List<PayRate>();
         }
        
         public override string ToString()
         {
-            return this.firstName + " " + this.lastName + "  (" + this.refCode + ")";
+            return string.Format("{0}  ({1})",
+                this.FullName,
+                this.RefCode);
         }
     }
 }

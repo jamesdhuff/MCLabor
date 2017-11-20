@@ -26,17 +26,23 @@ namespace MCLaborAdmin
 
         private void populateEmpList()
         {
+            this.timeCardEmployeeCmbo.Items.Clear();
+
             using (SqlConnection conn = DBUtils.getConnection("MCLabor"))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT employeeId, refCode, firstName, lastName FROM employee", conn))
+                using (SqlCommand cmd = new SqlCommand( "SELECT emp.employeeId, emp.refCode, emp.firstName, emp.lastName " + 
+                                                        "FROM employee emp JOIN emp_hire_status hireStatus ON emp.employeeId = hireStatus.employeeId AND hireStatus.statusEndDate IS NULL " +
+                                                        "WHERE hireStatus.status IN (0,1,2) OR @ShowTerminated = 1 " +
+                                                        "ORDER BY firstName, lastName", conn))
                 {
+                    cmd.Parameters.AddWithValue("@ShowTerminated", this.chkShowTerminatedEmployees.Checked);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             Employee currEmp = new Employee();
-                            currEmp.EmployeeId = reader.GetInt32(0);
+                            currEmp.EmployeeID = reader.GetInt32(0);
                             currEmp.RefCode = reader.GetString(1);
                             currEmp.FirstName = reader.GetString(2);
                             currEmp.LastName = reader.GetString(3);
@@ -90,6 +96,11 @@ namespace MCLaborAdmin
                     reviewForm.Show(this);
                 }
             }
+        }
+
+        private void chkShowTerminatedEmployees_CheckedChanged(object sender, EventArgs e)
+        {
+            populateEmpList();
         }
     }
 }
